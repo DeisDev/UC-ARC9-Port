@@ -54,6 +54,13 @@ function ARC9.UC.VisualRecoilUp(wep, value)
     return value * wep:GetProcessedValue("Recoil") / wep.Recoil
 end
 
+-- ARC9 skips visual free aim when sway returns nil, but still applies it to shots.
+function ARC9.UC.GetFreeSwayAngles(wep)
+    local sway = baseclass.Get("arc9_base").GetFreeSwayAngles(wep)
+    if sway == nil then return angle_zero end
+    return sway
+end
+
 -- A dropped viewmodel must use its entity origin, not its animated right-hand bone.
 function ARC9.UC.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
     if wm and slottbl.WMBase and !idle and !custompos and !IsValid(wep:GetOwner()) then

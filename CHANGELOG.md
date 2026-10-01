@@ -18,6 +18,7 @@
 
 ### Fixed
 
+- Free aim remains visible when weapon sway is disabled, keeping the gun aligned with its shot direction.
 - Shell casings now eject from the first-person weapon when third-person IK is enabled.
 - Dropped weapons render at their pickup position with their selected parts.
 - Glock and Uzi third-person hand IK now follows their two-handed poses while preserving one-handed perks.

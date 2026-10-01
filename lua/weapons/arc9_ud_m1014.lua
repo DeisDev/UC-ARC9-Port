@@ -1,4 +1,5 @@
 SWEP.Base = "arc9_base"
+SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
