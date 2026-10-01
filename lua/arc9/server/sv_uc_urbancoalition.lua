@@ -1,20 +1,21 @@
--- Urban Coalition server features: custom color relay and asset caching.
+-- Urban Coalition server features: custom colors and asset caching.
 
 util.AddNetworkString("ARC9_UC_CustColor")
 
 net.Receive("ARC9_UC_CustColor", function(len, ply)
-    if (ply.UC_LastColorUpdate or 0) + ARC9.UC.CustColorUpdateInterval > CurTime() then return end
+    if ply.UC_LastColorUpdate and ply.UC_LastColorUpdate + ARC9.UC.CustColorUpdateInterval > CurTime() then return end
     ply.UC_LastColorUpdate = CurTime()
 
-    net.Start("ARC9_UC_CustColor")
-        net.WriteEntity(ply)
-        local enabled = tobool(ply:GetInfoNum("arc9_uc_custcolor_enable", 0))
-        net.WriteBool(enabled)
-        if enabled then
-            net.WriteColor(Color(ply:GetInfoNum("arc9_uc_custcolor_1_r", 255), ply:GetInfoNum("arc9_uc_custcolor_1_g", 255), ply:GetInfoNum("arc9_uc_custcolor_1_b", 255)), false)
-            net.WriteColor(Color(ply:GetInfoNum("arc9_uc_custcolor_2_r", 255), ply:GetInfoNum("arc9_uc_custcolor_2_g", 255), ply:GetInfoNum("arc9_uc_custcolor_2_b", 255)), false)
-        end
-    net.SendOmit(ply)
+    -- Player NW2 state also reaches late joiners and players entering visibility.
+    ply:SetNW2Bool("ARC9_UC_CustColor", ply:GetInfoNum("arc9_uc_custcolor_enable", 0) == 1)
+    for digit = 1, 2 do
+        local prefix = "arc9_uc_custcolor_" .. digit .. "_"
+        ply:SetNW2Vector("ARC9_UC_Color" .. digit, Vector(
+            math.Clamp(ply:GetInfoNum(prefix .. "r", 255), 0, 255),
+            math.Clamp(ply:GetInfoNum(prefix .. "g", 255), 0, 255),
+            math.Clamp(ply:GetInfoNum(prefix .. "b", 255), 0, 255)
+        ) / 230)
+    end
 end)
 
 local procedure = {

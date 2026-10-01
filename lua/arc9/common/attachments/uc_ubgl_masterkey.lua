@@ -34,12 +34,18 @@ local mech = {
 }
 
 ATT.UBGL = true
+ATT.MuzzleDeviceUBGL = true
 ATT.UBGLAmmo = "buckshot"
 ATT.UBGLClipSize = 4
 ATT.UBGLFiremode = 1
 ATT.UBGLFiremodeName = "UBSG"
 ATT.HasSightsUBGL = false
 ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
+ATT.SpreadHookHipFire = ARC9.UC.UBGLSpread
+ATT.SpreadHookSights = ARC9.UC.UBGLSpread
+ATT.SpreadHookMove = ARC9.UC.UBGLSpread
+ATT.SpreadHookMidAir = ARC9.UC.UBGLSpread
+ATT.SpreadHookBipod = ARC9.UC.UBGLSpread
 ATT.ShotgunReloadUBGL = true
 ATT.ManualActionUBGL = true
 

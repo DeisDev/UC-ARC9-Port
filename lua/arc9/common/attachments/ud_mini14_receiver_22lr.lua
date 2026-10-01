@@ -39,7 +39,7 @@ ATT.DistantShootSound = fire22dist
 local fire22distint = {path .. "fire-dist-int-pistol-light-01.ogg", path .. "fire-dist-int-pistol-light-02.ogg", path .. "fire-dist-int-pistol-light-03.ogg", path .. "fire-dist-int-pistol-light-04.ogg", path .. "fire-dist-int-pistol-light-05.ogg", path .. "fire-dist-int-pistol-light-06.ogg"}
 ATT.DistantShootSoundIndoor = fire22distint
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    if string.StartsWith(anim, "reload") then
+    if anim == "reload" or anim == "reload_empty" then
         return anim .. "_15_22lr"
     end
 end

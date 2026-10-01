@@ -18,7 +18,7 @@ ATT.Spread = 50 * ARC9.UC.MOA
 ATT.ShootSound = ")^/arccw_uc/common/gl_fire_buck.ogg"
 ATT.DistantShootSound = ")^/arccw_uc/common/gl_fire_buck_dist.ogg"
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    if string.StartsWith(anim, "reload") then
+    if anim == "reload" or anim == "reload_empty" then
         return anim .. "_shotgun"
     end
 end

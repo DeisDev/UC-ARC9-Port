@@ -16,7 +16,7 @@ sound.Add({
     sound = {"^arccw_uc/common/db_add_1.ogg", "^arccw_uc/common/db_add_2.ogg", "^arccw_uc/common/db_add_3.ogg"}
 })
 
--- Minimum seconds between custom color broadcasts per player.
+-- Minimum seconds between custom color updates per player.
 ARC9.UC.CustColorUpdateInterval = 5
 
 CreateConVar("arc9_uc_infiniteubwammo", 0, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Infinite underbarrel weapon ammo.")
@@ -652,7 +652,21 @@ local infiniteubwammo = GetConVar("arc9_uc_infiniteubwammo")
 
 -- InfiniteAmmoHookUBGL: underbarrel weapons take no reserve ammo while arc9_uc_infiniteubwammo is on.
 function ARC9.UC.InfiniteUBWAmmo(wep, infinite)
-    if infiniteubwammo:GetBool() then return true end
+    return infiniteubwammo:GetBool()
+end
+
+-- ArcCW underbarrel shots use their own fixed spread, without primary-weapon dispersion.
+function ARC9.UC.UBGLSpread(wep, spread)
+    if wep:GetUBGL() then return wep:GetValue("Spread", nil, "UBGL") end
+end
+
+-- ARC9's hitscan callback omits the secondary flag; physical bullets retain it in flight.
+function ARC9.UC.AfterShotFunction(wep, tr, dmg, range, penleft, alreadypenned, secondary)
+    local current = wep:GetUBGL()
+    if secondary == nil then secondary = current end
+    if secondary != current then wep:ClearLongCache() end
+    baseclass.Get("arc9_base").AfterShotFunction(wep, tr, dmg, range, penleft, alreadypenned, secondary)
+    if secondary != current then wep:ClearLongCache() end
 end
 
 -- ARC9's stock input gate only checks its global infinite-ammo convar.
@@ -660,8 +674,14 @@ end
 function ARC9.UC.ThinkUBGL(wep)
     if !wep:GetValue("UBGL") or wep:GetProcessedValue("UBGLInsteadOfSights", true) then return end
 
+    local ucInfinite = infiniteubwammo:GetBool()
+    if wep.UC_InfiniteUBWAmmo != ucInfinite then
+        wep.UC_InfiniteUBWAmmo = ucInfinite
+        wep:ClearLongCache()
+    end
+
     local owner = wep:GetOwner()
-    local infinite = infiniteubwammo:GetBool() or GetConVar("arc9_infinite_ammo"):GetBool()
+    local infinite = ucInfinite or GetConVar("arc9_infinite_ammo"):GetBool()
     if wep:Clip2() == 0 and !infinite and owner:GetAmmoCount(wep.Secondary.Ammo) == 0 then
         if wep:GetUBGL() then wep:ToggleUBGL(false) end
         return
@@ -732,6 +752,7 @@ end
 local apconvar = GetConVar("arc9_uc_apobjmult")
 
 function ARC9.UC.APBulletImpact(wep, data)
+    if wep:GetUBGL() then return end
     local tr = data.tr
     local ent = tr.Entity
     if !IsValid(ent) then return end

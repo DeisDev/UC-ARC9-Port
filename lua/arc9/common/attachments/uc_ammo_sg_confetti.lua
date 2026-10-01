@@ -20,6 +20,14 @@ ATT.InfiniteAmmo = true
 local path = ")^arccw_uc/common/"
 ATT.ShootSound = {path .. "confetti-01.ogg", path .. "confetti-02.ogg", path .. "confetti-03.ogg", path .. "confetti-04.ogg", path .. "confetti-05.ogg", path .. "confetti-06.ogg"}
 ATT.HookP_TranslateSound = ARC9.UC.NoDistantTail
+ATT.Hook_PrimaryAttack = function(wep)
+    if !IsFirstTimePredicted() or wep:GetUBGL() then return end
+    local owner = wep:GetOwner()
+    local effect = EffectData()
+    effect:SetOrigin(owner:EyePos() + owner:GetAimVector() * 32)
+    effect:SetStart(owner:GetAimVector())
+    util.Effect("arc9_uc_confetti", effect)
+end
 ATT.UC_ShellColor = Color(255, 127, 182)
 ATT.UC_Compatible = function(wep)
     if (!wep.ManualAction and !wep.UC_CanManualAction) or !ARC9.UC.IsShotgun(wep) or wep:GetValue("UC_Shotshell") then return false end

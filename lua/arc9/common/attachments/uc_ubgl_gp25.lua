@@ -34,12 +34,19 @@ local mech = {
 }
 
 ATT.UBGL = true
+ATT.MuzzleDeviceUBGL = true
 ATT.UBGLAmmo = "smg1_grenade"
 ATT.UBGLClipSize = 1
+ATT.NumUBGL = 1
 ATT.UBGLFiremode = 1
 ATT.UBGLFiremodeName = "UBGL"
 ATT.HasSightsUBGL = false
 ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
+ATT.SpreadHookHipFire = ARC9.UC.UBGLSpread
+ATT.SpreadHookSights = ARC9.UC.UBGLSpread
+ATT.SpreadHookMove = ARC9.UC.UBGLSpread
+ATT.SpreadHookMidAir = ARC9.UC.UBGLSpread
+ATT.SpreadHookBipod = ARC9.UC.UBGLSpread
 
 ATT.RPMUBGL = 120
 ATT.RecoilUBGL = 2 * ARC9.UC.Recoil

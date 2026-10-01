@@ -1,5 +1,6 @@
 SWEP.Base = "arc9_base"
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
+SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
@@ -99,6 +100,7 @@ SWEP.BodyDamageMults = ARC9.UC.BodyDamageMults
 
 SWEP.ChamberSize = 1
 SWEP.ClipSize = 30
+SWEP.ClipSize_Priority = 0
 
 -- Recoil --
 
@@ -117,6 +119,7 @@ SWEP.Sway = 0.5
 
 SWEP.RPM = 900
 SWEP.Num = 1
+SWEP.Firemodes_Priority = 0
 SWEP.Firemodes = {
     {
         Mode = 3,

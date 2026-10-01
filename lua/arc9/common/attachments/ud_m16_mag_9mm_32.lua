@@ -12,7 +12,7 @@ ATT.ReloadTimeMult = 1.15
 ATT.SwayMult = 1.25
 ATT.SpeedMultShooting = 0.95
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    if string.StartsWith(anim, "reload") then
+    if anim == "reload" or anim == "reload_empty" then
         return anim .. "_9mm"
     end
 end

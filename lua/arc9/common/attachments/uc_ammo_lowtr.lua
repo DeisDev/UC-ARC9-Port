@@ -17,6 +17,15 @@ ATT.TracerFinalMagHook = function(wep, final)
 end
 ATT.TracerNum = 5
 ATT.TracerEffect = "arc9_uc_tracer"
+ATT.Hook_PrimaryAttack = function(wep)
+    if !IsFirstTimePredicted() or wep:GetUBGL() then return end
+    -- This hook runs before ARC9 consumes the round.
+    local clip = wep:Clip1() - wep:GetProcessedValue("AmmoPerShot", true)
+    if clip <= 5 and clip > 0 then
+        wep:EmitSound("physics/metal/metal_computer_impact_bullet3.wav", wep:GetProcessedValue("ShootVolume", true),
+            wep:GetProcessedValue("ShootPitch", true) + (5 - clip) * 7, 0.2, CHAN_AUTO)
+    end
+end
 ATT.ToggleStats = {
     {
         PrintName = "uc.toggle.green",

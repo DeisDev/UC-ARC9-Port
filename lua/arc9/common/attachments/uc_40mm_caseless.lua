@@ -10,7 +10,7 @@ ATT.DamageMaxMult = 0.75
 ATT.DamageMinMult = 0.75
 ATT.ShootPitchMult = 1.1
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    if string.StartsWith(anim, "reload") then
+    if anim == "reload" or anim == "reload_empty" then
         return anim .. "_caseless"
     end
 end

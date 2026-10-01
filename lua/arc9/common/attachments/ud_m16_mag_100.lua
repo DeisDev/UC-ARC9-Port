@@ -21,7 +21,7 @@ ATT.SpreadMultHipFire = 1.5
 ATT.Malfunction = true
 ATT.MalfunctionMeanShotsToFailMult = 0.75
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    if string.StartsWith(anim, "reload") then
+    if anim == "reload" or anim == "reload_empty" then
         return anim .. "_100"
     end
 end

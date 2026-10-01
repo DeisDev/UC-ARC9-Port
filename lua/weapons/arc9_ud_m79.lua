@@ -1,5 +1,6 @@
 SWEP.Base = "arc9_base"
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
+SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables

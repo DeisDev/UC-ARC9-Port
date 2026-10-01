@@ -28,5 +28,5 @@ ATT.HookP_ClassChange = function(wep, class) return "uc.class.machine_pistol" en
 ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.mechanism3", "ud_uzi_body_micro.trivia.mechanism")
 ATT.Model = "models/weapons/arccw/atts/mini_lhik.mdl"
 ATT.Hook_TranslateAnimation = function(wep, anim)
-    return anim .. "_micro"
+    if wep.Animations[anim .. "_micro"] then return anim .. "_micro" end
 end

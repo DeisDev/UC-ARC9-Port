@@ -13,6 +13,12 @@
 
 ### Fixed
 
+- Inspect labels now show translated text instead of phrase keys on all seven weapons.
+- M16 conversion capacities and semi-auto and burst trigger behavior.
+- Reload and firing animations with combined magazine, receiver, stock, and underbarrel attachments.
+- Underbarrel spread, projectile counts, ammo settings, muzzle effects, and damage handling.
+- Missing confetti particles, low-ammo warnings, Dragon's Breath reports, and underwater firing sounds.
+- Custom weapon colors now reach players joining multiplayer games later.
 - Removing attachments restores the original weapon parts, including the Glock SD slide.
 - Level resting cameras for all seven weapons and underbarrel animation models.
 - Safety and sprint poses now use the correct axes; the Glock lowers when made safe.

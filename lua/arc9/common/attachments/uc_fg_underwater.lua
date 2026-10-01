@@ -10,6 +10,11 @@ local function Underwater(wep)
     return IsValid(owner) and owner:WaterLevel() >= 3
 end
 
+ATT.Hook_PrimaryAttack = function(wep)
+    if !IsFirstTimePredicted() or wep:GetUBGL() or !Underwater(wep) then return end
+    wep:EmitSound("weapons/underwater_explode" .. math.random(3, 4) .. ".wav", 70, math.random(60, 80), 0.5, CHAN_AUTO)
+end
+
 -- No muzzle effects and a lower report underwater.
 ATT.NoMuzzleEffectHook = function(wep, noeffect)
     if Underwater(wep) then return true end

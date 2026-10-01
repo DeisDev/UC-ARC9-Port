@@ -131,6 +131,10 @@ ATT.HookC_DrawBullet = function(wep, bullet)
     return false
 end
 ATT.MuzzleParticle = "muzzleflash_dragonbreath"
+ATT.Hook_PrimaryAttack = function(wep)
+    if !IsFirstTimePredicted() or wep:GetUBGL() then return end
+    wep:EmitSound("DB_ADD", wep:GetProcessedValue("ShootVolume", true), wep:GetProcessedValue("ShootPitch", true), 1, CHAN_WEAPON - 1)
+end
 ATT.UC_ShellColor = Color(0.9 * 255, 0.3 * 255, 0.1 * 255)
 ATT.UC_Compatible = function(wep)
     if (!wep.ManualAction and !wep.UC_CanManualAction) or !ARC9.UC.IsShotgun(wep) or wep:GetValue("UC_Shotshell") then return false end

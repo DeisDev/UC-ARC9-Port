@@ -88,6 +88,10 @@ if !game.SinglePlayer() then
     for _, cvar in ipairs({"enable", "1_r", "1_g", "1_b", "2_r", "2_g", "2_b"}) do
         cvars.AddChangeCallback("arc9_uc_custcolor_" .. cvar, custcolorcallback)
     end
+    hook.Add("InitPostEntity", "ARC9_UC_InitialColor", function()
+        net.Start("ARC9_UC_CustColor")
+        net.SendToServer()
+    end)
 end
 
 -- Finds the ARC9 weapon behind a rendered entity: the weapon itself, an ARC9 attachment model, or a viewmodel.
@@ -140,13 +144,14 @@ local function proxystuff(digit)
             local owner = wep:GetOwner()
             if !IsValid(owner) or !owner:IsPlayer() then return end
 
-            local net_color = owner["UC_Weapon_Color" .. digit]
-            if (owner == LocalPlayer() and owner:GetInfoNum("arc9_uc_custcolor_enable", 0) == 1) or (owner.UC_CustEnable and net_color) then
-                if net_color then
-                    mat:SetVector(self.ResultTo, Vector(net_color.r, net_color.g, net_color.b) / 230)
-                else
+            if owner == LocalPlayer() then
+                if owner:GetInfoNum("arc9_uc_custcolor_enable", 0) == 1 then
                     mat:SetVector(self.ResultTo, Vector(owner:GetInfoNum("arc9_uc_custcolor_" .. digit .. "_r", 255), owner:GetInfoNum("arc9_uc_custcolor_" .. digit .. "_g", 255), owner:GetInfoNum("arc9_uc_custcolor_" .. digit .. "_b", 255)) / 230)
+                else
+                    mat:SetVector(self.ResultTo, owner:GetPlayerColor() * 0.9)
                 end
+            elseif owner:GetNW2Bool("ARC9_UC_CustColor", false) then
+                mat:SetVector(self.ResultTo, owner:GetNW2Vector("ARC9_UC_Color" .. digit))
             else
                 mat:SetVector(self.ResultTo, owner:GetPlayerColor() * 0.9)
             end
@@ -156,17 +161,6 @@ end
 
 matproxy.Add(proxystuff(1))
 matproxy.Add(proxystuff(2))
-
-net.Receive("ARC9_UC_CustColor", function()
-    local ply = net.ReadEntity()
-    if !IsValid(ply) then return end
-
-    ply.UC_CustEnable = net.ReadBool()
-    if ply.UC_CustEnable then
-        ply.UC_Weapon_Color1 = net.ReadColor(false)
-        ply.UC_Weapon_Color2 = net.ReadColor(false)
-    end
-end)
 
 local function menu_uc(panel)
     panel:Help(P("uc.menu.header"))

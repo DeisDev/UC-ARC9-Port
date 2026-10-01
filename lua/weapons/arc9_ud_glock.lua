@@ -891,7 +891,7 @@ SWEP.Animations = {
 }
 
 SWEP.Hook_TranslateAnimation = function(wep, anim)
-    if wep.Attachments[9].Installed and (anim == "fire" or anim == "fire_empty") then
+    if wep.Attachments[9].Installed and !ARC9.UC.IsManualAction(wep) and (anim == "fire" or anim == "fire_empty") then
         return anim .. "_stock"
     end
 end
