@@ -579,8 +579,13 @@ local lookup_tube = {
     ud_870_tube_reduced = 0,
 }
 
--- A barrel shorter than the tube leaves room for muzzle devices.
 SWEP.Hook_ModifyElements = function(wep, eles)
+    -- The ring sight and optic rail share bodygroup 8.
+    if eles["ud_870_optic_ringsight"] then
+        eles["optic_rail"] = nil
+    end
+
+    -- A barrel shorter than the tube leaves room for muzzle devices.
     local barrel = wep.Attachments[2].Installed and lookup_barrel[wep.Attachments[2].Installed] or lookup_barrel["default"]
     local tube = wep.Attachments[8].Installed and lookup_tube[wep.Attachments[8].Installed] or lookup_tube["default"]
 

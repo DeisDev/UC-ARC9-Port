@@ -18,6 +18,7 @@
 
 ### Fixed
 
+- Fixed the Express-12 ring sight being hidden by the optic rail.
 - Restored indoor and outdoor gunshot-tail blending, including the Uzi's quieter indoor tail.
 - Hidden the Glock and Uzi spare reload magazines on dropped and held worldmodels.
 - On the Move now reduces movement penalties without removing the weapon's base spread.
