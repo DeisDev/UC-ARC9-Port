@@ -167,9 +167,10 @@ SWEP.HoldTypeHolstered = "normal"
 SWEP.HoldType = "pistol"
 SWEP.HoldTypeSights = "revolver"
 
+-- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
 SWEP.IronSights = {
-    Pos = Vector(-2.3, 1, 2.52),
-    Ang = Angle(0.3, 0, 0),
+    Pos = Vector(-2.3, 0.986792, 2.525201),
+    Ang = Angle(0, 0.3, 0),
     Magnification = 1,
     ViewModelFOV = 55,
 }
@@ -298,8 +299,8 @@ SWEP.AttachmentElements = {
     ["ud_glock_slide_comp"] = {
         Bodygroups = {{3, 1}},
         IronSights = {
-            Pos = Vector(-2.283, 0, 2.506),
-            Ang = Angle(0.58, 0, 0),
+            Pos = Vector(-2.283, -0.025368, 2.505872),
+            Ang = Angle(0, 0.58, 0),
             Magnification = 1,
         }
     },
@@ -358,7 +359,7 @@ SWEP.AttachmentElements = {
             }
         },
         IronSights = {
-            Pos = Vector(-3.057, 0, 3.397),
+            Pos = Vector(-3.397, 0, -3.057),
             Ang = Angle(0, 0, -90),
             Magnification = 1,
         }

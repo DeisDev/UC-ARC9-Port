@@ -18,6 +18,7 @@
 
 ### Fixed
 
+- Corrected Glock iron-sight alignment, including the Custom and NyteSyte slides.
 - Free aim remains visible when weapon sway is disabled, keeping the gun aligned with its shot direction.
 - Shell casings now eject from the first-person weapon when third-person IK is enabled.
 - Dropped weapons render at their pickup position with their selected parts.
