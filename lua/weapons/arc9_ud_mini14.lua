@@ -249,7 +249,7 @@ SWEP.DistantShootSoundSilencedIndoor = {
     common .. "fire-dist-int-pistol-light-05.ogg",
     common .. "fire-dist-int-pistol-light-06.ogg"
 }
-SWEP.HookP_TranslateSound = ARC9.UC.SubsonicTail
+SWEP.HookP_TranslateSound = ARC9.UC.ShootSound
 
 -- Bodygroups --
 

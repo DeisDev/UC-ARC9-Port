@@ -18,6 +18,8 @@
 
 ### Fixed
 
+- Restored indoor and outdoor gunshot-tail blending, including the Uzi's quieter indoor tail.
+- Hidden the Glock and Uzi spare reload magazines on dropped and held worldmodels.
 - On the Move now reduces movement penalties without removing the weapon's base spread.
 - Armor-piercing rounds apply their object damage bonus only to the matching bullet hit.
 - Underbarrel launchers mounted on the M79 retain their intended grenade damage.

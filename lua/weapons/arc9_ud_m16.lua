@@ -293,7 +293,7 @@ SWEP.HookP_TranslateSound = function(wep, data)
         return data
     end
 
-    return ARC9.UC.SubsonicTail(wep, data)
+    return ARC9.UC.ShootSound(wep, data)
 end
 
 -- Bodygroups --

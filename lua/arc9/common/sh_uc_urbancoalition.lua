@@ -671,6 +671,20 @@ function ARC9.UC.SubsonicTail(wep, data)
     end
 end
 
+-- ARC9 uses the distant sound level as volume; restore UC's 0-1 tail blend.
+function ARC9.UC.ShootSound(wep, data)
+    if !IsDistantSound(wep, data) then return end
+
+    local indoor = wep:GetIndoor()
+    if data.name == "shootdistantindoor" then
+        data.volume = indoor * (wep.UC_IndoorTailVolume or 1)
+    else
+        data.volume = 1 - indoor
+    end
+
+    return ARC9.UC.SubsonicTail(wep, data)
+end
+
 -- HookP_TranslateSound: no distant tail at all.
 function ARC9.UC.NoDistantTail(wep, data)
     if !IsDistantSound(wep, data) then return end

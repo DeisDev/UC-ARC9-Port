@@ -256,9 +256,13 @@ SWEP.DistantShootSoundSilencedIndoor = {
     common .. "fire-dist-int-pistol-light-05.ogg",
     common .. "fire-dist-int-pistol-light-06.ogg"
 }
-SWEP.HookP_TranslateSound = ARC9.UC.SubsonicTail
+SWEP.UC_IndoorTailVolume = 0.5
+SWEP.HookP_TranslateSound = ARC9.UC.ShootSound
 
 -- Bodygroups --
+
+-- Hide the spare reload magazine on worldmodels and in customization.
+SWEP.HideBones = {"uzi_magb"}
 
 SWEP.BulletBones = {
     [1] = "uzi_b1", [2] = "uzi_b2", [3] = "uzi_b3", [4] = "uzi_b4"

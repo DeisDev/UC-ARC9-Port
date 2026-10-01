@@ -266,7 +266,7 @@ SWEP.DistantShootSoundSilencedIndoor = {
     common .. "fire-dist-int-pistol-light-05.ogg",
     common .. "fire-dist-int-pistol-light-06.ogg"
 }
-SWEP.HookP_TranslateSound = ARC9.UC.SubsonicTail
+SWEP.HookP_TranslateSound = ARC9.UC.ShootSound
 
 local rottle = {common .. "cloth_1.ogg", common .. "cloth_2.ogg", common .. "cloth_3.ogg", common .. "cloth_4.ogg", common .. "cloth_6.ogg", common .. "rattle.ogg"}
 local rottle2 = {common .. "cloth_2.ogg", common .. "cloth_3.ogg", common .. "cloth_4.ogg", common .. "cloth_6.ogg", common .. "rattle.ogg"}
