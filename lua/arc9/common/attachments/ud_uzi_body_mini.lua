@@ -1,0 +1,23 @@
+ATT.PrintName = ARC9.UC.AttName("ud_uzi_body_mini")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.ActivateElements = {"ud_uzi_body_mini"}
+
+ATT.Icon = Material("entities/att/acwatt_ud_uzi_body_mini.png", "smooth mips")
+ATT.Category = "ud_uzi_frame"
+ATT.SortOrder = 8
+ATT.SpreadMult = 1.25
+ATT.AimDownSightsTimeMult = 0.85
+ATT.SprintToFireTimeMult = 0.85
+ATT.RecoilMult = 1.5
+ATT.RecoilRandomSideMult = 1.15
+ATT.RPMMult = 1.25
+ATT.RangeMaxMult = 0.75
+ATT.SpreadMultHipFire = 1.25
+ATT.BarrelLengthAdd = -4
+ATT.TriggerDelayTimeMult = 0.75
+ATT.LHIK = true
+ATT.HoldType = "pistol"
+ATT.HoldTypeSights = "revolver"
+ATT.Model = "models/weapons/arccw/atts/tactical_lhik.mdl"
+ATT.ModelOffset = Vector(2, -4.1, -1.9)
+ATT.ModelAngleOffset = Angle(10, 5, 0)

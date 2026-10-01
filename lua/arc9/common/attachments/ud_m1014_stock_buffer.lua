@@ -1,0 +1,20 @@
+ATT.PrintName = ARC9.UC.AttName("ud_m1014_stock_buffer")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.ActivateElements = {"ud_autoshotgun_stock_buffer"}
+
+ATT.Icon = Material("entities/att/acwatt_ud_m1014_stock_buffer.png", "smooth mips")
+ATT.Category = "ud_1014_stock"
+ATT.Free = true
+ATT.SortOrder = -1
+ATT.SpeedMult = 1.05
+ATT.AimDownSightsTimeMult = 0.5
+ATT.SprintToFireTimeMult = 0.5
+ATT.DeployTimeMult = 0.75
+ATT.RecoilMult = 1.35
+ATT.RecoilRandomSideMult = 2
+ATT.SpeedMultSights = 1.2
+ATT.SpeedMultShooting = 1.15
+ATT.BarrelLengthAdd = -12
+ATT.SwayMult = 3
+ATT.HoldType = "shotgun"
+ATT.HoldTypeSights = "ar2"

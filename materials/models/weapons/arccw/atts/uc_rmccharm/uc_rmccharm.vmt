@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture "models/weapons/arccw/atts/uc_rmccharm/uc_rmccharm"
+                $halflambert "1"
+}

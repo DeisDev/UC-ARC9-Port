@@ -1,0 +1,19 @@
+ATT.PrintName = ARC9.UC.AttName("ud_m16_stock_buffer")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.ActivateElements = {"stock_231_tube", "patr4"}
+
+ATT.Icon = Material("entities/att/acwatt_ud_m16_stock_buffer.png", "smooth mips")
+ATT.Category = "ud_m16_stock"
+ATT.SortOrder = -100
+ATT.Free = true
+ATT.SpeedMult = 1.05
+ATT.AimDownSightsTimeMult = 0.75
+ATT.SprintToFireTimeMult = 0.75
+ATT.DeployTimeMult = 0.6
+ATT.RecoilMult = 1.5
+ATT.RecoilRandomSideMult = 2
+ATT.SpeedMultSights = 1.2
+ATT.SpeedMultShooting = 1.15
+ATT.BarrelLengthAdd = -8
+ATT.SwayMult = 3
+ATT.ActivePos = Vector(0.33, -4, 1.33)

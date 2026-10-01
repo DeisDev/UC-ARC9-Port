@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/uc/attachments/annihilator_laserdot_d"
+
+	"$selfillum"   "1"
+}
+

@@ -1,0 +1,20 @@
+ATT.PrintName = ARC9.UC.AttName("ud_870_stock_raptor")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.ActivateElements = {"ud_870_stock_raptor"}
+
+ATT.Icon = Material("entities/att/acwatt_ud_870_stock_raptor.png", "smooth mips")
+ATT.Category = "ud_870_stock"
+ATT.SpeedMult = 1.05
+ATT.AimDownSightsTimeMult = 0.6
+ATT.SprintToFireTimeMult = 0.6
+ATT.SpeedMultSights = 1.2
+ATT.SpeedMultShooting = 1.1
+ATT.DeployTimeMult = 0.6
+ATT.RecoilMult = 1.75
+ATT.RecoilRandomSideMult = 2
+ATT.VisualRecoilMult = 0.5
+ATT.BarrelLengthAdd = -4
+ATT.SwayMult = 3
+ATT.ActivePos = Vector(0, 2.5, -0.5)
+ATT.HoldType = "shotgun"
+ATT.HoldTypeSights = "ar2"

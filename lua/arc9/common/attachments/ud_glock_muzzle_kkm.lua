@@ -1,0 +1,20 @@
+ATT.PrintName = ARC9.UC.AttName("ud_glock_muzzle_kkm")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+
+ATT.Icon = Material("entities/att/kkm.png", "mips smooth")
+ATT.Category = {"ud_glock_muzzle"}
+ATT.SortOrder = 500
+ATT.Model = "models/weapons/arccw/atts/uc_kkm_brake.mdl"
+ATT.ModelOffset = Vector(0.07, 0, 0.165)
+ATT.Scale = 1.25
+ATT.ModelAngleOffset = Angle(0, 0, 0)
+ATT.MuzzleDevice = true
+ATT.RecoilMult = 0.7
+ATT.RecoilRandomSideMult = 0.8
+ATT.BarrelLengthAdd = 2
+ATT.AimDownSightsTimeMult = 1.1
+ATT.SprintToFireTimeMult = 1.1
+ATT.SwayMult = 1.15
+ATT.RPMMult = 0.85
+ATT.ShootVolumeMult = 1.2
+ATT.InstallSound = "arccw_uc/common/gunsmith/suppressor_thread.ogg"

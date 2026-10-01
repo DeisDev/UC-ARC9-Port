@@ -1,0 +1,25 @@
+ATT.PrintName = ARC9.UC.AttName("ud_glock_caliber_357sig")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+
+ATT.SortOrder = 90
+ATT.Icon = Material("entities/att/uc_bullets/357sig.png", "smooth mips")
+ATT.Category = "ud_glock_caliber"
+ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.357_sig")
+ATT.DamageMaxMult = ARC9.UC.CalConv("9mm", "357sig", "max")
+ATT.DamageMinMult = ARC9.UC.CalConv("9mm", "357sig", "min")
+ATT.PenetrationMult = ARC9.UC.CalConv("9mm", "357sig", "pen")
+ATT.SpreadMult = 0.5
+ATT.RecoilMult = 1.15
+ATT.PhysBulletMuzzleVelocity = 410 * ARC9.UC.Meter
+ATT.ClipSizeMult = 0.9
+ATT.ShellModel = "models/weapons/arccw/uc_shells/357sig.mdl"
+ATT.ShellScale = 1
+local path = ")weapons/arccw_ud/glock/"
+local common = ")/arccw_uc/common/"
+local tail = common .. "357sig/"
+local fire357 = {path .. "fire-357-01.ogg",path .. "fire-357-02.ogg",path .. "fire-357-03.ogg",path .. "fire-357-04.ogg",path .. "fire-357-05.ogg",path .. "fire-357-06.ogg"}
+local fire357sup = {path .. "fire-sup-01.ogg",path .. "fire-sup-02.ogg",path .. "fire-sup-03.ogg",path .. "fire-sup-04.ogg",path .. "fire-sup-05.ogg",path .. "fire-sup-06.ogg"} -- Placeholder
+local fire357dist = {tail .. "fire-dist-357sig-pistol-ext-01.ogg",tail .. "fire-dist-357sig-pistol-ext-02.ogg",tail .. "fire-dist-357sig-pistol-ext-03.ogg",tail .. "fire-dist-357sig-pistol-ext-04.ogg",tail .. "fire-dist-357sig-pistol-ext-05.ogg",tail .. "fire-dist-357sig-pistol-ext-06.ogg"}
+ATT.ShootSoundSilenced = fire357sup
+ATT.ShootSound = fire357
+ATT.DistantShootSound = fire357dist

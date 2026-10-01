@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/uc/attachments/flashlight_1_d"
+	"$bumpmap" "models/uc/attachments/flashlight_1_n"
+	"$normalmapalphaenvmapmask" 	1
+
+	"$phong" 		"1"
+	"$phongexponent" "10"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[.6 1 2]"
+
+	"$envmap" "env_cubemap"
+	"$envmapfresnel" 			"1"
+	"$envmaptint" "[.1 .1 .1]"
+}

@@ -1,0 +1,22 @@
+VertexlitGeneric
+{
+	"$basetexture" 	"models/weapons/arccw/ud_uzi/uzi_stock_color"
+
+	"$phong" 1
+                "$phongexponenttexture" "models/weapons/arccw/ud_uzi/uzi_stock_color"
+	"$phongwarptexture"			"models/weapons/arccw/ud_stalol\phongwarp_metal"
+	"$phongboost"               "1"
+	"$phongfresnelranges"       "[0.5 1.5 3.0]"
+	"$phongalbedotint"		    "1"
+	"$phongalbedoboost" 	    "14"
+
+	"$color2"					"[.8 .8 .8]"
+	"$blendTintByBaseAlpha"		"1"
+
+
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+	"$envmaptint"               "[ 0.010 0.010 0.010 ]"
+
+	"$bumpmap"                  "models/weapons/arccw/ud_uzi/uzi_stock_normal"
+}

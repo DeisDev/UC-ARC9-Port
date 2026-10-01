@@ -1,0 +1,6 @@
+VertexLitGeneric
+{
+	$basetexture "models/weapons/arccw/atts/uc_urbancharm/uc_urbancharm_ua"
+	$surfaceprop Default
+                $halflambert "1"
+}

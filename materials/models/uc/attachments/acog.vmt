@@ -1,0 +1,17 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/uc/attachments/acog_d"
+	"$bumpmap" "models/uc/attachments/acog_n"
+	"$normalmapalphaenvmapmask" 	1
+
+	"$phong" 		"1"
+	"$phongexponent" "25"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[.6 1 2]"
+
+	"$envmap" "env_cubemap"
+	"$envmapfresnel" 			"1"
+	"$envmaptint" "[.05 .05  .05]"
+	
+	$color2 "[1.4 1.4 1.4]"
+}
