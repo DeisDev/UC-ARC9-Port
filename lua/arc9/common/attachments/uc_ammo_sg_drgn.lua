@@ -27,6 +27,7 @@ local dontburn = {
 }
 -- Burns targets for longer up close. Zombies and headcrabs take the hit without the burn damage type.
 ATT.Hook_BulletImpact = function(wep, data)
+    if wep:GetUBGL() then return end
     local tr = data.tr
 
     if SERVER and IsValid(tr.Entity) then
@@ -49,9 +50,12 @@ ATT.Hook_BulletImpact = function(wep, data)
     if tr.HitWorld then
         util.Decal("FadingScorch", tr.HitPos - tr.HitNormal, tr.HitPos + tr.HitNormal)
     end
+end
 
-    if !CLIENT then return end
-
+-- Physical bullets use ARC9's client impact hook for local ember particles.
+ATT.Hook_PhysBulletImpact = function(wep, data)
+    if data.bullet.Secondary then return end
+    local tr = data.tr
     local emitter = ParticleEmitter(tr.HitPos)
     if !IsValid(emitter) then return end
 
@@ -61,6 +65,7 @@ ATT.Hook_BulletImpact = function(wep, data)
 
     for i = 1, math.random(16, 32) do
         local ember = emitter:Add("effects/spark", tr.HitPos + VectorRand() * 4)
+        if !ember then break end
         ember:SetVelocity(VectorRand() * 100 - vec * math.Rand(100, 500) + Vector(0, 0, math.Rand(75, 150)))
         ember:SetGravity(Vector(0, 0, -600))
         ember:SetDieTime(math.Rand(0.6, 1.2))
@@ -91,6 +96,7 @@ ATT.PhysBulletGravityMult = 0.75
 ATT.PhysBulletDrag = 4
 -- Pellets trail sparks instead of a tracer.
 ATT.HookC_DrawBullet = function(wep, bullet)
+    if bullet.Secondary then return false end
     if CurTime() - bullet.StartTime <= 0.05 then return false end
     local a = Lerp(bullet.Travelled * bullet.Travelled / 40000, 0, 1)
     if a == 0 then return false end
@@ -110,6 +116,7 @@ ATT.HookC_DrawBullet = function(wep, bullet)
         local p = bullet.Pos - vec * (j / count2) + VectorRand() * math.Clamp((CurTime() - bullet.StartTime) / 0.5, 0, 8)
 
         local spark = emitter:Add("effects/spark", p)
+        if !spark then break end
         spark:SetVelocity(VectorRand() * 100 + vec * 0.75)
         spark:SetGravity(Vector(math.Rand(-10, 10), math.Rand(-10, 10), -75))
         spark:SetDieTime(math.Rand(0.15, 0.2))

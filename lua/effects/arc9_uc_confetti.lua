@@ -8,6 +8,7 @@ function EFFECT:Init( data )
 	local NumParticles = 48
 
 	local emitter = ParticleEmitter( vOffset, true )
+	if !IsValid(emitter) then return end
 
 	for i = 0, NumParticles do
 		local Color = Color(math.random(255), math.random(255), math.random(255))

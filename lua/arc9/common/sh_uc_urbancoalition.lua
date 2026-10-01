@@ -644,6 +644,8 @@ end
 
 -- Hook_GetShootEntData: records the weapon's damage on fired grenades, as ArcCW did for rockets.
 function ARC9.UC.ShootEntDamage(wep, data)
+    if wep:GetUBGL() then return end
+
     local dmg = wep:GetProcessedValue("DamageMax")
     local rand = wep:GetProcessedValue("DamageRand", true) or 0
 
@@ -691,11 +693,17 @@ end
 
 -- ARC9's hitscan callback omits the secondary flag; physical bullets retain it in flight.
 function ARC9.UC.AfterShotFunction(wep, tr, dmg, range, penleft, alreadypenned, secondary)
+    if !IsFirstTimePredicted() and !game.SinglePlayer() then return end
+
     local current = wep:GetUBGL()
     if secondary == nil then secondary = current end
     if secondary != current then wep:ClearLongCache() end
     baseclass.Get("arc9_base").AfterShotFunction(wep, tr, dmg, range, penleft, alreadypenned, secondary)
     if secondary != current then wep:ClearLongCache() end
+
+    if !secondary and wep:GetValue("UC_AP") then
+        ARC9.UC.ApplyAPDamage(tr, dmg)
+    end
 end
 
 -- ARC9's stock input gate only checks its global infinite-ammo convar.
@@ -776,33 +784,20 @@ function ARC9.UC.FindCacheAssets()
     return list
 end
 
--- Armor-piercing rounds deal extra damage to objects and metal. ARC9 sets bullet damage after
--- Hook_BulletImpact, so the hit is tagged here and the damage scaled when it lands this tick.
+-- Apply the object bonus to this hit after ARC9 has calculated damage and penetration.
 local apconvar = GetConVar("arc9_uc_apobjmult")
 
-function ARC9.UC.APBulletImpact(wep, data)
-    if wep:GetUBGL() then return end
-    local tr = data.tr
+function ARC9.UC.ApplyAPDamage(tr, dmg)
     local ent = tr.Entity
     if !IsValid(ent) then return end
     if tr.MatType != MAT_METAL and (ent:IsNPC() or ent:IsPlayer() or ent:IsNextBot()) then return end
 
-    ent.UC_APHit = {mult = apconvar:GetFloat(), time = CurTime()}
+    dmg:ScaleDamage(apconvar:GetFloat())
 
     local eff = EffectData()
     eff:SetOrigin(tr.HitPos)
     util.Effect("cball_bounce", eff)
 end
-
-hook.Add("EntityTakeDamage", "ARC9_UC_APDamage", function(ent, dmginfo)
-    local hit = ent.UC_APHit
-    if !hit then return end
-
-    ent.UC_APHit = nil
-    if hit.time == CurTime() then
-        dmginfo:ScaleDamage(hit.mult)
-    end
-end)
 
 -- Lets an attachment reject a weapon with ATT.UC_Compatible(wep, data) returning false.
 hook.Add("ARC9_Hook_BlockAttachment", "ARC9_UC_Compatible", function(wep, data)

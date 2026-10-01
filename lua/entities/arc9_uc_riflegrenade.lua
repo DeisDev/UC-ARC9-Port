@@ -54,10 +54,11 @@ else
     function ENT:Think()
         if self.SmokeTrail then
             if self.Ticks % 5 == 0 then
-                local emitter = ParticleEmitter(self:GetPos())
                 if not self:IsValid() or self:WaterLevel() > 2 then return end
+                local emitter = ParticleEmitter(self:GetPos())
                 if not IsValid(emitter) then return end
                 local smoke = emitter:Add("particle/particle_smokegrenade", self:GetPos())
+                if not smoke then emitter:Finish() return end
                 smoke:SetVelocity(VectorRand() * 25)
                 smoke:SetGravity(Vector(math.Rand(-5, 5), math.Rand(-5, 5), math.Rand(-20, -25)))
                 smoke:SetDieTime(math.Rand(1.5, 2.0))

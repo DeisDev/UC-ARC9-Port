@@ -56,10 +56,9 @@ function ENT:DoDetonation()
 
     for i = 1, math.random(5, 7) do
         local cloud = ents.Create("arc9_uc_napalm")
-        cloud.FireTime = math.Rand(20, 40)
-
         if !IsValid(cloud) then return end
 
+        cloud.FireTime = math.Rand(20, 40)
         local vel = VectorRand() * 500
 
         cloud.Order = i
@@ -67,7 +66,10 @@ function ENT:DoDetonation()
         --cloud:SetAbsVelocity(vel + self:GetVelocity())
         cloud:SetOwner(self:GetOwner())
         cloud:Spawn()
-        cloud:GetPhysicsObject():SetVelocityInstantaneous(self:GetVelocity() + vel)
+        local phys = cloud:GetPhysicsObject()
+        if IsValid(phys) then
+            phys:SetVelocityInstantaneous(self:GetVelocity() + vel)
+        end
 
     end
 end

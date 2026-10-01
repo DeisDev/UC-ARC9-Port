@@ -57,13 +57,14 @@ function ENT:Think()
     if !self.SpawnTime then self.SpawnTime = CurTime() end
 
     if CLIENT then
+        if !self:IsValid() or self:WaterLevel() > 2 then return end
         local emitter = ParticleEmitter(self:GetPos())
 
-        if !self:IsValid() or self:WaterLevel() > 2 then return end
         if !IsValid(emitter) then return end
 
         if math.random(1, 100) < 10 then
             local fire = emitter:Add(GetFireParticle(), self:GetPos() + (VectorRand() * 16))
+            if !fire then emitter:Finish() return end
             fire:SetVelocity( VectorRand() * 500 * VectorRand() )
             fire:SetGravity( Vector(0, 0, 100) )
             fire:SetDieTime( math.Rand(0.5, 0.75) )
@@ -98,6 +99,7 @@ function ENT:Think()
 
         if math.random(1, 100) < 5 then
             local fire = emitter:Add("particles/smokey", self:GetPos())
+                if !fire then emitter:Finish() return end
                 fire:SetVelocity( VectorRand() * 25 )
                 fire:SetGravity( Vector(0, 0, 1500) )
                 fire:SetDieTime( math.Rand(0.25, 1) )

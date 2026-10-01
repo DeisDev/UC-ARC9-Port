@@ -16,4 +16,4 @@ ATT.UC_Compatible = function(wep)
         return false
     end
 end
-ATT.Hook_BulletImpact = ARC9.UC.APBulletImpact
+ATT.UC_AP = true

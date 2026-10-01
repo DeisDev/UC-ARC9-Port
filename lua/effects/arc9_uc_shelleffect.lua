@@ -114,6 +114,7 @@ function EFFECT:Init(data)
     self:SetCollisionGroup(COLLISION_GROUP_INTERACTIVE_DEBRIS)
 
     local phys = self:GetPhysicsObject()
+    if !IsValid(phys) then self:Remove() return end
 
     local plyvel = owner:GetAbsVelocity()
 
@@ -128,8 +129,10 @@ function EFFECT:Init(data)
     phys:AddAngleVelocity(ang:Up() * 2500 * math.Rand(0.75, 1.25))
 
     self.HitPitch = self.Pitch + math.Rand(-5, 5)
+    self.SpawnTime = CurTime()
 
     local emitter = ParticleEmitter(origin)
+    if !IsValid(emitter) then return end
 
     for i = 1, 3 do
         local particle = emitter:Add("particles/smokey", origin + (dir * 2))
@@ -152,8 +155,6 @@ function EFFECT:Init(data)
     end
 
     emitter:Finish()
-
-    self.SpawnTime = CurTime()
 end
 
 function EFFECT:PhysicsCollide()

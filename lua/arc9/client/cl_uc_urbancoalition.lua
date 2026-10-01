@@ -62,14 +62,14 @@ hook.Add("Initialize", "ARC9_UC_PlinkingName", function()
     language.Add("plinking_ammo", P("uc.ammo.plinking"))
 end)
 
-CreateClientConVar("arc9_uc_custcolor_enable", 255, true, true, "1 for custom colors, 0 for playermodel color", 0, 1)
+CreateClientConVar("arc9_uc_custcolor_enable", 1, true, true, "1 for custom colors, 0 for playermodel color", 0, 1)
 CreateClientConVar("arc9_uc_custcolor_1_r", 255, true, true, "Main color R", 0, 255)
 CreateClientConVar("arc9_uc_custcolor_1_g", 255, true, true, "Main color G", 0, 255)
 CreateClientConVar("arc9_uc_custcolor_1_b", 255, true, true, "Main color B", 0, 255)
 CreateClientConVar("arc9_uc_custcolor_2_r", 255, true, true, "Second color R", 0, 255)
 CreateClientConVar("arc9_uc_custcolor_2_g", 255, true, true, "Second color G", 0, 255)
 CreateClientConVar("arc9_uc_custcolor_2_b", 255, true, true, "Second color B", 0, 255)
-CreateClientConVar("arc9_uc_cache_client_persecond", 60, true, false)
+CreateClientConVar("arc9_uc_cache_client_persecond", 60, true, false, "", 10, 60)
 
 -- These convars are already known serverside; this only serves to tell the server it's time to update our colors to other clients.
 if !game.SinglePlayer() then
@@ -218,6 +218,8 @@ local procedure = {
 }
 
 local function StartClientCache()
+    if ARC9.UC.Precache then return end
+
     local list = ARC9.UC.FindCacheAssets()
     local persecond = GetConVar("arc9_uc_cache_client_persecond"):GetFloat()
 

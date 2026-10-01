@@ -18,6 +18,12 @@
 
 ### Fixed
 
+- On the Move now reduces movement penalties without removing the weapon's base spread.
+- Armor-piercing rounds apply their object damage bonus only to the matching bullet hit.
+- Underbarrel launchers mounted on the M79 retain their intended grenade damage.
+- Dragon's Breath impact embers now render with ARC9 physical bullets.
+- Rapid custom-color changes retain the final selection in multiplayer.
+- Prevented particle emitter leaks and errors when effects or delayed napalm callbacks lose their resources.
 - Corrected Glock iron-sight alignment, including the Custom and NyteSyte slides.
 - Free aim remains visible when weapon sway is disabled, keeping the gun aligned with its shot direction.
 - Shell casings now eject from the first-person weapon when third-person IK is enabled.

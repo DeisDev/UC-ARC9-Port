@@ -16,6 +16,7 @@ if SERVER then
     function ENT:Think()
         if SERVER and CurTime() - self.SpawnTime >= self.FuseTime then
             self:Detonate()
+            return
         end
 
         if self.SpawnTime + 0.2 < CurTime() and self.NextTraceTime < CurTime() then

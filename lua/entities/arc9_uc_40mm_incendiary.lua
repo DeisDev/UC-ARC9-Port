@@ -13,10 +13,9 @@ function ENT:DoDetonation()
 
     for i = 1, 5 do
         local cloud = ents.Create("arc9_uc_fire")
-        cloud.FireTime = 20
-
         if !IsValid(cloud) then return end
 
+        cloud.FireTime = 20
         local vel = Vector(math.Rand(-1, 1), math.Rand(-1, 1), math.Rand(-1, 1)) * 1500
 
         cloud.Order = i

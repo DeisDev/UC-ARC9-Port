@@ -2,8 +2,8 @@
 
 util.AddNetworkString("ARC9_UC_CustColor")
 
-net.Receive("ARC9_UC_CustColor", function(len, ply)
-    if ply.UC_LastColorUpdate and ply.UC_LastColorUpdate + ARC9.UC.CustColorUpdateInterval > CurTime() then return end
+local function UpdateCustomColors(ply)
+    ply.UC_ColorUpdatePending = nil
     ply.UC_LastColorUpdate = CurTime()
 
     -- Player NW2 state also reaches late joiners and players entering visibility.
@@ -16,6 +16,22 @@ net.Receive("ARC9_UC_CustColor", function(len, ply)
             math.Clamp(ply:GetInfoNum(prefix .. "b", 255), 0, 255)
         ) / 230)
     end
+end
+
+net.Receive("ARC9_UC_CustColor", function(len, ply)
+    if ply.UC_ColorUpdatePending then return end
+
+    local remaining = (ply.UC_LastColorUpdate or -ARC9.UC.CustColorUpdateInterval) + ARC9.UC.CustColorUpdateInterval - CurTime()
+    if remaining > 0 then
+        -- Keep the final edit when requests arrive inside the update interval.
+        ply.UC_ColorUpdatePending = true
+        timer.Simple(remaining, function()
+            if IsValid(ply) then UpdateCustomColors(ply) end
+        end)
+        return
+    end
+
+    UpdateCustomColors(ply)
 end)
 
 local procedure = {

@@ -74,13 +74,14 @@ function ENT:Think()
     if !self.SpawnTime then self.SpawnTime = CurTime() end
 
     if CLIENT then
+        if !self:IsValid() or self:WaterLevel() > 2 then return end
         local emitter = ParticleEmitter(self:GetPos())
 
-        if !self:IsValid() or self:WaterLevel() > 2 then return end
         if !IsValid(emitter) then return end
 
         if math.random(1, 100) < 10 then
             local fire = emitter:Add(GetFireParticle(), self:GetPos() + (VectorRand() * 16))
+            if !fire then emitter:Finish() return end
             fire:SetVelocity( VectorRand() * 500 * VectorRand() )
             fire:SetGravity( Vector(0, 0, 100) )
             fire:SetDieTime( math.Rand(0.5, 0.75) )
@@ -115,6 +116,7 @@ function ENT:Think()
 
         if math.random(1, 100) < 15 then
             local fire = emitter:Add("particles/smokey", self:GetPos())
+                if !fire then emitter:Finish() return end
                 fire:SetVelocity( VectorRand() * 100 )
                 fire:SetGravity( Vector(0, 0, 1000) )
                 fire:SetDieTime( math.Rand(0.5, 2) )
@@ -230,7 +232,7 @@ function ENT:PhysicsCollide(data, physobj)
     local tgt = data.HitEntity
     if !tgt:IsWorld() then
         timer.Simple(0, function()
-            -- we commit a mild amount of war crimes
+            if !IsValid(self) or !IsValid(tgt) then return end
             self:SetSolid(SOLID_NONE)
             self:SetMoveType(MOVETYPE_NONE)
             self:SetParent(tgt)
@@ -238,7 +240,7 @@ function ENT:PhysicsCollide(data, physobj)
         self.Stuck = true
     else
         timer.Simple(0, function()
-            -- we commit a mild amount of war crimes
+            if !IsValid(self) then return end
             self:SetSolid(SOLID_NONE)
             self:SetMoveType(MOVETYPE_NONE)
         end)
