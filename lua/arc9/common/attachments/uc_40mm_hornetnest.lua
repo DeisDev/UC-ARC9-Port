@@ -8,6 +8,7 @@ ATT.ActivateElements = {"40mm_hornetnest"}
 ATT.Icon = Material("entities/att/arccw_uc_40mm_generic.png", "mips smooth")
 ATT.Category = "uc_40mm"
 ATT.ShootEnt = false
+ATT.PhysBulletMuzzleVelocity = ARC9.UC.StdDmg["22lr"].vel * ARC9.UC.Meter
 ATT.Num = 16
 ATT.DamageMax = 12 * 16
 ATT.DamageMin = 5 * 16

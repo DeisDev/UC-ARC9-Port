@@ -29,7 +29,8 @@ function EFFECT:Init(data)
 
     local mdl
 
-    if owner != lp or lp:ShouldDrawLocalPlayer() or ent:ShouldTPIK() then
+    -- TPIK can run in first person too; use the model visible to the shooter.
+    if owner != lp or lp:ShouldDrawLocalPlayer() then
         mdl = (ent.WModel or {})[1] or ent
         self.VMContext = false
     else

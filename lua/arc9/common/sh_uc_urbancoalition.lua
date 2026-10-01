@@ -49,6 +49,25 @@ ARC9.UC.Meter = 1 / ARC9.HUToM
 -- ArcCW turns the view by 1.5 * Recoil degrees per shot; ARC9 by 2.5 * Recoil * RecoilUp.
 ARC9.UC.Recoil = 1.5 / 2.5
 
+-- Keep muzzle climb proportional to the shot's recoil, including conversions and bursts.
+function ARC9.UC.VisualRecoilUp(wep, value)
+    return value * wep:GetProcessedValue("Recoil") / wep.Recoil
+end
+
+-- A dropped viewmodel must use its entity origin, not its animated right-hand bone.
+function ARC9.UC.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    if wm and slottbl.WMBase and !idle and !custompos and !IsValid(wep:GetOwner()) then
+        return wep:GetPos(), wep:GetAngles(), vector_origin
+    end
+
+    return baseclass.Get("arc9_base").GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+end
+
+function ARC9.UC.DrawWorldModel(wep, flags)
+    baseclass.Get("arc9_base").DrawWorldModel(wep, flags)
+    if !IsValid(wep:GetOwner()) then wep:DoBodygroups(true) end
+end
+
 -- ARC9 drives safety and sprinting through the same pose blend.
 function ARC9.UC.SprintPos(wep, value)
     if wep:GetSafe() then return wep:GetProcessedValue("RestPos", true) end
@@ -365,7 +384,10 @@ end
 function ARC9.UC.PostModify(wep, toggleonly)
     ARC9.UC.UpdateSlotInfo(wep)
     ARC9.UC.UpdateRailPositions(wep)
-    return baseclass.Get("arc9_base").PostModify(wep, toggleonly)
+    baseclass.Get("arc9_base").PostModify(wep, toggleonly)
+    if baseclass.Get(wep:GetClass()).TPIKforcelefthand then
+        wep.TPIKforcelefthand = !wep:GetValue("UC_HideLeftHand")
+    end
 end
 
 function ARC9.UC.BuildSubAttachments(wep, tree)

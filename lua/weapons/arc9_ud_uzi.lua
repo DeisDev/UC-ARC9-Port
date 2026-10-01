@@ -1,4 +1,6 @@
 SWEP.Base = "arc9_base"
+SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
+SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
@@ -88,7 +90,13 @@ SWEP.RecoilRandomUp = 0
 SWEP.RecoilRandomSide = 0.35 / 0.28
 SWEP.RecoilPatternDrift = 0
 SWEP.RecoilAutoControl = 0
+SWEP.UseVisualRecoil = true
 SWEP.VisualRecoil = 1
+SWEP.VisualRecoilUp = 0.28
+SWEP.VisualRecoilUpHook = ARC9.UC.VisualRecoilUp
+SWEP.VisualRecoilPunch = 1
+SWEP.VisualRecoilMultSights = 0.5
+SWEP.VisualRecoilPunchMultSights = 1
 
 SWEP.Sway = 0.3
 
@@ -183,6 +191,8 @@ SWEP.CrouchPos = Vector(-3, -3, 0)
 SWEP.CrouchAng = Angle(0, 0, -30)
 
 SWEP.MirrorVMWM = true
+SWEP.NoTPIKVMPos = true
+SWEP.TPIKforcelefthand = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-16, 4, -3),
     Ang = Angle(-12, 0, 180),

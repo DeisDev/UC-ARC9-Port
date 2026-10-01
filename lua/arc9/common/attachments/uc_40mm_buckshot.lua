@@ -8,6 +8,7 @@ ATT.ActivateElements = {"40mm_buckshot"}
 ATT.Icon = Material("entities/att/arccw_uc_40mm_generic.png", "mips smooth")
 ATT.Category = "uc_40mm"
 ATT.ShootEnt = false
+ATT.PhysBulletMuzzleVelocity = 200 * ARC9.UC.Meter
 ATT.Num = 20
 ATT.DamageMax = 18 * 20
 ATT.DamageMin = 6 * 20

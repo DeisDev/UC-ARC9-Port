@@ -11,8 +11,16 @@
 - Matching icons for Dual-stage Trigger and Strafe.
 - A bundled fire-loop sound for incendiary and napalm rounds.
 
+### Changed
+
+- Enabled and tuned ARC9 visual recoil for all seven weapons, including aimed fire and attachment changes.
+- M79 buckshot and Hornet's Nest rounds now use the pack's shotgun and .22 LR bullet speeds.
+
 ### Fixed
 
+- Shell casings now eject from the first-person weapon when third-person IK is enabled.
+- Dropped weapons render at their pickup position with their selected parts.
+- Glock and Uzi third-person hand IK now follows their two-handed poses while preserving one-handed perks.
 - Inspect labels now show translated text instead of phrase keys on all seven weapons.
 - M16 conversion capacities and semi-auto and burst trigger behavior.
 - Reload and firing animations with combined magazine, receiver, stock, and underbarrel attachments.
