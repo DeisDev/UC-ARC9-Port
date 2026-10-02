@@ -4,6 +4,7 @@
 
 ### Added
 
+- Urban Renewal MP5 with its original assets, caliber conversions, and 24 active weapon-specific attachments.
 - Urban Renewal SPAS-12 with semi-auto, pump, and Freeman firing modes, original assets, and eight active weapon-specific attachments.
 - Urban Renewal M1911 with its original assets and 13 active weapon-specific attachments.
 - Urban Renewal AKM with its original assets and 38 active weapon-specific attachments.
@@ -21,6 +22,8 @@
 
 ### Fixed
 
+- Fixed the MP5 Kurz support hand staying on the grip during reloads.
+- Corrected the MP5 bolt staying still and shells ejecting behind the port.
 - Translated custom fire-mode labels so phrase keys no longer overlap the stats row.
 - Corrected the AK's displaced collision hull that made dropped weapons float and rotate off-center.
 - Hidden the M1911 spare worldmodel magazine and the AK's spare magazine rounds.
