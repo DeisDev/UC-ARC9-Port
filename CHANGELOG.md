@@ -4,6 +4,7 @@
 
 ### Added
 
+- Urban Renewal SPAS-12 with semi-auto, pump, and Freeman firing modes, original assets, and eight active weapon-specific attachments.
 - Urban Renewal M1911 with its original assets and 13 active weapon-specific attachments.
 - Urban Renewal AKM with its original assets and 38 active weapon-specific attachments.
 - English and Spanish phrases for the ARC9 Urban Coalition port.
@@ -20,6 +21,7 @@
 
 ### Fixed
 
+- Translated custom fire-mode labels so phrase keys no longer overlap the stats row.
 - Corrected the AK's displaced collision hull that made dropped weapons float and rotate off-center.
 - Hidden the M1911 spare worldmodel magazine and the AK's spare magazine rounds.
 - Shortened the forced-reset fire-mode label to prevent overlap with the ammo count.

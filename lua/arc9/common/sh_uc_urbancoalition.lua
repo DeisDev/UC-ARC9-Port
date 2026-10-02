@@ -51,6 +51,34 @@ ARC9.UC.Meter = 1 / ARC9.HUToM
 -- ArcCW turns the view by 1.5 * Recoil degrees per shot; ARC9 by 2.5 * Recoil * RecoilUp.
 ARC9.UC.Recoil = 1.5 / 2.5
 
+local function PelletModifiers(wep)
+    local add, mult = 0, 1
+    for _, affector in ipairs(wep:GetAllAffectors()) do
+        add = add + (affector.NumAdd or 0)
+        mult = mult * (affector.NumMult or 1)
+    end
+    return add, mult
+end
+
+-- ArcCW adds Add_Num again when a player fires, after GetBuff("Num").
+function ARC9.UC.PelletCount(wep, num)
+    if wep:GetUBGL() or IsValid(wep:GetOwner()) and wep:GetOwner():IsNPC() then return end
+    local add = PelletModifiers(wep)
+    return num + add
+end
+
+-- Its damage denominator is base * multiplier + addition, for players and NPCs.
+function ARC9.UC.PelletDamage(wep, data)
+    if wep:GetUBGL() then return end
+    local add, mult = PelletModifiers(wep)
+    if add == 0 then return end
+    local num = wep:GetProcessedValue("Num")
+    local npc = IsValid(wep:GetOwner()) and wep:GetOwner():IsNPC()
+    local denominator = num - add * (npc and mult - 1 or mult)
+    data.dmg = data.dmg * num / denominator
+    return data
+end
+
 -- ArcCW disperses the whole shot separately from each bullet's inherent spread.
 function ARC9.UC.DispersionSpread(wep)
     if wep:GetUBGL() then return 0 end

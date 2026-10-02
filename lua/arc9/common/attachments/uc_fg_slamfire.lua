@@ -24,7 +24,7 @@ ATT.RecoilRandomSideMult = 1.5
 ATT.Firemodes = {
     {
         Mode = -1,
-        PrintName = "fcg.slam",
+        PrintName = ARC9:GetPhrase("fcg.slam"),
         ManualAction = true,
     }
 }

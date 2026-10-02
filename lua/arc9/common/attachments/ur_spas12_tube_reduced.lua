@@ -1,0 +1,10 @@
+ATT.PrintName = ARC9.UC.AttName("ur_spas12_tube_reduced")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("entities/att/ur_spas/magsmall.png", "smooth mips")
+ATT.Category = "ur_spas12_tube"
+ATT.ClipSize = 6
+ATT.SwayMult = 0.75
+ATT.SpeedMultSights = 1.1
+ATT.AimDownSightsTimeMult = 0.85
+ATT.SprintToFireTimeMult = 0.85
+ATT.ReloadTimeMult = 0.9

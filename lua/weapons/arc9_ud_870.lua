@@ -117,7 +117,7 @@ SWEP.Sway = 0.5
 SWEP.RPM = 60
 SWEP.Firemodes = {
     {
-        PrintName = "uc.base.fcg.pump",
+        PrintName = ARC9:GetPhrase("uc.base.fcg.pump"),
         Mode = 1,
     },
 }

@@ -30,7 +30,7 @@ ATT.Firemodes_Priority = 100
 ATT.Firemodes = {
     {
         Mode = -1,
-        PrintName = "fcg.frcd.abbrev",
+        PrintName = ARC9:GetPhrase("fcg.frcd.abbrev"),
     }
 }
 ATT.RecoilRandomSideMult = 1.25
