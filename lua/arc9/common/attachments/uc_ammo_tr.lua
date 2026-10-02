@@ -7,7 +7,7 @@ ATT.CustomCons = {
 ATT.SortOrder = 1
 ATT.Icon = Material("entities/att/arccw_uc_ammo_generic.png", "mips smooth")
 ATT.Category = "uc_ammo"
-ATT.SpreadMultHipFire = 0.85
+ATT.UC_HipDispersionMult = 0.85
 ATT.ToggleStats = {
     {
         PrintName = "uc.toggle.green",

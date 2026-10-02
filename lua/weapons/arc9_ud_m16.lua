@@ -1,6 +1,13 @@
 SWEP.Base = "arc9_base"
 SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
+SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
+SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GenerateAutoSight = function(wep, sight, slot)
+    local result = baseclass.Get("arc9_base").GenerateAutoSight(wep, sight, slot)
+    if sight.UC_GlobalAng then result.Ang = sight.Ang end
+    return result
+end
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -141,6 +148,8 @@ SWEP.Firemodes = {
 }
 
 SWEP.ShootPitch = 100
+SWEP.ShootPitchVariationHook = ARC9.UC.ShootPitchVariation
+SWEP.DistantShootPitchHook = ARC9.UC.DistantShootPitch
 SWEP.ShootVolume = 120
 SWEP.ShootPitchVariation = 0
 
@@ -153,9 +162,14 @@ SWEP.ARC9WeaponCategory = ARC9.WEAPON_AR
 -- Accuracy --
 
 SWEP.Spread = 4 * ARC9.UC.MOA
-SWEP.SpreadAddHipFire = 800 * ARC9.UC.Dispersion
-SWEP.SpreadAddMove = 200 * ARC9.UC.Dispersion
-SWEP.SpreadAddMidAir = 1000 * ARC9.UC.Dispersion
+SWEP.UC_HipDispersion = 800 * ARC9.UC.Dispersion
+SWEP.UC_MoveDispersion = 200 * ARC9.UC.Dispersion
+SWEP.UC_JumpDispersion = 1000 * ARC9.UC.Dispersion
+SWEP.UC_SightsDispersion = 0
+SWEP.UC_BipodDispersion = 1
+SWEP.UseDispersion = true
+SWEP.DispersionSpread = 0
+SWEP.DispersionSpreadHook = ARC9.UC.DispersionSpread
 SWEP.FreeAimRadius = math.Clamp(800 / 80, 3, 10)
 
 SWEP.Ammo = "smg1"
@@ -182,6 +196,12 @@ SWEP.BashRange = 48
 SWEP.BashLungeRange = 64
 SWEP.PreBashTime = 0.2
 SWEP.PostBashTime = 0.3
+SWEP.UC_MeleeTime = 1
+SWEP.UC_MeleeWaitTime = 1
+SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
+SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
+SWEP.UC_DrawTime = 1
+SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 
 -- Length --
 
@@ -423,7 +443,7 @@ SWEP.AttachmentElements = {
         AttPosMods = {
             [8] = {
                 Pos = Vector(-1, -.35, 11.5),
-                Ang = Angle(90, 150, 30),
+                Ang = Angle(-90, 180, 0),
             },
         },
     },
@@ -1582,3 +1602,5 @@ SWEP.Attachments = {
         ExcludeElements = {"m16_lmg", "m16_stub"},
     }
 }
+
+ARC9.UC.ConvertAttachmentAngles(SWEP)

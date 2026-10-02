@@ -20,7 +20,7 @@ ATT.SprintToFireTimeMult = 1.1
 ATT.SwayMult = 1.15
 ATT.InstallSound = "arccw_uc/common/gunsmith/suppressor_thread.ogg"
 ATT.UC_Compatible = function(wep)
-    if wep.Primary.Ammo != "ar2" then
+    if ARC9.UC.GetAmmoType(wep) != "ar2" then
         return false
     end
 end

@@ -41,11 +41,6 @@ ATT.UBGLFiremode = 1
 ATT.UBGLFiremodeName = "UBSG"
 ATT.HasSightsUBGL = false
 ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
-ATT.SpreadHookHipFire = ARC9.UC.UBGLSpread
-ATT.SpreadHookSights = ARC9.UC.UBGLSpread
-ATT.SpreadHookMove = ARC9.UC.UBGLSpread
-ATT.SpreadHookMidAir = ARC9.UC.UBGLSpread
-ATT.SpreadHookBipod = ARC9.UC.UBGLSpread
 ATT.ShotgunReloadUBGL = true
 ATT.ManualActionUBGL = true
 
@@ -71,6 +66,8 @@ ATT.SpreadUBGL = 100 * ARC9.UC.MOA
 ATT.HullSizeUBGL = 4
 ATT.PhysBulletMuzzleVelocityUBGL = 250 * ARC9.UC.Meter
 
+ATT.ShootPitchUBGL = 100
+ATT.ShootPitchVariationUBGL = 0
 ATT.ShootVolumeUBGL = 80
 ATT.ShootSoundUBGL = fire
 ATT.ShootSoundIndoorUBGL = fire

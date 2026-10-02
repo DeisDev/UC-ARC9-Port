@@ -1,0 +1,31 @@
+ATT.PrintName = ARC9.UC.AttName("ur_ak_cal_545")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("entities/att/uc_bullets/545x39.png", "mips smooth")
+ATT.Category = {"ur_ak_cal"}
+ATT.SortOrder = 10
+ATT.Ammo = "smg1"
+ATT.RangeMaxMult = 1.2
+ATT.RPMMult = 1.083
+ATT.SpeedMultSights = 1.05
+ATT.ReloadTimeMult = .95
+ATT.RecoilMult = .85
+ATT.SpreadMult = .85
+ATT.UC_HipDispersionMult = .75
+ATT.PenetrationMult = .65
+ATT.DamageMinMult = .8
+ATT.DamageMaxMult = .8
+ATT.ShellModel = "models/weapons/arccw/uc_shells/545x39.mdl"
+ATT.ShellScale = 0.666
+ATT.ActivateElements = {"mag_545_30", "cal_545"}
+ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "ur.calibre.545")
+local path = ")weapons/arccw_ur/ak/545_39/"
+ATT.ShootSound = {path .. "fire-01.ogg", path .. "fire-02.ogg", path .. "fire-03.ogg", path .. "fire-04.ogg", path .. "fire-05.ogg", path .. "fire-06.ogg"}
+ATT.ShootSoundSilenced = {path .. "fire-sup-01.ogg", path .. "fire-sup-02.ogg", path .. "fire-sup-03.ogg", path .. "fire-sup-04.ogg", path .. "fire-sup-05.ogg", path .. "fire-sup-06.ogg"}
+local tail = ")/arccw_uc/common/556x45/"
+ATT.DistantShootSound = {tail .. "fire-dist-556x45-rif-ext-01.ogg", tail .. "fire-dist-556x45-rif-ext-02.ogg", tail .. "fire-dist-556x45-rif-ext-03.ogg", tail .. "fire-dist-556x45-rif-ext-04.ogg", tail .. "fire-dist-556x45-rif-ext-05.ogg", tail .. "fire-dist-556x45-rif-ext-06.ogg"}
+ATT.UC_DefaultSlots = {
+    [6] = {
+        Name = "uc.default.30_round_mag",
+        Icon = Material("entities/att/ur_ak/magazines/545_30.png", "smooth mips")
+    },
+}

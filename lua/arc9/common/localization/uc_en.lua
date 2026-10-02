@@ -2,6 +2,15 @@ L = {}
 
 L["uc.title"] = "Urban Coalition"
 
+L["autostat.uc_hipdispersion"] = "Hip-fire dispersion"
+L["autostat.uc_sightsdispersion"] = "Aimed dispersion"
+L["autostat.uc_movedispersion"] = "Movement dispersion"
+L["autostat.uc_jumpdispersion"] = "Airborne dispersion"
+L["autostat.uc_bipoddispersion"] = "Bipod dispersion"
+L["autostat.uc_drawtime"] = "Draw time"
+L["autostat.uc_meleetime"] = "Melee time"
+L["autostat.uc_meleewaittime"] = "Melee recovery time"
+
 L["uc.auto"] = "Fully automatic fire"
 L["uc.3burst"] = "3-round burst fire"
 L["uc.semionly"] = "Semi-automatic fire only"

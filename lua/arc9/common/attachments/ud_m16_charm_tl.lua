@@ -9,6 +9,7 @@ ATT.Sights = {
     {
         Pos = Vector(0, 20, -3),
         Ang = Angle(0, 0, -25),
+        UC_GlobalAng = true,
         Magnification = 1
     }
 }

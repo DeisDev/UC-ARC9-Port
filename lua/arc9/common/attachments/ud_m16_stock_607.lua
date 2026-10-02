@@ -5,7 +5,7 @@ ATT.Icon = Material("entities/att/acwatt_ud_m16_stock_607.png", "smooth mips")
 ATT.Category = "ud_m16_stock"
 ATT.SortOrder = 5
 ATT.SwayMult = 1.25
-ATT.SpreadMultMove = 0.9
+ATT.UC_MoveDispersionMult = 0.9
 ATT.ToggleStats = {
     {
         PrintName = "uc.toggle.extended",

@@ -11,7 +11,7 @@ ATT.SortOrder = 1
 ATT.Icon = Material("entities/att/arccw_uc_ammo_generic.png", "mips smooth")
 ATT.Category = "uc_ammo"
 ATT.InvAtt = "uc_ammo_tr"
-ATT.SpreadMultHipFire = 0.9
+ATT.UC_HipDispersionMult = 0.9
 ATT.TracerFinalMagHook = function(wep, final)
     return math.Clamp(math.ceil(wep:GetValue("ClipSize") * 0.2), 5, 20)
 end

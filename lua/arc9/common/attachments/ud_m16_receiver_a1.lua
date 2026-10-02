@@ -11,6 +11,6 @@ ATT.Category = "ud_m16_receiver"
 ATT.SortOrder = -6
 ATT.Malfunction = true
 ATT.SpreadMult = 1.25
-ATT.SpreadMultHipFire = 1.125
+ATT.UC_HipDispersionMult = 1.125
 ATT.RPMMult = 900 / 765
 ATT.UC_TopMount = 3

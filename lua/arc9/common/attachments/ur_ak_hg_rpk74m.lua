@@ -1,0 +1,10 @@
+﻿ATT.PrintName = ARC9.UC.AttName("ur_ak_hg_rpk74m")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("entities/att/ur_ak/handguards/rpk.png", "mips smooth")
+ATT.Category = {"ur_ak_hg"}
+ATT.SortOrder = 16
+ATT.SwayMult = .8
+ATT.AimDownSightsTimeMult = 1.1
+ATT.SprintToFireTimeMult = 1.1
+ATT.RecoilMult = 0.9
+ATT.ActivateElements = {"barrel_rpk74m"}

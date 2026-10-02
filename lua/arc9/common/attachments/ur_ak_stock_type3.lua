@@ -1,0 +1,11 @@
+ATT.PrintName = ARC9.UC.AttName("ur_ak_stock_type3")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("entities/att/ur_ak/stock/3.png", "mips smooth")
+ATT.Category = {"ur_ak_stock"}
+ATT.SortOrder = 4
+ATT.RecoilMult = .9
+ATT.AimDownSightsTimeMult = .95
+ATT.SprintToFireTimeMult = .95
+ATT.SwayMult = 1.25
+ATT.UC_HipDispersionMult = 1.05
+ATT.ActivateElements = {"stock_akn"}

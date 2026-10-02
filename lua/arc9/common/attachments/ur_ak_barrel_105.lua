@@ -1,0 +1,16 @@
+﻿ATT.PrintName = ARC9.UC.AttName("ur_ak_barrel_105")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("entities/att/ur_ak/barrel/105.png", "mips smooth")
+ATT.Category = {"ur_ak_barrel"}
+ATT.SortOrder = 12
+ATT.SwayMult = .85
+ATT.AimDownSightsTimeMult = .8
+ATT.SprintToFireTimeMult = .8
+ATT.BarrelLengthAdd = -3
+ATT.SpeedMultSights = 1.05
+ATT.RecoilMult = 1.3
+ATT.SpreadMult = 1.5
+ATT.RangeMaxMult = .75
+ATT.RPMMult = 625 / 600
+ATT.ShootPitchMult = 105 / 100
+ATT.ActivateElements = {"barrel_105", "ak_barrelchange", "nodong"}

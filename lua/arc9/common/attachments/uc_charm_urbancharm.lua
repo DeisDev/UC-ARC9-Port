@@ -31,6 +31,7 @@ ATT.ToggleStats = {
     }
 }
 ATT.CharmBone = "Charm"
-ATT.CharmOffset = Vector(-0.55, 0, -0.1)
+ATT.UC_CharmOffset = true
+ATT.CharmOffset = Vector(-1.1, 0, -0.2)
 ATT.CharmAngle = Angle(-160.28, 176.595, -99.408)
 ATT.CharmScale = 0.5

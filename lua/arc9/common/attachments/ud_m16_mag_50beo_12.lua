@@ -12,4 +12,4 @@ ATT.SprintToFireTimeMult = 1.1
 ATT.ReloadTimeMult = 1.15
 ATT.SwayMult = 1.5
 ATT.SpeedMult = 0.975
-ATT.SpreadMultHipFire = 1.15
+ATT.UC_HipDispersionMult = 1.15

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Urban Renewal AKM with its original assets and 38 active weapon-specific attachments.
 - English and Spanish phrases for the ARC9 Urban Coalition port.
 - Original Kobra and PSO-1 scope models and required ammo, magazine, and muzzle-effect assets.
 - Original smoke and flashbang sounds bundled without an extra addon dependency.
@@ -18,6 +19,10 @@
 
 ### Fixed
 
+- Corrected attachment rotations, model offsets, charm placement, and optic alignment across all eight weapons.
+- Restored separate handling dispersion, including M79 grenades and attachment bonuses.
+- Corrected canted recoil, bipod recoil, melee timing, draw speeds, and shot-pitch modifiers.
+- Corrected the Glock extended magazine's hip-fire penalty and .22 LR penetration.
 - Fixed the Express-12 ring sight being hidden by the optic rail.
 - Restored indoor and outdoor gunshot-tail blending, including the Uzi's quieter indoor tail.
 - Hidden the Glock and Uzi spare reload magazines on dropped and held worldmodels.

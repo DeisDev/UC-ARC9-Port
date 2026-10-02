@@ -9,5 +9,5 @@ ATT.RecoilRandomSideMult = .5
 ATT.SwayMult = .5
 ATT.AimDownSightsTimeMult = 1.3
 ATT.SprintToFireTimeMult = 1.3
-ATT.DeployTimeMult = 1.4
+ATT.UC_DrawTimeMult = 1.4
 ATT.BarrelLengthAdd = 20

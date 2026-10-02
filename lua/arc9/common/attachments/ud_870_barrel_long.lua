@@ -11,5 +11,5 @@ ATT.SwayMult = 1.5
 ATT.AimDownSightsTimeMult = 1.25
 ATT.SprintToFireTimeMult = 1.25
 ATT.SpeedMult = 0.95
-ATT.SpreadMultHipFire = 1.25
+ATT.UC_HipDispersionMult = 1.25
 ATT.BarrelLengthAdd = 4

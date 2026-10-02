@@ -13,4 +13,4 @@ ATT.SwayMult = 1.2
 ATT.SpreadMult = 0.9
 ATT.RangeMinMult = 2
 ATT.RPMMult = 180 / 220
-ATT.SpreadMultHipFire = 1.15
+ATT.UC_HipDispersionMult = 1.15

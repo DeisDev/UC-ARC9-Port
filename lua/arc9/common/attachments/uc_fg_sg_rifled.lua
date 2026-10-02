@@ -14,5 +14,5 @@ end
 ATT.SpreadMult = 0.5
 ATT.AimDownSightsTimeMult = 0.75
 ATT.SprintToFireTimeMult = 0.75
-ATT.SpreadMultHipFire = 1.25
+ATT.UC_HipDispersionMult = 1.25
 ATT.InstallSound = "arccw_uc/common/gunsmith/internal_modification.ogg"

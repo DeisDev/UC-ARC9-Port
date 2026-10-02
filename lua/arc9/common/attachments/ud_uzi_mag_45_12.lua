@@ -13,7 +13,7 @@ ATT.ClipSize = 12
 ATT.ClipSize_Priority = 2
 ATT.SwayMult = 0.75
 ATT.SpeedMultShooting = 1.1
-ATT.SpreadMultHipFire = 0.75
+ATT.UC_HipDispersionMult = 0.75
 ATT.Hook_TranslateAnimation = function(wep, anim)
     if string.StartsWith(anim, "reload") then
         return anim .. "_16"

@@ -1,0 +1,17 @@
+ATT.PrintName = ARC9.UC.AttName("ur_ak_stock_none")
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.Icon = Material("arccw/hud/atts/default.png", "mips smooth")
+ATT.Category = {"ur_ak_stock"}
+ATT.Free = true
+ATT.SortOrder = -1
+ATT.AimDownSightsTimeMult = 0.5
+ATT.SprintToFireTimeMult = 0.5
+ATT.DeployTimeMult = 0.6
+ATT.RecoilMult = 1.65
+ATT.RecoilRandomSideMult = 1.95
+ATT.SpeedMultSights = 1.25
+ATT.SpeedMult = 1.1
+ATT.SpeedMultShooting = 1.15
+ATT.BarrelLengthAdd = -9
+ATT.SwayMult = 3
+ATT.ActivateElements = {"stock_none"}

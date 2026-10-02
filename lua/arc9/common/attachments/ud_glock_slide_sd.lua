@@ -34,7 +34,7 @@ ATT.Firemodes = {
         ManualAction = true,
         ShootVolumeMult = 0.8,
         SpreadMult = 0.75,
-        SpreadMultHipFire = 0.75,
+        UC_HipDispersionMult = 0.75,
     }
 }
 ATT.TracerNum = 0

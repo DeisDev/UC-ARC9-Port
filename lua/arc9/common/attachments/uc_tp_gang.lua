@@ -4,8 +4,8 @@ ATT.MenuCategory = "ARC9 - Urban Coalition"
 ATT.Icon = Material("entities/att/arccw_uc_tp_homeboy.png", "smooth mips")
 ATT.Category = "uc_tp"
 ATT.SortOrder = 14
-ATT.SpreadMultHipFire = 0.85
-ATT.SpreadMultMove = 0.75
+ATT.UC_HipDispersionMult = 0.85
+ATT.UC_MoveDispersionMult = 0.75
 ATT.LHIK = true
 ATT.UC_HideLeftHand = true
 ATT.Hook_ModifyBodygroups = ARC9.UC.HideLeftHand
@@ -14,9 +14,7 @@ ATT.ActiveAng = Angle(0, 0, -60)
 ATT.ActivePos_Priority = 15
 ATT.ActiveAng_Priority = 15
 -- Recoil kicks diagonally up and to the left.
-ATT.Hook_ModifyRecoilDir = function(wep, dir)
-    return 45
-end
+ATT.UC_RecoilRoll = -45
 -- The gun is held tilted in the iron sights.
 ATT.IronSightsHook = function(wep, sights)
     local tilted = table.Copy(sights)

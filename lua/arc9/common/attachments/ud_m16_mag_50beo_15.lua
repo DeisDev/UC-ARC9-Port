@@ -13,7 +13,7 @@ ATT.SprintToFireTimeMult = 1.2
 ATT.ReloadTimeMult = 1.3
 ATT.SwayMult = 2.25
 ATT.SpeedMult = 0.95
-ATT.SpreadMultHipFire = 1.25
+ATT.UC_HipDispersionMult = 1.25
 ATT.Hook_TranslateAnimation = function(wep, anim)
     if anim == "reload" or anim == "reload_empty" then
         return anim .. "_40"

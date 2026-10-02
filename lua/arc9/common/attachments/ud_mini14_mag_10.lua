@@ -11,7 +11,7 @@ ATT.SprintToFireTimeMult = 0.85
 ATT.ReloadTimeMult = 0.9
 ATT.ClipSize = 10
 ATT.SwayMult = 0.75
-ATT.SpreadMultHipFire = 0.7
+ATT.UC_HipDispersionMult = 0.7
 ATT.Hook_TranslateAnimation = function(wep, anim)
     if anim == "reload" or anim == "reload_empty" then
         return anim .. "_10"

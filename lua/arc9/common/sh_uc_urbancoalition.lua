@@ -24,6 +24,7 @@ CreateConVar("arc9_uc_apobjmult", 3, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Damage m
 
 game.AddParticles("particles/uc_muzzleflashes.pcf")
 PrecacheParticleSystem("muzzleflash_1")
+PrecacheParticleSystem("muzzleflash_6")
 PrecacheParticleSystem("muzzleflash_shotgun")
 PrecacheParticleSystem("muzzleflash_m79")
 PrecacheParticleSystem("muzzleflash_suppressed")
@@ -49,6 +50,74 @@ ARC9.UC.Meter = 1 / ARC9.HUToM
 -- ArcCW turns the view by 1.5 * Recoil degrees per shot; ARC9 by 2.5 * Recoil * RecoilUp.
 ARC9.UC.Recoil = 1.5 / 2.5
 
+-- ArcCW disperses the whole shot separately from each bullet's inherent spread.
+function ARC9.UC.DispersionSpread(wep)
+    if wep:GetUBGL() then return 0 end
+    local owner = wep:GetOwner()
+    if !IsValid(owner) or !owner:IsPlayer() then return 0 end
+
+    local sights = wep:GetSightAmount()
+    local dispersion = Lerp(sights, wep:GetValue("UC_HipDispersion"), wep:GetValue("UC_SightsDispersion"))
+    local maxspeed = owner:GetWalkSpeed() * wep:GetValue("Speed")
+    maxspeed = maxspeed * Lerp(sights, 1, wep:GetValue("Speed", 1, "Sights"))
+    local speed = math.Clamp(owner:GetAbsVelocity():Length() / math.max(maxspeed, 1), 0, 2)
+    local movement = speed * wep:GetValue("UC_MoveDispersion")
+
+    if owner:OnGround() or owner:WaterLevel() > 0 and owner:GetMoveType() != MOVETYPE_NOCLIP then
+        dispersion = dispersion + movement
+    elseif owner:GetMoveType() != MOVETYPE_NOCLIP then
+        dispersion = dispersion + math.max(movement, wep:GetValue("UC_JumpDispersion"))
+    end
+
+    if wep:GetBipod() then dispersion = dispersion * wep:GetValue("UC_BipodDispersion") end
+    return dispersion
+end
+
+function ARC9.UC.PreBashTime(wep, time)
+    return time * wep:GetValue("UC_MeleeTime") ^ 1.5
+end
+
+function ARC9.UC.PostBashTime(wep, time)
+    local duration = (wep.PreBashTime + time) * wep:GetValue("UC_MeleeTime") * wep:GetValue("UC_MeleeWaitTime")
+    return duration - wep:GetProcessedValue("PreBashTime", true)
+end
+
+function ARC9.UC.AnimationSpeed(wep, data)
+    if string.StartsWith(data.anim, "draw") or data.anim == "ready" then
+        data.Mult = data.mult * wep:GetValue("UC_DrawTime")
+    elseif string.StartsWith(data.anim, "bash") then
+        data.Mult = data.mult * wep:GetValue("UC_MeleeTime")
+    end
+end
+
+-- Rotate both the main kick and its random side component for canted grips.
+function ARC9.UC.ApplyRecoil(wep)
+    baseclass.Get("arc9_base").ApplyRecoil(wep)
+    local roll = math.rad(wep:GetValue("UC_RecoilRoll", 0))
+    if roll == 0 then return end
+    local up, side = wep:GetRecoilUp(), wep:GetRecoilSide()
+    local sine, cosine = math.sin(roll), math.cos(roll)
+    wep:SetRecoilUp(up * cosine - side * sine)
+    wep:SetRecoilSide(up * sine + side * cosine)
+end
+
+function ARC9.UC.ShootPitchVariation(wep, variation)
+    return variation * wep:GetProcessedValue("ShootPitch", true) / 100
+end
+
+function ARC9.UC.DistantShootPitch(wep)
+    return wep:GetProcessedValue("ShootPitch", true)
+end
+
+function ARC9.UC.GetFinalAttTable(wep, slot)
+    local att = baseclass.Get("arc9_base").GetFinalAttTable(wep, slot)
+    if att.UC_CharmOffset then
+        -- CharmScale affects the mesh, not its distance from the anchor.
+        att.CharmOffset = att.CharmOffset * (slot.Scale or 1) * (att.Scale or 1)
+    end
+    return att
+end
+
 -- Keep muzzle climb proportional to the shot's recoil, including conversions and bursts.
 function ARC9.UC.VisualRecoilUp(wep, value)
     return value * wep:GetProcessedValue("Recoil") / wep.Recoil
@@ -61,13 +130,79 @@ function ARC9.UC.GetFreeSwayAngles(wep)
     return sway
 end
 
--- A dropped viewmodel must use its entity origin, not its animated right-hand bone.
+-- ArcCW rotates around successively rotated axes; ARC9 uses the original axes.
+function ARC9.UC.AttachmentAngle(source)
+    local ang = Angle()
+    ang:RotateAroundAxis(ang:Right(), source.p)
+    ang:RotateAroundAxis(ang:Up(), source.y)
+    ang:RotateAroundAxis(ang:Forward(), source.r)
+    return Angle(-ang.p, ang.y, ang.r)
+end
+
+local function ConvertAttachmentAngle(slot)
+    if !slot.Ang then return end
+    slot.UC_Ang = slot.Ang
+    slot.Ang = ARC9.UC.AttachmentAngle(slot.UC_Ang)
+    for _, duplicate in ipairs(slot.DuplicateModels or {}) do
+        ConvertAttachmentAngle(duplicate)
+    end
+end
+
+-- Keep the authored angle for attachments that add a rotation before conversion.
+function ARC9.UC.ConvertAttachmentAngles(wep)
+    for _, slot in ipairs(wep.Attachments or {}) do
+        ConvertAttachmentAngle(slot)
+    end
+    for _, element in pairs(wep.AttachmentElements or {}) do
+        for _, slot in pairs(element.AttPosMods or {}) do
+            ConvertAttachmentAngle(slot)
+        end
+        for _, model in ipairs(element.Models or {}) do
+            ConvertAttachmentAngle(model)
+        end
+    end
+end
+
 function ARC9.UC.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    -- A dropped viewmodel must use its entity origin, not its animated right-hand bone.
     if wm and slottbl.WMBase and !idle and !custompos and !IsValid(wep:GetOwner()) then
         return wep:GetPos(), wep:GetAngles(), vector_origin
     end
 
-    return baseclass.Get("arc9_base").GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    local base = baseclass.Get("arc9_base")
+    if !slottbl.UC_Ang then
+        return base.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    end
+
+    -- Cache the mount only, so model offsets never contaminate icon/sight queries.
+    local pos, ang, icon = base.GetAttachmentPos(wep, slottbl, wm, idle, true, custompos, customang, dupli)
+    if nomodeloffset or !slottbl.Installed then return pos, ang, icon end
+    local att = wep:GetFinalAttTable(slottbl)
+
+    if att.ModelAngleOffset then
+        local source, native = slottbl.UC_Ang, slottbl.Ang
+        local duplicate = dupli and dupli > 0 and slottbl.DuplicateModels and slottbl.DuplicateModels[dupli]
+        if duplicate then
+            source, native = duplicate.UC_Ang or source, duplicate.Ang or native
+        end
+        for _, element in ipairs(wep:GetAttachmentElements()) do
+            local mod = element.AttPosMods and element.AttPosMods[slottbl.OriginalAddress]
+            if !mod then continue end
+            source, native = mod.UC_Ang or source, mod.Ang or native
+        end
+        local target = att.UC_ModelAngleOffset and ARC9.UC.AttachmentAngle(source + att.UC_ModelAngleOffset)
+            or native + att.ModelAngleOffset
+        local _, delta = WorldToLocal(vector_origin, Angle(-target.p, target.y, target.r),
+            vector_origin, Angle(-native.p, native.y, native.r))
+        _, ang = LocalToWorld(vector_origin, delta, vector_origin, ang)
+    end
+
+    -- ArcCW scales the mount position and model, but not ModelOffset.
+    if att.ModelOffset then
+        local offset = att.ModelOffset
+        pos = pos + ang:Forward() * offset.x + ang:Right() * offset.y + ang:Up() * offset.z
+    end
+    return pos, ang, icon
 end
 
 function ARC9.UC.DrawWorldModel(wep, flags)
@@ -630,18 +765,6 @@ function ARC9.UC.GetMuzzleVelocity(wep)
     return wep:GetValue("PhysBulletMuzzleVelocity") * ARC9.HUToM
 end
 
--- Product of every affector's value for a multiplier key, so a hook can undo it.
-function ARC9.UC.GetMultProduct(wep, key)
-    local mult = 1
-
-    for _, affector in ipairs(wep:GetAllAffectors()) do
-        local v = affector[key]
-        if isnumber(v) then mult = mult * v end
-    end
-
-    return mult
-end
-
 -- Hook_GetShootEntData: records the weapon's damage on fired grenades, as ArcCW did for rockets.
 function ARC9.UC.ShootEntDamage(wep, data)
     if wep:GetUBGL() then return end
@@ -654,6 +777,53 @@ function ARC9.UC.ShootEntDamage(wep, data)
     end
 
     data.UC_Damage = dmg
+end
+
+local function DisperseDirection(dir, spread)
+    local ang = dir:Angle()
+    local theta = math.Rand(0, math.pi * 2)
+    local radius = math.Rand(0, 1) * spread
+    return dir + ang:Right() * math.sin(theta) * radius + ang:Up() * math.cos(theta) * radius
+end
+
+-- ARC9's entity launcher skips DispersionSpread and uses a different spread scale.
+function ARC9.UC.ShootRocket(wep)
+    if CLIENT then return end
+    local owner = wep:GetOwner()
+    if wep:GetUBGL() or owner:IsNPC() then
+        return baseclass.Get("arc9_base").ShootRocket(wep)
+    end
+
+    local scale = math.rad(45 * math.sqrt(2))
+    local dir = DisperseDirection(wep:GetShootDir(true):Forward(), math.max(0, wep:GetProcessedValue("DispersionSpread")) * scale)
+    local spread = math.max(0, wep:GetProcessedValue("Spread")) * scale / 5
+    local class = wep:GetProcessedValue("ShootEnt", true)
+
+    for _ = 1, wep:GetProcessedValue("Num") do
+        local ang = DisperseDirection(dir, spread):Angle()
+        local rocket = ents.Create(class)
+        if !IsValid(rocket) then return end
+        rocket:SetOwner(owner)
+        rocket:SetPos(wep:GetShootPos())
+        rocket:SetAngles(ang)
+        rocket:Spawn()
+        rocket.Owner = owner
+        rocket.Weapon = wep
+        rocket.ARC9Projectile = true
+        rocket.ShootEntData = table.Copy(wep:GetProcessedValue("ShootEntData", true) or {})
+        rocket.ShootEntData.Target = IsValid(wep:GetLockOnTarget()) and wep:GetLockedOn() and wep:GetLockOnTarget()
+        rocket.ShootEntData = wep:RunHook("Hook_GetShootEntData", rocket.ShootEntData)
+        if wep:GetProcessedValue("Detonator", true) then wep:SetDetonatorEntity(rocket) end
+        rocket:SetPhysicsAttacker(owner, 600)
+
+        local phys = rocket:GetPhysicsObject()
+        if IsValid(phys) then
+            phys:AddVelocity(ang:Forward() * wep:GetProcessedValue("ShootEntForce"))
+            if wep:GetProcessedValue("ShootEntInheritPlayerVelocity", true) then
+                phys:AddVelocity(owner:GetVelocity())
+            end
+        end
+    end
 end
 
 -- Underbarrel shots keep their own tails; ArcCW played them outside the weapon's sound logic.
@@ -698,11 +868,6 @@ local infiniteubwammo = GetConVar("arc9_uc_infiniteubwammo")
 -- InfiniteAmmoHookUBGL: underbarrel weapons take no reserve ammo while arc9_uc_infiniteubwammo is on.
 function ARC9.UC.InfiniteUBWAmmo(wep, infinite)
     return infiniteubwammo:GetBool()
-end
-
--- ArcCW underbarrel shots use their own fixed spread, without primary-weapon dispersion.
-function ARC9.UC.UBGLSpread(wep, spread)
-    if wep:GetUBGL() then return wep:GetValue("Spread", nil, "UBGL") end
 end
 
 -- ARC9's hitscan callback omits the secondary flag; physical bullets retain it in flight.

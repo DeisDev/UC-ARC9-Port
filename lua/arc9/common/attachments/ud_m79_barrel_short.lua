@@ -12,7 +12,7 @@ ATT.Model = "models/weapons/arccw/atts/lhik_short.mdl"
 ATT.ShootEntForceMult = 0.5
 ATT.RecoilMult = 1.25
 ATT.SpreadMult = 2
-ATT.SpreadMultMove = 0.75
+ATT.UC_MoveDispersionMult = 0.75
 ATT.AimDownSightsTimeMult = 0.75
 ATT.SprintToFireTimeMult = 0.75
 ATT.ReloadTimeMult = 0.85
@@ -20,7 +20,7 @@ ATT.SpeedMult = 1.01
 ATT.SpeedMultSights = 1.05
 ATT.SwayMult = 0.75
 -- Imprecise in sights without an optic
-ATT.SpreadHookSights = function(wep, spread)
+ATT.UC_SightsDispersionHook = function(wep, spread)
     if !wep.Attachments[1].Installed then
         return spread + 50 * ARC9.UC.Dispersion
     end

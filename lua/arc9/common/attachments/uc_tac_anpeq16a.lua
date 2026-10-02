@@ -34,15 +34,15 @@ ATT.ToggleStats = {
     {
         PrintName = "uc.toggle.laser",
         Laser = true,
-        SpreadMultHipFire = 0.8,
-        SpreadMultMove = 0.8,
+        UC_HipDispersionMult = 0.8,
+        UC_MoveDispersionMult = 0.8,
     },
     {
         PrintName = "uc.toggle.both",
         Laser = true,
         Flashlight = true,
-        SpreadMultHipFire = 0.8,
-        SpreadMultMove = 0.8,
+        UC_HipDispersionMult = 0.8,
+        UC_MoveDispersionMult = 0.8,
     },
     {
         PrintName = "uc.toggle.light",

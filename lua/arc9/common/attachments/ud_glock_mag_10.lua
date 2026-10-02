@@ -12,7 +12,7 @@ ATT.ReloadTimeMult = 0.9
 ATT.ClipSize = 10
 ATT.SpeedMult = 1.05
 ATT.SwayMult = 0.5
-ATT.SpreadMultHipFire = 0.75
+ATT.UC_HipDispersionMult = 0.75
 ATT.Hook_TranslateAnimation = function(wep, anim)
     if string.StartsWith(anim, "reload") then
         return anim .. "_10"

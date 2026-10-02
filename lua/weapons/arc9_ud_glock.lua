@@ -1,6 +1,8 @@
 SWEP.Base = "arc9_base"
 SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
+SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
+SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -112,6 +114,8 @@ SWEP.Firemodes = {
 }
 
 SWEP.ShootPitch = 100
+SWEP.ShootPitchVariationHook = ARC9.UC.ShootPitchVariation
+SWEP.DistantShootPitchHook = ARC9.UC.DistantShootPitch
 SWEP.ShootVolume = 120
 
 SWEP.ReloadInSights = true
@@ -123,9 +127,14 @@ SWEP.ARC9WeaponCategory = ARC9.WEAPON_PISTOL
 -- Accuracy --
 
 SWEP.Spread = 7 * ARC9.UC.MOA
-SWEP.SpreadAddHipFire = 500 * ARC9.UC.Dispersion
-SWEP.SpreadAddMove = 250 * ARC9.UC.Dispersion
-SWEP.SpreadAddMidAir = 1000 * ARC9.UC.Dispersion
+SWEP.UC_HipDispersion = 500 * ARC9.UC.Dispersion
+SWEP.UC_MoveDispersion = 250 * ARC9.UC.Dispersion
+SWEP.UC_JumpDispersion = 1000 * ARC9.UC.Dispersion
+SWEP.UC_SightsDispersion = 0
+SWEP.UC_BipodDispersion = 1
+SWEP.UseDispersion = true
+SWEP.DispersionSpread = 0
+SWEP.DispersionSpreadHook = ARC9.UC.DispersionSpread
 SWEP.FreeAimRadius = math.Clamp(500 / 80, 3, 10)
 
 SWEP.Ammo = "pistol"
@@ -152,6 +161,12 @@ SWEP.BashRange = 48
 SWEP.BashLungeRange = 64
 SWEP.PreBashTime = 0.2
 SWEP.PostBashTime = 0.3
+SWEP.UC_MeleeTime = 1
+SWEP.UC_MeleeWaitTime = 1
+SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
+SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
+SWEP.UC_DrawTime = 1
+SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 
 -- Length --
 
@@ -934,7 +949,7 @@ SWEP.Attachments = {
         Category = "ud_glock_slide",
         Bone = "glock_flash",
         Pos = Vector(2.4, -0.2, -29.2), -- Op. CS slide
-        Ang = Angle(87, 90.042, 179.958),
+        Ang = Angle(90, 3, -90),
     },
     {
         PrintName = "uc.slot.frame",
@@ -1028,3 +1043,5 @@ SWEP.Attachments = {
         CosmeticOnly = true,
     },
 }
+
+ARC9.UC.ConvertAttachmentAngles(SWEP)

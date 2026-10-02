@@ -16,8 +16,8 @@ ATT.ToggleStats = {
     },
     {
         PrintName = "uc.toggle.collapsed",
-        SpreadMultHipFire = 0.6,
-        SpreadMultMove = 0.6,
+        UC_HipDispersionMult = 0.6,
+        UC_MoveDispersionMult = 0.6,
         RecoilRandomSideMult = 2,
         ActivateElements = {"stock_231_in"},
     }

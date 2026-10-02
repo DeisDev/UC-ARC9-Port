@@ -1,6 +1,8 @@
 SWEP.Base = "arc9_base"
 SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
+SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
+SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -18,14 +20,9 @@ SWEP.UseHands = true
 -- Muzzle and shell effects --
 
 SWEP.MuzzleParticle = "muzzleflash_m79"
-SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/ud_shells/12.mdl"
-SWEP.ShellPitch = 100
-SWEP.ShellSounds = ARC9.ShotgunShellSoundsTable
-SWEP.ShellScale = 0
+SWEP.NoShellEject = true
 
 SWEP.MuzzleEffectQCA = 1
-SWEP.CaseEffectQCA = 3
 SWEP.CamQCA = 2
 SWEP.CamOffsetAng = Angle(0, 90, 90)
 SWEP.TracerColor = Color(255, 225, 200)
@@ -83,6 +80,7 @@ SWEP.ShootEnt = "arc9_uc_40mm_he"
 SWEP.ShootEntForce = 5000
 SWEP.ShootEntInheritPlayerVelocity = true
 SWEP.Hook_GetShootEntData = ARC9.UC.ShootEntDamage
+SWEP.ShootRocket = ARC9.UC.ShootRocket
 
 -- Mag size --
 
@@ -119,6 +117,8 @@ SWEP.Firemodes = {
 
 SWEP.ShootVolume = 160
 SWEP.ShootPitch = 100
+SWEP.ShootPitchVariationHook = ARC9.UC.ShootPitchVariation
+SWEP.DistantShootPitchHook = ARC9.UC.DistantShootPitch
 
 -- NPC --
 
@@ -127,9 +127,14 @@ SWEP.ARC9WeaponCategory = ARC9.WEAPON_RPG
 -- Accuracy --
 
 SWEP.Spread = 30 * ARC9.UC.MOA
-SWEP.SpreadAddHipFire = 500 * ARC9.UC.Dispersion
-SWEP.SpreadAddMove = 200 * ARC9.UC.Dispersion
-SWEP.SpreadAddMidAir = 1000 * ARC9.UC.Dispersion
+SWEP.UC_HipDispersion = 500 * ARC9.UC.Dispersion
+SWEP.UC_MoveDispersion = 200 * ARC9.UC.Dispersion
+SWEP.UC_JumpDispersion = 1000 * ARC9.UC.Dispersion
+SWEP.UC_SightsDispersion = 0
+SWEP.UC_BipodDispersion = 1
+SWEP.UseDispersion = true
+SWEP.DispersionSpread = 0
+SWEP.DispersionSpreadHook = ARC9.UC.DispersionSpread
 SWEP.FreeAimRadius = math.Clamp(500 / 80, 3, 10)
 
 SWEP.Ammo = "smg1_grenade"
@@ -150,6 +155,12 @@ SWEP.BashRange = 48
 SWEP.BashLungeRange = 64
 SWEP.PreBashTime = 0.2
 SWEP.PostBashTime = 0.3
+SWEP.UC_MeleeTime = 1
+SWEP.UC_MeleeWaitTime = 1
+SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
+SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
+SWEP.UC_DrawTime = 1
+SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 
 -- Length --
 
@@ -333,7 +344,7 @@ SWEP.Attachments = {
         Category = {"optic_lp", "optic", "optic_sniper"},
         Bone = "m79_front",
         Pos = Vector(0, -3.6, 1),
-        Ang = Angle(88, 89.906, -179.906),
+        Ang = Angle(90, 2, -90),
         InstalledElements = {"m79_rail"},
         ExcludeElements = {"m79_pirategun"},
         ExtraSightDistance = 2,
@@ -345,7 +356,7 @@ SWEP.Attachments = {
         Category = "ud_m79_barrel",
         Bone = "m79_front",
         Pos = Vector(3.45, -5.3, -22),
-        Ang = Angle(88, 89.906, -179.906),
+        Ang = Angle(90, 2, -90),
     },
     {
         PrintName = "uc.slot.underbarrel",
@@ -406,3 +417,5 @@ SWEP.Attachments = {
         ExcludeElements = {"m79_pirategun"},
     }
 }
+
+ARC9.UC.ConvertAttachmentAngles(SWEP)

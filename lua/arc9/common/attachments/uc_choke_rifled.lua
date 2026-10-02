@@ -12,5 +12,5 @@ ATT.UC_Compatible = function(wep)
     end
 end
 ATT.SpreadMult = .7
-ATT.SpreadMultHipFire = 1.15
+ATT.UC_HipDispersionMult = 1.15
 ATT.RecoilMult = 1.05

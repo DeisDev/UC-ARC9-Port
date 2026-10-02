@@ -24,7 +24,7 @@ ATT.ToggleStats = {
         SpeedMultShooting = 1.1,
         AimDownSightsTimeMult = 0.85,
         SprintToFireTimeMult = 0.85,
-        SpreadMultMove = 1.15,
+        UC_MoveDispersionMult = 1.15,
     }
 }
 ATT.ToggleOnF = true

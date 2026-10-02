@@ -1,6 +1,8 @@
 SWEP.Base = "arc9_base"
 SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
+SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
+SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.PostModify = ARC9.UC.PostModify
@@ -126,6 +128,8 @@ SWEP.ShotgunReload = true
 
 SWEP.ShootVolume = 160
 SWEP.ShootPitch = 100
+SWEP.ShootPitchVariationHook = ARC9.UC.ShootPitchVariation
+SWEP.DistantShootPitchHook = ARC9.UC.DistantShootPitch
 
 SWEP.ReloadInSights = true
 
@@ -136,9 +140,14 @@ SWEP.ARC9WeaponCategory = ARC9.WEAPON_SHOTGUN
 -- Accuracy --
 
 SWEP.Spread = 30 * ARC9.UC.MOA
-SWEP.SpreadAddHipFire = 400 * ARC9.UC.Dispersion
-SWEP.SpreadAddMove = 100 * ARC9.UC.Dispersion
-SWEP.SpreadAddMidAir = 1000 * ARC9.UC.Dispersion
+SWEP.UC_HipDispersion = 400 * ARC9.UC.Dispersion
+SWEP.UC_MoveDispersion = 100 * ARC9.UC.Dispersion
+SWEP.UC_JumpDispersion = 1000 * ARC9.UC.Dispersion
+SWEP.UC_SightsDispersion = 0
+SWEP.UC_BipodDispersion = 1
+SWEP.UseDispersion = true
+SWEP.DispersionSpread = 0
+SWEP.DispersionSpreadHook = ARC9.UC.DispersionSpread
 SWEP.FreeAimRadius = math.Clamp(400 / 80, 3, 10)
 
 SWEP.Ammo = "buckshot"
@@ -159,6 +168,12 @@ SWEP.BashRange = 48
 SWEP.BashLungeRange = 64
 SWEP.PreBashTime = 0.2
 SWEP.PostBashTime = 0.3
+SWEP.UC_MeleeTime = 1
+SWEP.UC_MeleeWaitTime = 1
+SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
+SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
+SWEP.UC_DrawTime = 1
+SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 
 -- Length --
 
@@ -481,7 +496,6 @@ SWEP.Attachments = {
         Bone = "870_parent",
         Pos = Vector(0, -1.75, -2),
         Ang = Angle(90, 0, -90),
-        CorrectiveAng = Angle(1.8, 0.1, 0),
         InstalledElements = {"optic_rail"},
         ExtraSightDistance = 2,
     },
@@ -595,3 +609,5 @@ SWEP.Hook_ModifyElements = function(wep, eles)
 
     return eles
 end
+
+ARC9.UC.ConvertAttachmentAngles(SWEP)

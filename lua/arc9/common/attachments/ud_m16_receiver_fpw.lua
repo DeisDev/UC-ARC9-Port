@@ -21,14 +21,14 @@ ATT.RecoilMult = 1.25 / 1.1
 ATT.RecoilRandomSideMult = 1.5
 ATT.RangeMaxMult = 0.9
 ATT.SpreadMult = 4 / 3
-ATT.SpreadMultHipFire = 0.85
+ATT.UC_HipDispersionMult = 0.85
 ATT.TriggerDelay = true
 ATT.Malfunction = true
 ATT.Overheat = true
 ATT.HeatLockout = false
 ATT.HeatCapacity = 120
 ATT.HeatDissipation = 20
-ATT.SpreadHookSights = function(wep, spread)
+ATT.UC_SightsDispersionHook = function(wep, spread)
     if !wep.Attachments[1].Installed or wep.Attachments[1].Installed == "ud_m16_rs" then
         return spread + 50 * ARC9.UC.Dispersion
     end

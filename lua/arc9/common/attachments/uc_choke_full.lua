@@ -14,5 +14,5 @@ end
 ATT.RecoilMult = 1.25
 ATT.RecoilRandomSideMult = 1.5
 ATT.SpreadMult = .7
-ATT.SpreadAddHipFire = 100 * ARC9.UC.Dispersion
-ATT.SpreadAddSights = 100 * ARC9.UC.Dispersion
+ATT.UC_HipDispersionAdd = 100 * ARC9.UC.Dispersion
+ATT.UC_SightsDispersionAdd = 100 * ARC9.UC.Dispersion

@@ -11,7 +11,7 @@ ATT.Category = "ud_m16_fcg"
 ATT.SortOrder = 5
 ATT.SpreadMult = 1.25
 ATT.RPMMult = 0.85
-ATT.SpreadMultHipFire = 1.125
+ATT.UC_HipDispersionMult = 1.125
 ATT.SpeedMultShooting = 0.85
 ATT.Firemodes = {
     {

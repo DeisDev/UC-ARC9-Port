@@ -43,11 +43,6 @@ ATT.UBGLFiremode = 1
 ATT.UBGLFiremodeName = "UBGL"
 ATT.HasSightsUBGL = false
 ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
-ATT.SpreadHookHipFire = ARC9.UC.UBGLSpread
-ATT.SpreadHookSights = ARC9.UC.UBGLSpread
-ATT.SpreadHookMove = ARC9.UC.UBGLSpread
-ATT.SpreadHookMidAir = ARC9.UC.UBGLSpread
-ATT.SpreadHookBipod = ARC9.UC.UBGLSpread
 
 ATT.RPMUBGL = 120
 ATT.RecoilUBGL = 2 * ARC9.UC.Recoil
@@ -62,6 +57,8 @@ ATT.ShootEntInheritPlayerVelocityUBGL = true
 -- Lower than the M79 (200) for balance reasons
 ATT.ShootEntDataUBGL = {UC_Damage = 130}
 
+ATT.ShootPitchUBGL = 100
+ATT.ShootPitchVariationUBGL = 0
 ATT.ShootVolumeUBGL = 100
 ATT.ShootSoundUBGL = fire
 ATT.ShootSoundIndoorUBGL = fire

@@ -17,10 +17,10 @@ ATT.SprintToFireTimeMult = 0.6
 ATT.SpeedMult = 1.05
 ATT.SpeedMultShooting = 1.2
 ATT.RPMMult = 240 / 220
-ATT.SpreadMultHipFire = 0.75
+ATT.UC_HipDispersionMult = 0.75
 ATT.BarrelLengthAdd = -6
 -- Imprecise in sights without an optic
-ATT.SpreadHookSights = function(wep, spread)
+ATT.UC_SightsDispersionHook = function(wep, spread)
     if !wep.Attachments[1].Installed then
         return spread + 50 * ARC9.UC.Dispersion
     end

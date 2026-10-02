@@ -4,6 +4,16 @@ local function P(phrase)
     return ARC9:GetPhrase(phrase) or phrase
 end
 
+hook.Add("Initialize", "ARC9_UC_HandlingStats", function()
+    for _, stat in ipairs({"UC_HipDispersion", "UC_SightsDispersion", "UC_MoveDispersion", "UC_JumpDispersion"}) do
+        ARC9.AutoStatsMains[stat] = ARC9.AutoStatsMains.Spread
+    end
+    ARC9.AutoStatsMains.UC_BipodDispersion = {true, true}
+    ARC9.AutoStatsMains.UC_DrawTime = {true, true}
+    ARC9.AutoStatsMains.UC_MeleeTime = {true, true}
+    ARC9.AutoStatsMains.UC_MeleeWaitTime = {true, true}
+end)
+
 function ARC9.UC.CreateRailPanel(wep)
     wep:ClearTabPanel()
     wep:ClosePresetMenu()
