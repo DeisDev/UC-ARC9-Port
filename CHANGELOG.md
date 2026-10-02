@@ -20,6 +20,8 @@
 
 ### Fixed
 
+- Corrected the AK's displaced collision hull that made dropped weapons float and rotate off-center.
+- Hidden the M1911 spare worldmodel magazine and the AK's spare magazine rounds.
 - Shortened the forced-reset fire-mode label to prevent overlap with the ammo count.
 - Corrected the M1911 camera turning sideways and bringing the arms across the view.
 - Corrected attachment rotations, model offsets, charm placement, and optic alignment across all eight weapons.

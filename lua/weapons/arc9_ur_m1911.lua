@@ -327,7 +327,8 @@ SWEP.BulletBones = {
     [6] = "mag_round6",
     [7] = "mag_round7"
 }
-SWEP.HideBones = {"vm_mag2"}
+-- The spare magazine mesh is weighted to tag_mag2, not its vm_mag2 parent.
+SWEP.HideBones = {"vm_mag2", "tag_mag2"}
 SWEP.HookP_NameChange = ARC9.UC.NameChange
 SWEP.Hook_ModifyBodygroups = function(wep, data)
     data.model:SetPoseParameter("sights", math.ease.InOutCubic(wep:GetSightAmount()))

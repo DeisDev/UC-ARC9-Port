@@ -66,7 +66,7 @@ SWEP.WorldModelOffset = {
 }
 
 SWEP.DefaultBodygroups = "01000080012000"
-SWEP.HideBones = {"vm_mag2"}
+SWEP.HideBones = {"vm_mag2", "tag_mag2"}
 SWEP.BulletBones = {"tag_mag2"}
 SWEP.DamageMax = 50
 SWEP.DamageMin = 25
