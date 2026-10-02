@@ -1,0 +1,15 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_329_grip_polymer.printname")
+ATT.CompactName = ARC9:GetPhrase("ur_329_grip_polymer.compactname")
+if not ARC9:UseTrueNames() then ATT.PrintName = ARC9:GetPhrase("ur_329_grip_polymer.printname.variant1") end
+ATT.Icon = Material("entities/att/acwatt_ur_deagle_grip_plastic.png", "mips smooth")
+ATT.Description = ARC9:GetPhrase("ur_329_grip_polymer.description")
+ATT.Category = "ur_329_grip"
+ATT.Ignore = true
+ATT.SortOrder = 6
+ATT.RecoilMult = 1.2
+ATT.RecoilRandomSideMult = 1.1
+ATT.AimDownSightsTimeMult = 0.85
+ATT.SprintToFireTimeMult = 0.85
+ATT.ActivateElements = {"ur_329_grip_polymer"}
+ATT.DeployTimeMult = 0.9

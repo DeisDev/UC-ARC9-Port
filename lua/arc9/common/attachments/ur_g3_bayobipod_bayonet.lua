@@ -1,0 +1,11 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_g3_bayobipod_bayonet.printname")
+ATT.CompactName = ARC9:GetPhrase("ur_g3_bayobipod_bayonet.compactname")
+if not ARC9:UseTrueNames() then ATT.PrintName = ARC9:GetPhrase("ur_g3_bayobipod_bayonet.printname.variant1") end
+ATT.Icon = false
+ATT.Description = ARC9:GetPhrase("ur_g3_bayobipod_bayonet.description")
+ATT.Category = "ur_g3_bayobipod"
+ATT.SortOrder = 999
+ATT.Free = true
+ATT.Ignore = true
+ATT.ActivateElements = {"ur_g3_bayobipod_bayonet"}

@@ -1,0 +1,16 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_g3_hg_slim.printname")
+ATT.Icon = Material("entities/att/ur_g3/hg_slim.png", "smooth mips")
+ATT.Description = ARC9:GetPhrase("ur_g3_hg_slim.description")
+ATT.Category = "ur_g3_handguard"
+ATT.SortOrder = 5
+ATT.ModelOffset = Vector(-21, -2.2, 4.3)
+ATT.Model = "models/weapons/arccw/ur_g3_lhik_slim.mdl"
+ATT.NoDraw = true
+ATT.LHIK = true
+ATT.LHIKPriority = 0
+ATT.SwayMult = .85
+ATT.AimDownSightsTimeMult = .85
+ATT.SprintToFireTimeMult = .85
+ATT.RecoilMult = 1.1
+ATT.ActivateElements = {"ur_g3_hg_slim"}

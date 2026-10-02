@@ -1,0 +1,17 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_aw_muzzle_brake.printname")
+ATT.Icon = Material("entities/att/ur_aw/muzzle.png", "mips smooth")
+ATT.Description = ARC9:GetPhrase("ur_aw_muzzle_brake.description")
+ATT.Category = {"ur_aw_muzzle"}
+ATT.RecoilMult = .9
+ATT.RecoilRandomSideMult = .9
+ATT.BarrelLengthAdd = 2
+ATT.AimDownSightsTimeMult = 1.05
+ATT.SprintToFireTimeMult = 1.05
+ATT.SwayMult = 1.05
+ATT.SortOrder = 999
+ATT.InstallSound = "arccw_uc/common/gunsmith/suppressor_thread.ogg"
+ATT.Model = "models/weapons/arccw/ur_aw_muzzle.mdl"
+ATT.Scale = 2 / 3
+ATT.ModelOffset = Vector(0, 0, -.075)
+ATT.ActivateElements = {"ur_aw_muzzle_brake"}

@@ -1,0 +1,16 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_aw_barrel_long.printname")
+ATT.CompactName = ARC9:GetPhrase("ur_aw_barrel_long.compactname")
+ATT.Icon = Material("entities/att/ur_aw/bar_long.png", "mips smooth")
+if not ARC9:UseTrueNames() then ATT.PrintName = ARC9:GetPhrase("ur_aw_barrel_long.printname.variant1") end
+ATT.SortOrder = 27
+ATT.Description = ARC9:GetPhrase("ur_aw_barrel_long.description")
+ATT.Category = "ur_aw_barrel"
+ATT.RangeMaxMult = 1.1
+ATT.RecoilMult = .8
+ATT.AimDownSightsTimeMult = 1.15
+ATT.SprintToFireTimeMult = 1.15
+ATT.SwayMult = 1.25
+ATT.BarrelLengthAdd = 3
+ATT.RangeMinMult = 1.1
+ATT.ActivateElements = {"ur_aw_barrel_long", "barrel_long"}

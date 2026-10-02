@@ -1,0 +1,15 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_g3_stock_rucar.printname")
+ATT.CompactName = ARC9:GetPhrase("ur_g3_stock_rucar.compactname")
+ATT.Icon = Material("entities/att/ur_g3/stock_ar.png", "smooth mips")
+if ARC9:UseTrueNames() then ATT.PrintName = ARC9:GetPhrase("ur_g3_stock_rucar.printname.variant1") end
+ATT.Description = ARC9:GetPhrase("ur_g3_stock_rucar.description")
+ATT.Category = {"ur_g3_stock"}
+ATT.SortOrder = 9
+ATT.SpeedMult = 1.05
+ATT.UC_MoveDispersionMult = .6
+ATT.AimDownSightsTimeMult = .9
+ATT.SprintToFireTimeMult = .9
+ATT.SwayMult = 1.5
+ATT.RecoilRandomSideMult = 1.5
+ATT.ActivateElements = {"ur_g3_stock_rucar"}

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Urban Renewal 329, AW, double-barrel shotgun, Desert Eagle, and G3 with their assets and 68 active weapon-specific attachments.
 - Urban Renewal MP5 with its original assets, caliber conversions, and 24 active weapon-specific attachments.
 - Urban Renewal SPAS-12 with semi-auto, pump, and Freeman firing modes, original assets, and eight active weapon-specific attachments.
 - Urban Renewal M1911 with its original assets and 13 active weapon-specific attachments.

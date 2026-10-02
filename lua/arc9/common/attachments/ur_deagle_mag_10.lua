@@ -1,0 +1,16 @@
+ATT.MenuCategory = "ARC9 - Urban Coalition"
+ATT.PrintName = ARC9:GetPhrase("ur_deagle_mag_10.printname")
+if not ARC9:UseTrueNames() then ATT.PrintName = ARC9:GetPhrase("ur_deagle_mag_10.printname.variant1") end
+ATT.CompactName = ARC9:GetPhrase("ur_deagle_mag_10.compactname")
+ATT.Icon = Material("entities/att/acwatt_ur_deagle_mag_10.png", "mips smooth")
+ATT.Description = ARC9:GetPhrase("ur_deagle_mag_10.description")
+ATT.Category = "ur_deagle_mag"
+ATT.ClipSize = 10
+ATT.AimDownSightsTimeMult = 1.1
+ATT.SprintToFireTimeMult = 1.1
+ATT.ReloadTimeMult = 1.15
+ATT.SwayMult = 1.5
+ATT.SpeedMult = 0.98
+ATT.SpeedMultShooting = 0.95
+ATT.UC_HipDispersionMult = 1.25
+ATT.ActivateElements = {"ur_deagle_mag_10", "ur_deagle_mag_ext"}
