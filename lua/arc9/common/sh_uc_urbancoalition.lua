@@ -24,6 +24,7 @@ CreateConVar("arc9_uc_apobjmult", 3, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Damage m
 
 game.AddParticles("particles/uc_muzzleflashes.pcf")
 PrecacheParticleSystem("muzzleflash_1")
+PrecacheParticleSystem("muzzleflash_pistol")
 PrecacheParticleSystem("muzzleflash_6")
 PrecacheParticleSystem("muzzleflash_shotgun")
 PrecacheParticleSystem("muzzleflash_m79")

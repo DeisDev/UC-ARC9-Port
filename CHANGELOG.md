@@ -4,6 +4,7 @@
 
 ### Added
 
+- Urban Renewal M1911 with its original assets and 13 active weapon-specific attachments.
 - Urban Renewal AKM with its original assets and 38 active weapon-specific attachments.
 - English and Spanish phrases for the ARC9 Urban Coalition port.
 - Original Kobra and PSO-1 scope models and required ammo, magazine, and muzzle-effect assets.
@@ -19,6 +20,8 @@
 
 ### Fixed
 
+- Shortened the forced-reset fire-mode label to prevent overlap with the ammo count.
+- Corrected the M1911 camera turning sideways and bringing the arms across the view.
 - Corrected attachment rotations, model offsets, charm placement, and optic alignment across all eight weapons.
 - Restored separate handling dispersion, including M79 grenades and attachment bonuses.
 - Corrected canted recoil, bipod recoil, melee timing, draw speeds, and shot-pitch modifiers.
