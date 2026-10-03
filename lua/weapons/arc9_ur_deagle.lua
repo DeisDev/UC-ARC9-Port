@@ -7,7 +7,15 @@ SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
-SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
+-- The source muzzle slot is hidden and never filled; clear devices restored from older saves.
+SWEP.BuildSubAttachments = function(wep, tree)
+    ARC9.UC.BuildSubAttachments(wep, tree)
+    local muzzle = wep.Attachments[4]
+    if not muzzle.Installed then return end
+    if SERVER then ARC9:PlayerGiveAtt(wep:GetOwner(), muzzle.Installed, 1) end
+    muzzle.Installed = nil
+    muzzle.SubAttachments = nil
+end
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.SubCategory = "ur.title"
 SWEP.Spawnable = true
@@ -498,7 +506,6 @@ SWEP.Attachments = {
         InstalledElements = {"nofh"},
         ExcludeElements = {"barrel_annihilator"},
         Hidden = true,
-        Integral = true,
     },
     {
         PrintName = "ur.deagle.printname5",

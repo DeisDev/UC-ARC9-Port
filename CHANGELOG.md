@@ -23,6 +23,8 @@
 
 ### Fixed
 
+- Added the missing spawn menu icons for the 329, AW, double-barrel shotgun, Desert Eagle, and G3.
+- Removed the muzzle brake the Desert Eagle equipped on its own, including from saved loadouts.
 - Fixed the MP5 Kurz support hand staying on the grip during reloads.
 - Corrected the MP5 bolt staying still and shells ejecting behind the port.
 - Translated custom fire-mode labels so phrase keys no longer overlap the stats row.
