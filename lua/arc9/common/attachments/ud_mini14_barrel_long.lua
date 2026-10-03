@@ -9,5 +9,6 @@ ATT.SprintToFireTimeMult = 1.25
 ATT.RecoilMult = 0.9
 ATT.SpreadMult = 0.5
 ATT.RangeMaxMult = 1.2
+ATT.RangeMinMult = 1.2
 ATT.SwayMult = 1.5
 ATT.BarrelLengthAdd = 4

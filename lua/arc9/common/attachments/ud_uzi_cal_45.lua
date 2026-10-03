@@ -6,13 +6,16 @@ ATT.CustomPros = {
 ATT.ActivateElements = {"uzi_45", "cal_subsonic"}
 
 ATT.Category = "ud_uzi_caliber"
+ATT.UC_DefaultSlots = {
+    [8] = {Name = "uc.default.16_round_mag", Icon = Material("entities/att/acwatt_ud_uzi_mag_32.png", "smooth mips")},
+}
 ATT.Icon = Material("entities/att/uc_bullets/45acp.png", "smooth mips")
 ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.45_acp")
 ATT.DamageMaxMult = ARC9.UC.CalConv("9mm", "45acp", "max")
 ATT.DamageMinMult = ARC9.UC.CalConv("9mm", "45acp", "min")
 ATT.PenetrationMult = ARC9.UC.CalConv("9mm", "45acp", "pen")
 ATT.PhysBulletMuzzleVelocity = 320 * ARC9.UC.Meter
-ATT.RangeMinMult = 0.5
+ATT.RangeMinMult = 0.5 * .75
 ATT.RangeMaxMult = .75
 ATT.RecoilMult = 1.5
 ATT.RecoilRandomSideMult = 1.5

@@ -24,6 +24,7 @@ ATT.Firemodes = {
 }
 ATT.Firemodes_Priority = 10
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25
 ATT.SpreadMult = 0.75
 ATT.RPMMult = 0.75
 ATT.MalfunctionMeanShotsToFailMult = 1.5

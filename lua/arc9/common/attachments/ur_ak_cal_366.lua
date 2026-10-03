@@ -9,6 +9,7 @@ ATT.Category = "ur_ak_cal"
 ATT.DamageMaxMult = 1.2
 ATT.DamageMinMult = 1.2
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25
 ATT.PenetrationMult = 1.5
 ATT.RPMMult = 0.8
 ATT.RecoilMult = 1.5

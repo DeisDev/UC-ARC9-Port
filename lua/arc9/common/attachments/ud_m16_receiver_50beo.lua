@@ -23,6 +23,7 @@ ATT.RecoilRandomSideMult = 2
 ATT.VisualRecoilMult = 2
 ATT.RPMMult = 0.5
 ATT.RangeMaxMult = 0.25
+ATT.RangeMinMult = 0.25
 ATT.ShootVolumeMult = 1.2
 ATT.AimDownSightsTimeMult = 0.91
 ATT.SprintToFireTimeMult = 0.91

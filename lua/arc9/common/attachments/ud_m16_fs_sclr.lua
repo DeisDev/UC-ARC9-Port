@@ -9,4 +9,5 @@ ATT.Model = "models/weapons/arccw/atts/scalerworks_fs.mdl"
 ATT.ModelOffset = Vector(0, 0.01, -0.1)
 ATT.Scale = 0.95
 ATT.Category = {"ud_m16_fs"}
+ATT.Free = true
 ATT.UC_FrontSight = 1

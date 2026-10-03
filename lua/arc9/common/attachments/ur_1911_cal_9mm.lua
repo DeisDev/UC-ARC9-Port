@@ -7,6 +7,7 @@ ATT.DamageMaxMult = 30 / 45
 ATT.DamageMinMult = 17 / 15
 ATT.PenetrationMult = 6 / 9
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25
 ATT.RPMMult = 525 / 450
 ATT.ReloadTimeMult = .9
 ATT.RecoilMult = 0.85

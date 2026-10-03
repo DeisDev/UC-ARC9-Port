@@ -8,6 +8,7 @@ ATT.SortOrder = 5
 ATT.Icon = Material("entities/att/arccw_uc_ammo_generic.png", "mips smooth")
 ATT.Category = "uc_ammo"
 ATT.RangeMaxMult = 2
+ATT.RangeMinMult = 2
 ATT.PenetrationMult = 2
 ATT.DamageMaxMult = 0.9
 ATT.DamageMinMult = 0.9

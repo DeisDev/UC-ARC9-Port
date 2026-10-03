@@ -15,6 +15,7 @@ ATT.PenetrationMult = 0.1
 ATT.DamageMaxMult = 0.75
 ATT.DamageMinMult = 0.75
 ATT.RangeMaxMult = .5
+ATT.RangeMinMult = .5
 ATT.UC_HipDispersionMult = 1.5
 ATT.Num = 1
 ATT.Num_Priority = 99

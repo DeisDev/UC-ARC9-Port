@@ -5,6 +5,7 @@ ATT.RequireElements = {{"tac"}}
 
 ATT.Icon = Material("entities/att/arccw_ud_pointshoot.png", "smooth mips")
 ATT.Category = "ud_m16_charm"
+ATT.Free = true
 ATT.Sights = {
     {
         Pos = Vector(0, 20, -3),

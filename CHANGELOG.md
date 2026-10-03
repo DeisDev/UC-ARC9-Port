@@ -23,6 +23,14 @@
 
 ### Fixed
 
+- 329 barrels now change the gun's model and name.
+- Range bonuses and penalties now also move the start of damage falloff, as in the original pack.
+- The AW fixed stock no longer slows holstering.
+- The 40mm Dummy round no longer halves visual recoil a second time.
+- The Glock CS slide and Uzi .45 conversion show the correct default magazine name.
+- M16 rear sights stay at their fixed rail position.
+- Skins, covers, charms, and front sights are free only where the original pack made them free.
+- With true names on, the 329, double-barrel shotgun, Desert Eagle, and G3 now list their real manufacturers.
 - Added the missing spawn menu icons for the 329, AW, double-barrel shotgun, Desert Eagle, and G3.
 - Removed the muzzle brake the Desert Eagle equipped on its own, including from saved loadouts.
 - Fixed the MP5 Kurz support hand staying on the grip during reloads.

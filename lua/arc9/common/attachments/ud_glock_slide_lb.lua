@@ -14,3 +14,4 @@ ATT.PhysBulletMuzzleVelocityMult = 1.1
 ATT.SpreadMult = 0.85
 ATT.RecoilMult = 0.85
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25

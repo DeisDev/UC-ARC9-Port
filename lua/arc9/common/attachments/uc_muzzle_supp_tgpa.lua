@@ -15,6 +15,7 @@ ATT.ShootPitchMult = 1.1
 ATT.ShootVolumeMult = 0.75
 ATT.BarrelLengthAdd = 5
 ATT.RangeMaxMult = 0.9
+ATT.RangeMinMult = 0.9
 ATT.AimDownSightsTimeMult = 1.07
 ATT.SprintToFireTimeMult = 1.07
 ATT.SwayMult = 1.15

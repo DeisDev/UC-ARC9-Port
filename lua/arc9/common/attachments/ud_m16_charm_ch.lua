@@ -5,5 +5,6 @@ ATT.ExcludeElements = {"ud_m16_not_retro", "ud_m16_a1"}
 
 ATT.Icon = Material("entities/att/acwatt_ud_m16_charm_ch.png", "smooth mips")
 ATT.Category = "ud_m16_charm"
+ATT.Free = true
 ATT.UC_TopMount = 1
 ATT.SortOrder = 1001

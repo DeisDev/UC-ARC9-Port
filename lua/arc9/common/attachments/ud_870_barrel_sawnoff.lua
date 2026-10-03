@@ -11,6 +11,7 @@ ATT.SortOrder = -1
 ATT.SpreadMult = 1.5
 ATT.RecoilMult = 1.25
 ATT.RangeMaxMult = 0.8
+ATT.RangeMinMult = 0.8
 ATT.SwayMult = 0.5
 ATT.AimDownSightsTimeMult = 0.75
 ATT.SprintToFireTimeMult = 0.75

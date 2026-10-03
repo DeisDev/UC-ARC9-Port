@@ -23,5 +23,5 @@ end
 ATT.ManualAction = true
 ATT.SpreadMult = 0.5
 ATT.RangeMaxMult = 1.25
-ATT.RangeMinMult = 1.25
+ATT.RangeMinMult = 1.25 * 1.25
 ATT.MalfunctionMeanShotsToFailMult = 1.5

@@ -12,6 +12,7 @@ ATT.SwayMult = 1.5
 ATT.RecoilMult = .8
 ATT.SpreadMult = .7
 ATT.RangeMaxMult = 1.5
+ATT.RangeMinMult = 1.5
 ATT.MalfunctionMeanShotsToFailMult = 2
 ATT.UC_HipDispersionMult = 1.5
 ATT.Bipod = true

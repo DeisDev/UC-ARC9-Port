@@ -16,6 +16,7 @@ ATT.RecoilMult = 0.85
 ATT.SpreadMult = 0.75
 ATT.SwayMult = 1.5
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25
 ATT.ShootVolumeMult = 0.65
 ATT.ShootPitchMult = 1.25
 ATT.PhysBulletMuzzleVelocityMult = 0.85

@@ -12,6 +12,7 @@ ATT.RecoilMult = 1.5
 ATT.RecoilRandomSideMult = 1.15
 ATT.RPMMult = 1.25
 ATT.RangeMaxMult = 0.75
+ATT.RangeMinMult = 0.75
 ATT.UC_HipDispersionMult = 1.25
 ATT.BarrelLengthAdd = -4
 ATT.TriggerDelayTimeMult = 0.75

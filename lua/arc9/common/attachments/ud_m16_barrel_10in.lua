@@ -14,6 +14,7 @@ ATT.RPMMult = 1.15
 ATT.RecoilMult = 1.5
 ATT.SpreadMult = 2
 ATT.RangeMaxMult = 0.5
+ATT.RangeMinMult = 0.5
 ATT.SwayMult = 0.75
 ATT.BarrelLengthAdd = -10
 ATT.PhysBulletMuzzleVelocityMult = 0.729167

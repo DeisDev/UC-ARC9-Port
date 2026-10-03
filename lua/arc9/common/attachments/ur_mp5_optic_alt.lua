@@ -9,7 +9,6 @@ ATT.Category = "ur_mp5_optic"
 ATT.SortOrder = 9999
 
 ATT.ExcludeElements = {"barrel_sword"}
-ATT.Free = true
 
 ATT.IronSights = {
     Pos = Vector(-3.170000, -4.851284, 0.731534),

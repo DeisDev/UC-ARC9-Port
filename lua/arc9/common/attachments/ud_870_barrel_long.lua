@@ -7,6 +7,7 @@ ATT.Category = "ud_870_barrel"
 ATT.SpreadMult = 0.8
 ATT.RecoilMult = 0.8
 ATT.RangeMaxMult = 1.2
+ATT.RangeMinMult = 1.2
 ATT.SwayMult = 1.5
 ATT.AimDownSightsTimeMult = 1.25
 ATT.SprintToFireTimeMult = 1.25

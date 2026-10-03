@@ -12,6 +12,7 @@ ATT.NumAdd = 8
 ATT.SpreadMult = .5
 ATT.PenetrationAdd = 12
 ATT.RangeMaxMult = .75
+ATT.RangeMinMult = .75
 ATT.DamageMaxMult = .8
 ATT.HullSizeMult = 0.5
 ATT.UC_ShellColor = Color(0.2 * 255, 0.2 * 255, 0.5 * 255)

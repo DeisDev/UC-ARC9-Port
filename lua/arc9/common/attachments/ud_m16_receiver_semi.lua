@@ -11,6 +11,7 @@ ATT.RPMMult = 600 / 900
 ATT.RecoilMult = 0.8
 ATT.SpreadMult = 0.75
 ATT.RangeMaxMult = 1.15
+ATT.RangeMinMult = 1.15
 ATT.UC_MoveDispersionMult = 0.5
 ATT.PhysBulletMuzzleVelocityMult = 1.15
 ATT.Firemodes_Priority = 0.5

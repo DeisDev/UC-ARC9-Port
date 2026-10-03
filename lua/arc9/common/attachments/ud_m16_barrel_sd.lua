@@ -10,6 +10,7 @@ ATT.Category = "ud_m16_blen"
 ATT.AimDownSightsTimeMult = 1.05
 ATT.SprintToFireTimeMult = 1.05
 ATT.RangeMaxMult = 0.65
+ATT.RangeMinMult = 0.65
 ATT.RecoilMult = 1.15
 ATT.SpreadMult = 1.5
 ATT.RPMMult = 1.111

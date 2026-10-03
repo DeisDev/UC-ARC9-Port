@@ -10,5 +10,6 @@ ATT.RecoilMult = 0.5
 ATT.SpreadMult = 0.25
 ATT.SwayMult = 2
 ATT.RangeMaxMult = 3
+ATT.RangeMinMult = 3
 ATT.DeployTimeMult = 1.5
 ATT.BarrelLengthAdd = 32

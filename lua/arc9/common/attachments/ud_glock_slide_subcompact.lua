@@ -17,4 +17,5 @@ ATT.SprintToFireTimeMult = 0.85
 ATT.PhysBulletMuzzleVelocityMult = 0.9
 ATT.SpreadMult = 1.5
 ATT.RangeMaxMult = 0.75
+ATT.RangeMinMult = 0.75
 ATT.RecoilMult = 1.25

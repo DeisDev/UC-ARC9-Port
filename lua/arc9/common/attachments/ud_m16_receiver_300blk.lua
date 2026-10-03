@@ -10,6 +10,7 @@ ATT.DamageMinMult = ARC9.UC.CalConv("556", "300blk", "min")
 ATT.PenetrationMult = ARC9.UC.CalConv("556", "300blk", "pen")
 ATT.ShootVolumeMult = 105 / 120
 ATT.RangeMaxMult = 0.9
+ATT.RangeMinMult = 0.9
 ATT.HeatDissipationMult = 1.5
 ATT.PhysBulletMuzzleVelocity = 310 * ARC9.UC.Meter
 ATT.ShellModel = "models/weapons/arccw/uc_shells/300blk.mdl"

@@ -15,6 +15,7 @@ ATT.SwayMult = 0.75
 ATT.RecoilMult = 1.5
 ATT.SpreadMult = 2
 ATT.RangeMaxMult = .5
+ATT.RangeMinMult = .5
 ATT.ActivateElements = {"barrel_krinkov", "ak_barrelchange", "barrel_carbine", "ak_barrelkrinkov"}
 ATT.LHIK = true
 ATT.LHIK_Priority = -2

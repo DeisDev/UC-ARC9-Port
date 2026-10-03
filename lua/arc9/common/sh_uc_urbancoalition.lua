@@ -574,12 +574,18 @@ function ARC9.UC.BuildSubAttachments(wep, tree)
     ARC9.UC.UpdateSlotInfo(wep)
 end
 
+-- Attachments with UC_RailPosition mount at that fraction regardless of the saved rail travel.
+function ARC9.UC.RailFraction(slot)
+    local attachment = slot.Installed and ARC9.GetAttTable(slot.Installed)
+    return attachment and attachment.UC_RailPosition or slot.UC_Rail or 0.5
+end
+
 function ARC9.UC.UpdateRailPositions(wep)
     local hasRails = false
     for _, slot in ipairs(wep.Attachments) do
         if !slot.UC_RailMin then continue end
         hasRails = true
-        slot.Pos = LerpVector(slot.UC_Rail or 0.5, slot.UC_RailMin, slot.UC_RailMax)
+        slot.Pos = LerpVector(ARC9.UC.RailFraction(slot), slot.UC_RailMin, slot.UC_RailMax)
     end
     if !hasRails then return end
 
@@ -590,7 +596,7 @@ function ARC9.UC.UpdateRailPositions(wep)
     for _, element in pairs(wep.AttachmentElements) do
         for index, mod in pairs(element.AttPosMods or {}) do
             if mod.UC_RailMin then
-                mod.Pos = LerpVector(wep.Attachments[index].UC_Rail or 0.5, mod.UC_RailMin, mod.UC_RailMax)
+                mod.Pos = LerpVector(ARC9.UC.RailFraction(wep.Attachments[index]), mod.UC_RailMin, mod.UC_RailMax)
             end
         end
     end

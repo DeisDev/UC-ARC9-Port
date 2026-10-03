@@ -8,7 +8,6 @@ ATT.CustomPros = {
 ATT.Category = "ur_mp5_hg"
 ATT.SortOrder = 997
 
-ATT.Free = true
 ATT.ExcludeElements = {"barrel_sd","mp5_kurz"}
 
 ATT.ActivateElements = {"ur_mp5_ub_ris", "ur_mp5_rail_fg"}

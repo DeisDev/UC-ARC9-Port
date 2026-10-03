@@ -11,6 +11,9 @@ ATT.ActivateElements = {"ud_glock_slide_cs"}
 
 ATT.Icon = Material("entities/att/acwatt_ud_glock_slide_cs.png", "smooth mips")
 ATT.Category = "ud_glock_slide"
+ATT.UC_DefaultSlots = {
+    [8] = {Name = "uc.default.20_round_mag", Icon = Material("entities/att/acwatt_ud_glock_mag_17.png", "smooth mips")},
+}
 ATT.LHIK = true
 ATT.Model = "models/weapons/arccw/atts/classic_lhik.mdl"
 ATT.UC_HipDispersionMult = 1.15

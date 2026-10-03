@@ -5,6 +5,7 @@ ATT.Category = {"ur_ak_cal"}
 ATT.SortOrder = 10
 ATT.Ammo = "smg1"
 ATT.RangeMaxMult = 1.5
+ATT.RangeMinMult = 1.5
 ATT.SpeedMultSights = 1.05
 ATT.ReloadTimeMult = 0.95
 ATT.RecoilMult = 0.65

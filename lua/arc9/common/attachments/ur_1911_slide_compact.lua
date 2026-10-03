@@ -11,4 +11,5 @@ ATT.AimDownSightsTimeMult = 0.85
 ATT.SprintToFireTimeMult = 0.85
 ATT.SpreadMult = 1.5
 ATT.RangeMaxMult = 0.8
+ATT.RangeMinMult = 0.8
 ATT.RecoilMult = 1.2

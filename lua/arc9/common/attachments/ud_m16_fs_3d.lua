@@ -8,5 +8,6 @@ ATT.SortOrder = 1
 ATT.Model = "models/weapons/arccw/atts/3d_fs.mdl"
 ATT.Scale = 0.7
 ATT.Category = {"ud_m16_fs"}
+ATT.Free = true
 ATT.Ignore = false
 ATT.UC_FrontSight = 1

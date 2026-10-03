@@ -11,6 +11,7 @@ ATT.SpeedMultSights = 0.85
 ATT.RecoilMult = 0.85
 ATT.SpreadMult = 0.5
 ATT.RangeMaxMult = 1.5
+ATT.RangeMinMult = 1.5
 ATT.UC_HipDispersionMult = 1.25
 ATT.ShootPitchMult = 0.9
 ATT.RPMMult = 0.8

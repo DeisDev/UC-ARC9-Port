@@ -11,6 +11,7 @@ ATT.SpeedMultSights = 1.05
 ATT.RecoilMult = 1.3
 ATT.SpreadMult = 1.5
 ATT.RangeMaxMult = .75
+ATT.RangeMinMult = .75
 ATT.RPMMult = 625 / 600
 ATT.ShootPitchMult = 105 / 100
 ATT.ActivateElements = {"barrel_105", "ak_barrelchange", "nodong"}

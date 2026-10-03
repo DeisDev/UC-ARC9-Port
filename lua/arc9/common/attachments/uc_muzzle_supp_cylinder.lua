@@ -20,6 +20,7 @@ ATT.SprintToFireTimeMult = 1.15
 ATT.UC_HipDispersionMult = 1.2
 ATT.SwayMult = 1.15
 ATT.RangeMaxMult = 1.1
+ATT.RangeMinMult = 1.1
 ATT.InstallSound = "arccw_uc/common/gunsmith/suppressor_thread.ogg"
 ATT.UC_Compatible = function(wep)
     if !ARC9.UC.IsShotgun(wep) then

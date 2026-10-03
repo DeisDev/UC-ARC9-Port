@@ -8,4 +8,5 @@ ATT.SortOrder = 1
 ATT.Model = "models/weapons/arccw/atts/magpul_fs.mdl"
 ATT.Scale = 0.73
 ATT.Category = {"ud_m16_fs"}
+ATT.Free = true
 ATT.UC_FrontSight = 1

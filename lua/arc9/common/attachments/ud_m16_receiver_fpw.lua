@@ -20,6 +20,7 @@ ATT.RPMMult = 1103 / 900
 ATT.RecoilMult = 1.25 / 1.1
 ATT.RecoilRandomSideMult = 1.5
 ATT.RangeMaxMult = 0.9
+ATT.RangeMinMult = 0.9
 ATT.SpreadMult = 4 / 3
 ATT.UC_HipDispersionMult = 0.85
 ATT.TriggerDelay = true

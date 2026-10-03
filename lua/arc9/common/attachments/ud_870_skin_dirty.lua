@@ -3,3 +3,4 @@ ATT.MenuCategory = "ARC9 - Urban Coalition"
 
 ATT.Icon = Material("", "smooth mips")
 ATT.Category = "ud_870_skin"
+ATT.Free = true

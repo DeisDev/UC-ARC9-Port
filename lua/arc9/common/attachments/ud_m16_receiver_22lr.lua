@@ -9,6 +9,7 @@ ATT.DamageMaxMult = ARC9.UC.CalConv("556", "22lr", "max")
 ATT.DamageMinMult = ARC9.UC.CalConv("556", "22lr", "min")
 ATT.PenetrationMult = ARC9.UC.CalConv("556", "22lr", "pen")
 ATT.RangeMaxMult = 0.5
+ATT.RangeMinMult = 0.5
 ATT.SpeedMultShooting = 1.2
 ATT.RecoilMult = 0.2
 ATT.VisualRecoilMult = 0.2

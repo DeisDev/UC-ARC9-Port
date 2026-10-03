@@ -14,6 +14,7 @@ ATT.RPMMult = 1 / .85
 ATT.DamageMaxMult = ARC9.UC.CalConv("556", "9mm", "max")
 ATT.DamageMinMult = ARC9.UC.CalConv("556", "9mm", "min")
 ATT.RangeMaxMult = 0.4
+ATT.RangeMinMult = 0.4
 ATT.SpeedMultShooting = 1.1
 ATT.RecoilMult = 0.5
 ATT.UC_HipDispersionMult = 0.85

@@ -10,4 +10,5 @@ ATT.UC_Compatible = function(wep)
     end
 end
 ATT.RangeMaxMult = 1.1
+ATT.RangeMinMult = 1.1
 ATT.InstallSound = "arccw_uc/common/gunsmith/internal_modification.ogg"

@@ -14,6 +14,7 @@ ATT.MuzzleDevice = true
 ATT.ShootPitchMult = 1.1
 ATT.ShootVolumeMult = 0.75
 ATT.RangeMaxMult = 1.25
+ATT.RangeMinMult = 1.25
 ATT.BarrelLengthAdd = 5
 ATT.AimDownSightsTimeMult = 1.1
 ATT.SprintToFireTimeMult = 1.1

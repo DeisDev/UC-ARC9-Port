@@ -18,6 +18,7 @@ ATT.DamageMaxMult = ARC9.UC.CalConv("556", "762_39", "max")
 ATT.DamageMinMult = ARC9.UC.CalConv("556", "762_39", "min")
 ATT.PenetrationMult = ARC9.UC.CalConv("556", "762_39", "pen")
 ATT.RangeMaxMult = 2
+ATT.RangeMinMult = 2
 ATT.Malfunction = true
 ATT.Ammo = "ar2"
 ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.7_62x39mm_soviet")

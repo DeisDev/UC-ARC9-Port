@@ -6,4 +6,4 @@ ATT.Category = {"ur_aw_stock"}
 ATT.SortOrder = 3
 ATT.SwayMult = .85
 ATT.ActivateElements = {"ur_aw_stock_fixed", "stock_fixed"}
-ATT.DeployTimeMult = 1.2
+ATT.UC_DrawTimeMult = 1.2

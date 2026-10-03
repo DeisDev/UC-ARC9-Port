@@ -11,6 +11,7 @@ ATT.UC_HipDispersionMult = 0.85
 ATT.RecoilMult = 1.25
 ATT.SpreadMult = 1.5
 ATT.RangeMaxMult = 0.75
+ATT.RangeMinMult = 0.75
 ATT.RPMMult = 1.111 --0.945
 ATT.SwayMult = 0.85
 ATT.BarrelLengthAdd = -6

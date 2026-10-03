@@ -11,5 +11,4 @@ ATT.CustomPros = {
 }
 
 ATT.SortOrder = 1
-ATT.Free = true
 ATT.ActivateElements = {"ur_g3_skin_custom"}

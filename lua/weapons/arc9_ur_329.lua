@@ -371,6 +371,24 @@ SWEP.Attachments = {
     },
 }
 
+SWEP.AttachmentElements = {
+    ["ur_329_barrel_m29"] = {
+        Bodygroups = {{1, 1}},
+        PrintNameOverride = ARC9:GetPhrase("arc9_ur_329.name.m29"),
+        TrueNameOverride = ARC9:GetPhrase("arc9_ur_329.name.m29.true"),
+    },
+    ["ur_329_barrel_master"] = {
+        Bodygroups = {{1, 2}},
+        PrintNameOverride = ARC9:GetPhrase("arc9_ur_329.name.master"),
+        TrueNameOverride = ARC9:GetPhrase("arc9_ur_329.name.m29.true"),
+    },
+    ["ur_329_barrel_pocket"] = {
+        Bodygroups = {{1, 3}},
+        PrintNameOverride = ARC9:GetPhrase("arc9_ur_329.name.pocket"),
+        TrueNameOverride = ARC9:GetPhrase("arc9_ur_329.name.pocket.true"),
+    },
+}
+
 SWEP.PrintName = ARC9:GetPhrase("arc9_ur_329.printname")
 SWEP.TrueName = ARC9:GetPhrase("arc9_ur_329.truename")
 SWEP.Description = "arc9_ur_329.description"

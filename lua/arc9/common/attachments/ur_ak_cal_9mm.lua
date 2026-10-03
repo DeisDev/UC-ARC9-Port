@@ -4,6 +4,7 @@ ATT.Icon = Material("entities/att/uc_bullets/9x19.png", "mips smooth")
 ATT.Category = {"ur_ak_cal"}
 ATT.SortOrder = 9
 ATT.RangeMaxMult = 0.6
+ATT.RangeMinMult = 0.6
 ATT.RPMMult = 1.178
 ATT.ReloadTimeMult = .95
 ATT.RecoilMult = .35

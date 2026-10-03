@@ -2,6 +2,7 @@
 ATT.MenuCategory = "ARC9 - Urban Coalition"
 ATT.Icon = Material("entities/att/aksidemount.png", "smooth mips")
 ATT.Category = "ur_ak_charm"
+ATT.Free = true
 ATT.ActivateElements = {"ak_norail"}
 -- Attachment elements follow weapon elements, so this mount wins over short-barrel offsets.
 ATT.Element = {

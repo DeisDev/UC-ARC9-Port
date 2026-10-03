@@ -15,6 +15,7 @@ ATT.RecoilMult = 0.75
 ATT.RecoilRandomSideMult = 0.5
 ATT.RPMMult = 0.9
 ATT.RangeMaxMult = 1.5
+ATT.RangeMinMult = 1.5
 ATT.SwayMult = 2
 ATT.TriggerDelayTimeMult = 0
 ATT.ChamberSize = 1
