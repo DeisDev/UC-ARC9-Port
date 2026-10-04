@@ -75,6 +75,7 @@ SWEP.WorldModelOffset = {
 SWEP.DamageMax = ARC9.UC.StdDmg["12g_s"].max
 SWEP.DamageMin = ARC9.UC.StdDmg["12g_s"].min
 SWEP.Penetration = ARC9.UC.StdDmg["12g_s"].pen
+SWEP.PenetrationDelta = 0
 SWEP.Num = ARC9.UC.StdDmg["12g_s"].num
 
 SWEP.RangeMax = 40 * ARC9.UC.Meter
@@ -94,6 +95,8 @@ SWEP.Malfunction = true
 SWEP.MalfunctionJam = true
 -- ArcCW's automatic mean for a semi-only gun: clip size * 8 * 1.5
 SWEP.MalfunctionMeanShotsToFail = 4 * 8 * 1.5
+SWEP.MalfunctionNeverLastShoot = false
+SWEP.MalfunctionWait = 0.5
 
 -- Mag size --
 
@@ -122,7 +125,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.5
+SWEP.Sway = 0.5 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -168,6 +175,7 @@ SWEP.SpeedMultSights = 0.6
 SWEP.AimDownSightsTime = 0.4
 SWEP.SprintToFireTime = 0.4
 SWEP.SpeedMultShooting = 0.75
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 

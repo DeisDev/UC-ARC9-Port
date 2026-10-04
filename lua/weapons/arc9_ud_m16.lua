@@ -14,7 +14,10 @@ SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
-SWEP.RollJam = ARC9.UC.RollJam
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 SWEP.SendAttachmentTree = ARC9.UC.SendRailTree
 SWEP.ReceiveAttachmentTree = ARC9.UC.ReceiveRailTree
 SWEP.UC_MalfunctionVariance = 0.25
@@ -101,6 +104,7 @@ SWEP.CurvedDamageScaling = false
 SWEP.NormalizeNumDamage = true
 
 SWEP.Penetration = ARC9.UC.StdDmg["556"].pen
+SWEP.PenetrationDelta = 0
 SWEP.DamageType = DMG_BULLET
 SWEP.PhysBulletMuzzleVelocity = 960 * ARC9.UC.Meter
 
@@ -129,7 +133,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.5
+SWEP.Sway = 0.5 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -179,6 +187,10 @@ SWEP.HeatDissipation = 10
 SWEP.HeatDelayTime = 3
 
 SWEP.MalfunctionMeanShotsToFail = 200
+SWEP.MalfunctionWait = 0.5
+SWEP.UC_MalfunctionTakeRound = false
+SWEP.RecoilMultBipod = 1
+SWEP.SwayMultBipod = 1
 
 -- Speed multipliers --
 
@@ -187,6 +199,7 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.35
 SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.9
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 

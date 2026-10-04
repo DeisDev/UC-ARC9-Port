@@ -19,4 +19,5 @@ ATT.Bipod = true
 ATT.RecoilMultBipod = .25
 ATT.RecoilRandomSideMultBipod = .25
 ATT.UC_BipodDispersionMult = .2
+ATT.SwayMultBipod = .2
 ATT.ActivateElements = {"barrel_rpk", "ak_barrelchange", "uc_noubgl"}

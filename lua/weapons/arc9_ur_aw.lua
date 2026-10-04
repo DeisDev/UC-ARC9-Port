@@ -30,6 +30,7 @@ SWEP.DamageMin = 50
 SWEP.RangeMin = 100 * ARC9.UC.Meter
 SWEP.RangeMax = 400 * ARC9.UC.Meter
 SWEP.Penetration = 18
+SWEP.PenetrationDelta = 0
 SWEP.DamageType = DMG_BULLET
 SWEP.PhysBulletMuzzleVelocity = 850 * ARC9.UC.Meter
 SWEP.BodyDamageMults = ARC9.UC.BodyDamageMults
@@ -41,7 +42,11 @@ SWEP.RecoilRandomSide = 0.75 / 1.75
 SWEP.VisualRecoil = 5
 SWEP.VisualRecoilPunch = 4
 SWEP.VisualRecoilUp = 1.75
-SWEP.Sway = 0.2
+SWEP.Sway = 0.2 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 SWEP.RPM = 60 / (60 / 80)
 SWEP.Num = 1
 SWEP.Firemodes = {
@@ -54,6 +59,7 @@ SWEP.Firemodes = {
 SWEP.ShootPitch = 100
 SWEP.ShootVolume = 120
 SWEP.ReloadInSights = true
+SWEP.CantPeek = true
 SWEP.Spread = .25 * ARC9.UC.MOA
 SWEP.UC_HipDispersion = 1250 * ARC9.UC.Dispersion
 SWEP.UC_MoveDispersion = 500 * ARC9.UC.Dispersion
@@ -67,6 +73,7 @@ SWEP.Speed = 0.8
 SWEP.SpeedMultSights = 0.625
 SWEP.AimDownSightsTime = 0.35
 SWEP.SpeedMultShooting = 0.625
+SWEP.SpeedMultMelee = 1
 local testpath = ")weapons/arccw_ur/aw_placeholders/"
 local common = ")/arccw_uc/common/"
 local rottle = {common .. "cloth_1.ogg", common .. "cloth_2.ogg", common .. "cloth_3.ogg", common .. "cloth_4.ogg", common .. "cloth_6.ogg", common .. "rattle.ogg"}
@@ -793,30 +800,9 @@ end
 SWEP.UC_MalfunctionVariance = 0.25
 SWEP.MalfunctionNeverLastShoot = false
 SWEP.MalfunctionWait = 0.5
-function SWEP:DoPrimaryAttack()
-    self.UC_CheckMalfunction = true
-    local result = baseclass.Get("arc9_base").DoPrimaryAttack(self)
-    self.UC_CheckMalfunction = nil
-    return result
-end
-
-SWEP.HookP_BlockFire = function(wep)
-    if not wep.UC_CheckMalfunction or wep:GetUBGL() or wep:GetJammed() or wep:GetHeatLockout() then return end
-    if not IsFirstTimePredicted() then return end
-    if ARC9.UC.RollJam(wep) then
-        wep:SetBurstCount(0)
-        return true
-    end
-end
-
-function SWEP:RollJam()
-end
-
-function SWEP:UnJam()
-    if self:StillWaiting() then return end
-    self:TakeAmmo()
-    self:SetLoadedRounds(self:Clip1())
-    self:SetJammed(false)
-end
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 
 ARC9.UC.ConvertAttachmentAngles(SWEP)

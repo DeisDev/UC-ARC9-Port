@@ -20,9 +20,20 @@
 
 - Enabled and tuned ARC9 visual recoil for all seven weapons, including aimed fire and attachment changes.
 - M79 buckshot and Hornet's Nest rounds now use the pack's shotgun and .22 LR bullet speeds.
+- Aimed sway now matches Urban Coalition's strength, and guns also sway in hip fire, more while walking or airborne and less while crouching.
+- The AW can no longer peek over its sights.
 
 ### Fixed
 
+- NPCs now hold the Glock and M1911 as pistols.
+- The M79 can no longer aim while reloading.
+- Melee attacks no longer slow you down.
+- Bullets that use up their penetration now lose all their damage, as in Urban Coalition.
+- The 870, Glock, M16, Mini-14, Uzi, and AK now jam before the shot fires, as in Urban Coalition.
+- The M1014 can now jam on its last shell.
+- M79 buckshot and Hornet's Nest hits now use GMod's normal hit-zone damage.
+- M79 grenades no longer carry the shooter's movement speed.
+- The M16 LMG handguard bipod no longer cuts recoil far more than in Urban Coalition.
 - Aiming no longer shrinks the gun on screen on weapons and sights that never set their own aiming view, matching Urban Coalition.
 - The Glock and M1911 left hand now reaches the gun in third person when not aiming.
 - 329 barrels now change the gun's model and name.

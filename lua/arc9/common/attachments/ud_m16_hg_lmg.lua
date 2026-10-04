@@ -19,6 +19,7 @@ ATT.RecoilRandomSideMult = 0.5
 ATT.MalfunctionMeanShotsToFailMult = 2
 ATT.Bipod = true
 ATT.UC_BipodDispersionMult = 0.2
+ATT.SwayMultBipod = 0.2
 ATT.RecoilMultBipod = 0.15
 ATT.RecoilRandomSideMultBipod = 0.15
 ATT.LHIK = true

@@ -9,7 +9,10 @@ SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
-SWEP.RollJam = ARC9.UC.RollJam
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 SWEP.UC_MalfunctionVariance = 0.25
 SWEP.Spawnable = true
 SWEP.Category = "ARC9 - Urban Coalition"
@@ -69,6 +72,7 @@ SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_PISTOL
 SWEP.DamageMax = ARC9.UC.StdDmg["9mm"].max -- 4 shot close range kill (3 on chest)
 SWEP.DamageMin = ARC9.UC.StdDmg["9mm"].min -- 5 shot long range kill
 SWEP.Penetration = ARC9.UC.StdDmg["9mm"].pen
+SWEP.PenetrationDelta = 0
 
 SWEP.RangeMin = 15 * ARC9.UC.Meter
 SWEP.RangeMax = 50 * ARC9.UC.Meter -- 4 shot until ~35m
@@ -101,7 +105,11 @@ SWEP.VisualRecoilPunch = 0.5
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 1
+SWEP.Sway = 1 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -144,6 +152,8 @@ SWEP.HeatDissipation = 20
 SWEP.HeatDelayTime = 3
 
 SWEP.MalfunctionMeanShotsToFail = 150
+SWEP.MalfunctionWait = 0.5
+SWEP.UC_MalfunctionTakeRound = false
 
 -- Speed multipliers --
 
@@ -152,6 +162,7 @@ SWEP.SpeedMultSights = 0.9
 SWEP.AimDownSightsTime = 0.25
 SWEP.SprintToFireTime = 0.25
 SWEP.SpeedMultShooting = 1
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 
@@ -182,6 +193,7 @@ SWEP.HoldTypeSprint = "normal"
 SWEP.HoldTypeHolstered = "normal"
 SWEP.HoldType = "revolver"
 SWEP.HoldTypeSights = "revolver"
+SWEP.HoldTypeNPC = "pistol"
 
 -- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
 SWEP.IronSights = {

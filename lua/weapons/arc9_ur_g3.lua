@@ -26,6 +26,7 @@ SWEP.DamageMin = 35
 SWEP.RangeMin = 50 * ARC9.UC.Meter
 SWEP.RangeMax = 400 * ARC9.UC.Meter
 SWEP.Penetration = 20
+SWEP.PenetrationDelta = 0
 SWEP.DamageType = DMG_BULLET
 SWEP.PhysBulletMuzzleVelocity = 715 * ARC9.UC.Meter
 SWEP.BodyDamageMults = ARC9.UC.BodyDamageMults
@@ -37,7 +38,11 @@ SWEP.RecoilRandomSide = 0.6 / 1.4
 SWEP.VisualRecoil = 1
 SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilUp = 1.4
-SWEP.Sway = 0.4
+SWEP.Sway = 0.4 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 SWEP.RPM = 60 / (60 / 520)
 SWEP.Num = 1
 SWEP.Firemodes = {
@@ -65,6 +70,7 @@ SWEP.Speed = 0.9
 SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.35
 SWEP.SpeedMultShooting = 0.75
+SWEP.SpeedMultMelee = 1
 local path = ")weapons/arccw_ur/g3/"
 local common = ")/arccw_uc/common/"
 local rottle = {common .. "cloth_1.ogg", common .. "cloth_2.ogg", common .. "cloth_3.ogg", common .. "cloth_4.ogg", common .. "cloth_6.ogg", common .. "rattle.ogg"}
@@ -969,38 +975,9 @@ SWEP.Hook_ModifyElements = function(wep, elements)
     return elements
 end
 
-function SWEP:DoPrimaryAttack()
-    self.UC_CheckMalfunction = true
-    local result = baseclass.Get("arc9_base").DoPrimaryAttack(self)
-    self.UC_CheckMalfunction = nil
-    return result
-end
-
-SWEP.HookP_BlockFire = function(wep)
-    if not wep.UC_CheckMalfunction or wep:GetUBGL() or wep:GetJammed() or wep:GetHeatLockout() then return end
-    if not IsFirstTimePredicted() then return end
-    if ARC9.UC.RollJam(wep) then
-        wep:SetBurstCount(0)
-        return true
-    end
-end
-
-function SWEP:RollJam()
-end
-
-function SWEP:UnJam()
-    if self:StillWaiting() and not self.NoFireDuringSighting then return end
-    if self.StartedFixingJam then return end
-    self.StartedFixingJam = true
-    self:TakeAmmo()
-    self:SetLoadedRounds(self:Clip1())
-    local time = self:PlayAnimation("fix", 1, true)
-    self:SetInSights(false)
-    self:SetTimer(time - 0.01, function()
-        self:SetJammed(false)
-        self.StartedFixingJam = nil
-        self:PlayAnimation("idle")
-    end, "jamtimer")
-end
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 
 ARC9.UC.ConvertAttachmentAngles(SWEP)

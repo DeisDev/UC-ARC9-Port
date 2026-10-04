@@ -101,6 +101,7 @@ SWEP.WorldModelOffset = {
 SWEP.DamageMax = 18
 SWEP.DamageMin = 10
 SWEP.Penetration = 2
+SWEP.PenetrationDelta = 0
 SWEP.Num = 8
 SWEP.NumHook = ARC9.UC.PelletCount
 SWEP.Hook_GetDamageAtRange = ARC9.UC.PelletDamage
@@ -138,7 +139,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.5
+SWEP.Sway = 0.5 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -208,6 +213,7 @@ SWEP.SpeedMultSights = 0.5
 SWEP.AimDownSightsTime = 0.4
 SWEP.SprintToFireTime = 0.4
 SWEP.SpeedMultShooting = 0.75
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 

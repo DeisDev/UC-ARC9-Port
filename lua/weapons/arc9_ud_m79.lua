@@ -75,10 +75,12 @@ SWEP.NormalizeNumDamage = true
 
 SWEP.Num = 1
 SWEP.Penetration = 0
+SWEP.PenetrationDelta = 0
+SWEP.BodyDamageMults = ARC9.UC.GModBodyDamageMults()
+SWEP.ReloadInSights = false
 
 SWEP.ShootEnt = "arc9_uc_40mm_he"
 SWEP.ShootEntForce = 5000
-SWEP.ShootEntInheritPlayerVelocity = true
 SWEP.Hook_GetShootEntData = ARC9.UC.ShootEntDamage
 SWEP.ShootRocket = ARC9.UC.ShootRocket
 
@@ -104,7 +106,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.5
+SWEP.Sway = 0.5 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -146,6 +152,7 @@ SWEP.SpeedMultSights = 0.5
 SWEP.AimDownSightsTime = 0.4
 SWEP.SprintToFireTime = 0.4
 SWEP.SpeedMultShooting = 0.75
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 

@@ -9,7 +9,10 @@ SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
-SWEP.RollJam = ARC9.UC.RollJam
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 SWEP.UC_MalfunctionVariance = 0.25
 SWEP.Spawnable = true
 SWEP.Category = "ARC9 - Urban Coalition"
@@ -74,6 +77,7 @@ SWEP.CurvedDamageScaling = false
 SWEP.NormalizeNumDamage = true
 
 SWEP.Penetration = ARC9.UC.StdDmg["556"].pen
+SWEP.PenetrationDelta = 0
 SWEP.DamageType = DMG_BULLET
 SWEP.PhysBulletMuzzleVelocity = 960 * ARC9.UC.Meter
 
@@ -101,7 +105,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.25
+SWEP.Sway = 0.25 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -144,6 +152,7 @@ SWEP.HeatDissipation = 5
 SWEP.HeatDelayTime = 3
 
 SWEP.MalfunctionMeanShotsToFail = 100
+SWEP.MalfunctionWait = 0.5
 
 -- Speed multipliers --
 
@@ -152,6 +161,7 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.35
 SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.9
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 

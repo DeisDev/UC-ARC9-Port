@@ -54,6 +54,15 @@ ARC9.UC.Recoil = 1.5 / 2.5
 -- ArcCW draws the viewmodel at 45 degrees in sights that set no ViewModelFOV; ARC9 uses 75 plus arc9_fov.
 ARC9.UC.SightViewModelFOV = 45
 
+-- ArcCW drifts the aimed view by about 0.58 * Sway degrees RMS. ARC9 offsets aimed sights by about
+-- 1.26 * 0.75 * 0.8 * Sway degrees RMS when SwayMultSights is 1.
+ARC9.UC.Sway = 0.58 / (1.26 * 0.75 * 0.8)
+
+-- Without BodyDamageMults, ArcCW left GMod's limb scaling in place; ARC9 always cancels it.
+function ARC9.UC.GModBodyDamageMults()
+    return table.Copy(ARC9.CancelMultipliers[engine.ActiveGamemode()] or ARC9.CancelMultipliers[1])
+end
+
 local function PelletModifiers(wep)
     local add, mult = 0, 1
     for _, affector in ipairs(wep:GetAllAffectors()) do
@@ -670,6 +679,52 @@ function ARC9.UC.RollJam(wep)
     wep:SetNextPrimaryFire(CurTime() + wep:GetProcessedValue("MalfunctionWait", true))
     wep:SetNeedsCycle(false)
     return true
+end
+
+-- Most ArcCW malfunctions are rolled before firing, so the jammed round never fires.
+function ARC9.UC.DoPrimaryAttack(wep)
+    wep.UC_CheckMalfunction = true
+    local result = baseclass.Get("arc9_base").DoPrimaryAttack(wep)
+    wep.UC_CheckMalfunction = nil
+    return result
+end
+
+function ARC9.UC.BlockFireJam(wep)
+    if !wep.UC_CheckMalfunction or wep:GetUBGL() or wep:GetJammed() or wep:GetHeatLockout() then return end
+    if !IsFirstTimePredicted() then return end
+    if ARC9.UC.RollJam(wep) then
+        wep:SetBurstCount(0)
+        return true
+    end
+end
+
+-- Replaces ARC9's post-shot roll on weapons that roll before firing.
+function ARC9.UC.SkipPostFireJam()
+end
+
+-- ArcCW discards the jammed round when clearing unless MalfunctionTakeRound is false.
+function ARC9.UC.UnJam(wep)
+    if wep:StillWaiting() and !wep.NoFireDuringSighting then return end
+    if wep.StartedFixingJam then return end
+
+    if wep.UC_MalfunctionTakeRound != false then
+        wep:TakeAmmo()
+        wep:SetLoadedRounds(wep:Clip1())
+    end
+
+    if !wep:HasAnimation("fix") then
+        wep:SetJammed(false)
+        return
+    end
+
+    wep.StartedFixingJam = true
+    local time = wep:PlayAnimation("fix", 1, true)
+    wep:SetInSights(false)
+    wep:SetTimer(time - 0.01, function()
+        wep:SetJammed(false)
+        wep.StartedFixingJam = nil
+        wep:PlayAnimation("idle")
+    end, "jamtimer")
 end
 
 -- IKTimeLine from ArcCW's LHIK timings for an animation lasting `time` seconds.

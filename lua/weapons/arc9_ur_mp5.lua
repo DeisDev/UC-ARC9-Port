@@ -68,6 +68,7 @@ SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_SMG1
 SWEP.DamageMax = ARC9.UC.StdDmg["9mm"].max
 SWEP.DamageMin = ARC9.UC.StdDmg["9mm"].min
 SWEP.Penetration = ARC9.UC.StdDmg["9mm"].pen
+SWEP.PenetrationDelta = 0
 
 SWEP.RangeMin = 20 * ARC9.UC.Meter
 SWEP.RangeMax = 100 * ARC9.UC.Meter
@@ -102,7 +103,11 @@ SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
 
-SWEP.Sway = 0.25
+SWEP.Sway = 0.25 * ARC9.UC.Sway
+SWEP.SwayMultSights = 1
+SWEP.SwayMultMove = 1.5
+SWEP.SwayMultCrouch = 0.75
+SWEP.SwayMultMidAir = 2
 
 -- Firerate / Firemodes --
 
@@ -152,42 +157,10 @@ SWEP.MalfunctionMeanShotsToFail = 200
 SWEP.MalfunctionWait = 0.5
 SWEP.MalfunctionNeverLastShoot = false
 
--- ArcCW rolls this malfunction before firing and discards the round when clearing it.
-function SWEP:DoPrimaryAttack()
-    self.UC_CheckMalfunction = true
-    local result = baseclass.Get("arc9_base").DoPrimaryAttack(self)
-    self.UC_CheckMalfunction = nil
-    return result
-end
-
-SWEP.HookP_BlockFire = function(wep)
-    if !wep.UC_CheckMalfunction or wep:GetUBGL() or wep:GetJammed() or wep:GetHeatLockout() then return end
-    if !IsFirstTimePredicted() then return end
-    if ARC9.UC.RollJam(wep) then
-        wep:SetBurstCount(0)
-        return true
-    end
-end
-
-function SWEP:RollJam()
-    -- The base's post-shot roll is replaced by the pre-fire check above.
-end
-
-function SWEP:UnJam()
-    if self:StillWaiting() and !self.NoFireDuringSighting then return end
-    if self.StartedFixingJam then return end
-
-    self.StartedFixingJam = true
-    self:TakeAmmo()
-    self:SetLoadedRounds(self:Clip1())
-    local time = self:PlayAnimation("fix", 1, true)
-    self:SetInSights(false)
-    self:SetTimer(time - 0.01, function()
-        self:SetJammed(false)
-        self.StartedFixingJam = nil
-        self:PlayAnimation("idle")
-    end, "jamtimer")
-end
+SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
+SWEP.RollJam = ARC9.UC.SkipPostFireJam
+SWEP.UnJam = ARC9.UC.UnJam
 
 -- Speed multipliers --
 
@@ -196,6 +169,7 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.3
 SWEP.SprintToFireTime = 0.3
 SWEP.SpeedMultShooting = 0.95
+SWEP.SpeedMultMelee = 1
 
 -- Melee --
 
