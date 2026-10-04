@@ -5,6 +5,7 @@ ATT.Icon = Material("entities/att/acwatt_uc_grip_kacvfg.png", "mips smooth")
 ATT.SortOrder = 1400
 ATT.Category = "foregrip"
 ATT.LHIK = true
+ATT.LHIK_Priority = 1
 ATT.ModelOffset = Vector(0, 0, -0.25)
 ATT.Model = "models/weapons/arccw/atts/uc_kacvfg1.mdl"
 ATT.RecoilMult = 0.8

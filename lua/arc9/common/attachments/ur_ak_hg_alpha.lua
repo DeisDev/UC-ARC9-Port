@@ -12,4 +12,3 @@ ATT.ModelOffset = Vector(-22, -3.4, 3.3)
 ATT.Model = "models/weapons/arccw/ak_lhik_u.mdl"
 ATT.UC_ModelAngleOffset = Angle(5, 0, 0)
 ATT.ModelAngleOffset = ARC9.UC.AttachmentAngle(ATT.UC_ModelAngleOffset)
-ATT.LHIK_Priority = -1

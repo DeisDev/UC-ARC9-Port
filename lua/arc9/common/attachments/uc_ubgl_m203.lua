@@ -6,6 +6,7 @@ ATT.Icon = Material("entities/att/acwatt_uc_ubgl_m203.png", "mips smooth")
 ATT.SortOrder = -100000
 ATT.Category = "uc_ubgl"
 ATT.LHIK = true
+ATT.LHIK_Priority = 1
 ATT.ModelOffset = Vector(0, 0, 0)
 ATT.Model = "models/weapons/arccw/atts/uc_ubgl_m203.mdl"
 local fire = {

@@ -16,4 +16,3 @@ ATT.LHIK = true
 ATT.ModelOffset = Vector(-23, -2.6, 3.8)
 ATT.Model = "models/weapons/arccw/ak_lhik_dong.mdl"
 ATT.HoldType = "smg"
-ATT.LHIK_Priority = -1

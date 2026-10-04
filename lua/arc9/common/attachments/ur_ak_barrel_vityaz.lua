@@ -18,7 +18,6 @@ ATT.RangeMaxMult = 0.65
 ATT.RangeMinMult = 0.65
 ATT.ActivateElements = {"barrel_vityaz", "ak_barrelchange", "barrel_carbine", "ak_railedguard"}
 ATT.LHIK = true
-ATT.LHIK_Priority = -2
 ATT.ModelOffset = Vector(-24, -3.4, 3.3)
 ATT.Model = "models/weapons/arccw/ak_lhik_u.mdl"
 ATT.UC_ModelAngleOffset = Angle(10, 0, 0)

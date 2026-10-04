@@ -24,6 +24,9 @@
 ### Fixed
 
 - 329 barrels now change the gun's model and name.
+- Underbarrel launchers now animate the left hand with any M16 handguard.
+- The left hand now holds vertical foregrips on the M16, 870, Uzi, and G3 with any handguard, barrel, slide, or body.
+- The left hand now reaches for the magazine during AK reloads with the Alpha or Dong handguard or the Krinkov or Vityaz barrel.
 - Range bonuses and penalties now also move the start of damage falloff, as in the original pack.
 - The AW fixed stock no longer slows holstering.
 - The 40mm Dummy round no longer halves visual recoil a second time.
