@@ -651,6 +651,8 @@ SWEP.Attachments = {
         DefaultName = D("18_5in_factory_barrel"), --16\" M4 Super 90 SBS Barrel
         DefaultIcon = Material("entities/att/acwatt_ud_m1014_barrel.png", "smooth mips"),
         Category = "ud_1014_barrel",
+        Bone = "1014_parent",
+        Pos = Vector(0, -1.3, 17.5),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -681,7 +683,7 @@ SWEP.Attachments = {
         PrintName = "uc.slot.stock",
         Category = {"ud_1014_stock"},
         Bone = "1014_parent",
-        Pos = Vector(-0.02, 1.9, -2.07),
+        Pos = Vector(-0.03, 2.13, -11.61),
         Ang = Angle(90, 0, -90),
         DefaultName = D("extended_stock"),
         DefaultIcon = Material("entities/att/acwatt_ud_m1014_stock.png", "smooth mips"),
@@ -689,6 +691,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.tube",
         Category = {"ud_1014_tube"},
+        Bone = "1014_parent",
+        Pos = Vector(0, 0.9, 17.5),
         DefaultName = D("4_shell_tube"),
         DefaultIcon = Material("entities/att/acwatt_ud_m1014_tube.png", "smooth mips"),
         UnInstalledElements = {"ud_autoshotgun_tube_short"},

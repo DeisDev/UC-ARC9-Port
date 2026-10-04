@@ -1470,6 +1470,7 @@ SWEP.Attachments = {
         Bone = "m16_parent",
         Pos = Vector(2.8, -4.2, -11.5),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(30.3, 2.8, -3.6),
     },
     {
         PrintName = "uc.slot.handguard",
@@ -1479,6 +1480,7 @@ SWEP.Attachments = {
         Bone = "m16_parent",
         Pos = Vector(0, -1.63, -0.41),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(11.41, 0, -0.43),
         ExcludeElements = {"sd"},
     },
     {
@@ -1496,7 +1498,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/556x45.png", "smooth mips"),
         Category = {"ud_m16_receiver"},
         Bone = "m16_parent",
-        Pos = Vector(2.8, -4.2, -11.5),
+        Pos = Vector(0, -0.5, 4.6),
         Ang = Angle(90, 0, -90),
         ExcludeElements = {"ud_m16_fpw"},
     },
@@ -1506,7 +1508,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/acwatt_ud_m16_receiver_default.png", "smooth mips"),
         Category = {"ud_m16_fcg"},
         Bone = "m16_parent",
-        Pos = Vector(2.8, -4.2, -11.5),
+        Pos = Vector(0, 1.6, 1),
         Ang = Angle(90, 0, -90),
         ExcludeElements = {"m16_nolower"},
     },
@@ -1533,6 +1535,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.grip",
         Category = {"ud_m16_grip"},
+        Bone = "m16_parent",
+        Pos = Vector(0, 3.6, -1),
         DefaultName = D("standard_grip"),
         DefaultIcon = Material("entities/att/acwatt_ud_m16_grip_default.png", "smooth mips"),
         ExcludeElements = {"m16_adar"},
@@ -1551,6 +1555,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.magazine",
         Category = {"ud_m16_mag"},
+        Bone = "m16_mag",
+        Pos = Vector(0.05, -2.33, -0.93),
         DefaultName = D("30_round_mag"),
         DefaultIcon = Material("entities/att/acwatt_ud_m16_mag_30.png", "smooth mips"),
     },

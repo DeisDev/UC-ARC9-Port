@@ -271,16 +271,36 @@ SWEP.Animations = {
 SWEP.BulletBones = {}
 SWEP.AttachmentElements = {
     ["barrel_mid"] = {
-        Bodygroups = {{1, 1}}
+        Bodygroups = {{1, 1}},
+        AttPosMods = {
+            [2] = {
+                Pos = Vector(0, -19.22, 0.54),
+            },
+        },
     },
     ["barrel_compact"] = {
-        Bodygroups = {{1, 4}}
+        Bodygroups = {{1, 4}},
+        AttPosMods = {
+            [2] = {
+                Pos = Vector(0, -15.8, 0.54),
+            },
+        },
     },
     ["barrel_sw"] = {
-        Bodygroups = {{1, 2}}
+        Bodygroups = {{1, 2}},
+        AttPosMods = {
+            [2] = {
+                Pos = Vector(0, -9.13, 0.54),
+            },
+        },
     },
     ["barrel_swplus"] = {
-        Bodygroups = {{1, 3}, {3, 1}}
+        Bodygroups = {{1, 3}, {3, 1}},
+        AttPosMods = {
+            [2] = {
+                Pos = Vector(0, -6.34, 0.54),
+            },
+        },
     },
     ["stock_sw"] = {
         Bodygroups = {{2, 1}}
@@ -297,14 +317,19 @@ SWEP.Attachments = {
         Bone = "body",
         Pos = Vector(-0.4, -5, -6),
         Ang = Angle(0, 90, 0),
+        Icon_Offset = Vector(-1, 0.4, 6.9),
     },
     {
         PrintName = "ur.db.printname4",
         Category = "choke",
+        Bone = "body",
+        Pos = Vector(0, -25.93, 0.54),
     },
     {
         PrintName = "ur.db.printname5",
         Category = {"ur_db_stock"},
+        Bone = "body",
+        Pos = Vector(0, 7, -1.2),
         DefaultName = ARC9:GetPhrase("ur.db.defaultname2"),
         DefaultIcon = Material("entities/att/ur_dbs/s.png", "smooth mips"),
     },

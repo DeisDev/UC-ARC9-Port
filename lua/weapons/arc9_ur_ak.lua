@@ -593,6 +593,7 @@ SWEP.Attachments = {
         Bone = "tag_weapon",
         Pos = Vector(0, 12, 1.9),
         Ang = Angle(90, -90, -90),
+        Icon_Offset = Vector(4.5, 0, 1.5),
     },
     {
         PrintName = "uc.slot.handguard",
@@ -601,6 +602,7 @@ SWEP.Attachments = {
         Bone = "tag_weapon",
         Pos = Vector(0, 12, 1.9),
         Ang = Angle(90, -90, -90),
+        Icon_Offset = Vector(-0.5, 0, 2.4),
         Category = "ur_ak_hg",
         ExcludeElements = {"barrel_carbine"},
     },
@@ -619,13 +621,15 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/762x39.png", "mips smooth"),
         Category = {"ur_ak_cal"},
         Bone = "tag_weapon",
-        Pos = Vector(2.8, -4.2, -11.5),
+        Pos = Vector(0, 5.8, 2.6),
         Ang = Angle(90, 0, -90),
         UnInstalledElements = {"cal_default"}
     },
     {
         PrintName = "uc.slot.magazine",
         Category = {"ur_ak_mag"},
+        Bone = "vm_mag",
+        Pos = Vector(0, 3.37, 1.28),
         DefaultName = ARC9:GetPhrase("uc.default.30_round_mag"),
         DefaultIcon = Material("entities/att/ur_ak/magazines/762_30.png", "mips smooth"),
     },
@@ -652,6 +656,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.grip",
         Category = {"ur_ak_grip"},
+        Bone = "tag_weapon",
+        Pos = Vector(0, -1.7, -1.3),
         DefaultName = ARC9:GetPhrase("ur.default.grip"),
         DefaultIcon = Material("entities/att/ur_ak/grip_modern.png", "mips smooth"),
         ExcludeElements = {"stock_vepr"},
@@ -659,6 +665,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.stock",
         Category = {"ur_ak_stock"},
+        Bone = "tag_weapon",
+        Pos = Vector(0.14, -9.69, 1.38),
         DefaultName = ARC9:GetPhrase("ur.default.stock"),
         DefaultIcon = Material("entities/att/ur_ak/stock/n.png", "mips smooth"),
     },
@@ -688,6 +696,8 @@ SWEP.Attachments = {
         DefaultName = ARC9:GetPhrase("ur.default.cover"),
         DefaultIcon = Material("entities/att/ur_ak/dustcover_stock.png", "mips smooth"),
         Category = {"ur_ak_cover"},
+        Bone = "tag_weapon",
+        Pos = Vector(0, 1.5, 4.3),
         CosmeticOnly = true,
     },
     {

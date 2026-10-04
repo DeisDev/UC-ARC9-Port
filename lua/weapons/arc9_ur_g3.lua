@@ -274,6 +274,8 @@ SWEP.Attachments = {
     {
         PrintName = "ur.g3.printname2",
         Category = "ur_g3_barrel",
+        Bone = "body",
+        Pos = Vector(0, -1.7, 13.8),
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname1"),
         DefaultIcon = Material("entities/att/ur_g3/barrel_std.png", "smooth mips"),
         UnInstalledElements = {"g3_not8"}
@@ -281,6 +283,8 @@ SWEP.Attachments = {
     {
         PrintName = "ur.g3.printname3",
         Category = "ur_g3_rec",
+        Bone = "body",
+        Pos = Vector(0, -0.5, 3),
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname2"),
         DefaultIcon = Material("entities/att/ur_g3/rec_std.png", "smooth mips"),
     },
@@ -290,6 +294,7 @@ SWEP.Attachments = {
         Bone = "body",
         Pos = Vector(0, 1.5, 10),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(1.5, 0, 1.7),
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname3"),
         DefaultIcon = Material("entities/att/ur_g3/hg_std.png", "smooth mips"),
         ExcludeElements = {"hk79_pro", "g3_nohg"},
@@ -323,12 +328,16 @@ SWEP.Attachments = {
     {
         PrintName = "ur.g3.printname8",
         Category = "ur_g3_stock",
+        Bone = "body",
+        Pos = Vector(0, 1.2, -7),
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname4"),
         DefaultIcon = Material("entities/att/ur_g3/stock_std.png", "smooth mips"),
     },
     {
         PrintName = "ur.g3.printname9",
         Category = "ur_g3_mag",
+        Bone = "mag",
+        Pos = Vector(0.01, -1.52, -0.29),
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname5"),
         DefaultIcon = Material("entities/att/ur_g3/mag20.png", "smooth mips"),
     },
@@ -414,14 +423,12 @@ SWEP.Animations = {
     },
     ["fire"] = {
         Source = {"fire_01", "fire_02", "fire_03"},
-        EjectAt = 0,
         EventTable = {
             {s = {path .. "mech-01.ogg", path .. "mech-02.ogg", path .. "mech-03.ogg", path .. "mech-04.ogg", path .. "mech-05.ogg", path .. "mech-06.ogg"}, t = 0, v = 0.25},
         },
     },
     ["fire_iron"] = {
         Source = {"fire_01", "fire_02", "fire_03"},
-        EjectAt = 0,
         EventTable = {
             {s = common .. "common_mech_light.ogg", t = 0},
             {s = {path .. "mech-01.ogg", path .. "mech-02.ogg", path .. "mech-03.ogg", path .. "mech-04.ogg", path .. "mech-05.ogg", path .. "mech-06.ogg"}, t = 0},

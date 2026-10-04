@@ -683,12 +683,15 @@ SWEP.Attachments = {
         Bone = "uzi_parent",
         Pos = Vector(2.6, -3.7, -17.3),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(25.8, 2.6, -3.2),
     },
     {
         PrintName = "uc.slot.caliber",
         DefaultName = D("9x19mm_parabellum"),
         DefaultIcon = Material("entities/att/uc_bullets/9x19.png", "smooth mips"),
         Category = "ud_uzi_caliber",
+        Bone = "uzi_parent",
+        Pos = Vector(0, -0.8, 2.6),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -718,6 +721,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.stock",
         Category = {"ud_uzi_stock"},
+        Bone = "uzi_parent",
+        Pos = Vector(0, 1.2, -4.5),
         DefaultName = D("folding_stock"),
         DefaultIcon = Material("entities/att/acwatt_ud_uzi_stock.png", "smooth mips"),
         ExcludeElements = {"micro"},
@@ -725,6 +730,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.magazine",
         Category = {"ud_uzi_mag"},
+        Bone = "uzi_mag",
+        Pos = Vector(0.22, 2.46, -0.18),
         DefaultName = D("32_round_mag"),
         DefaultIcon = Material("entities/att/acwatt_ud_uzi_mag_32.png", "smooth mips"),
     },

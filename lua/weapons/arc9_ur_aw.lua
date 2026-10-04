@@ -208,6 +208,8 @@ SWEP.Attachments = {
         DefaultName = ARC9:GetPhrase("ur.aw.defaultname2"),
         DefaultIcon = Material("entities/att/ur_aw/bar_def.png", "mips smooth"),
         Category = "ur_aw_barrel",
+        Bone = "tag_weapon",
+        Pos = Vector(0, 25, 1.7),
     },
     {
         PrintName = "ur.aw.printname4",
@@ -226,12 +228,14 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/762x51.png", "mips smooth"),
         Category = {"ur_aw_cal"},
         Bone = "tag_weapon",
-        Pos = Vector(2.8, -4.2, -11.5),
+        Pos = Vector(0, 3, 1.5),
         Ang = Angle(90, 0, -90),
     },
     {
         PrintName = "ur.aw.printname6",
         Category = {"ur_aw_mag"},
+        Bone = "vm_mag",
+        Pos = Vector(0, -0.6, 0.34),
         DefaultName = ARC9:GetPhrase("ur.aw.defaultname5"),
         DefaultIcon = Material("entities/att/ur_aw/mag308_5.png", "mips smooth"),
         ExcludeElements = {"mag_338"}
@@ -256,6 +260,8 @@ SWEP.Attachments = {
     {
         PrintName = "ur.aw.printname9",
         Category = {"ur_aw_stock"},
+        Bone = "tag_weapon",
+        Pos = Vector(0, -8.14, -0.29),
         DefaultName = ARC9:GetPhrase("ur.aw.defaultname6"),
         DefaultIcon = Material("entities/att/ur_aw/stock_def.png", "mips smooth"),
     },

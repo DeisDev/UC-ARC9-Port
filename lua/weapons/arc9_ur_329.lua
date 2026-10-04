@@ -311,7 +311,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/acwatt_ur_329_barrel.png", "mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.329.defaultname2"),
         Bone = "Body",
-        Pos = Vector(3.07, -3.8, -27),
+        Pos = Vector(6, -4, 0),
         Ang = Angle(90, 0, -90),
     },
     {
@@ -320,7 +320,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/44magnum.png", "mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.329.defaultname3"),
         Bone = "Body",
-        Pos = Vector(3.07, -3.8, -27),
+        Pos = Vector(2.7, -2, 0),
         Ang = Angle(90, 0, -90),
     },
     {

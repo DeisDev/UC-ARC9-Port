@@ -727,6 +727,8 @@ SWEP.Attachments = {
         DefaultName = ARC9:GetPhrase("ur.spas12.default.barrel"),
         DefaultIcon = Material("entities/att/ur_spas/barrel_std.png", "smooth mips"),
         Category = "ur_spas12_barrel",
+        Bone = "spas_parent",
+        Pos = Vector(0, 18, 1.2),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -755,12 +757,16 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.stock",
         Category = "ur_spas12_stock",
+        Bone = "spas_parent",
+        Pos = Vector(0, -12, -1.2),
         DefaultName = D("extended_stock"),
         DefaultIcon = Material("entities/att/ur_spas/stock_std.png", "smooth mips"),
     },
     {
         PrintName = "uc.slot.tube",
         Category = "ur_spas12_tube",
+        Bone = "spas_parent",
+        Pos = Vector(0, 18, -0.9),
         DefaultName = ARC9:GetPhrase("ur.spas12.default.tube"),
         DefaultIcon = Material("entities/att/ur_spas/magbig.png", "smooth mips"),
     },

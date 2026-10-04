@@ -504,6 +504,8 @@ SWEP.Attachments = {
         DefaultName = D("16in_standard_barrel"),
         DefaultIcon = Material("entities/att/acwatt_ud_870_barrel.png", "smooth mips"),
         Category = "ud_870_barrel",
+        Bone = "870_parent",
+        Pos = Vector(0, -1.5, 17.2),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -521,6 +523,7 @@ SWEP.Attachments = {
         Bone = "870_slide",
         Pos = Vector(3, -4.4, -29),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(26.81, 3.05, -4.2),
     },
     {
         PrintName = "uc.slot.underbarrel",
@@ -542,10 +545,14 @@ SWEP.Attachments = {
         DefaultName = D("wooden_stock"),
         DefaultIcon = Material("entities/att/acwatt_ud_870_stock.png", "smooth mips"),
         Category = {"ud_870_stock"},
+        Bone = "870_parent",
+        Pos = Vector(-0.03, 1.69, -11.96),
     },
     {
         PrintName = "uc.slot.tube",
         Category = {"ud_870_tube"},
+        Bone = "870_parent",
+        Pos = Vector(0, 0.7, 17.2),
         DefaultName = D("6_shell_tube"),
         DefaultIcon = Material("entities/att/acwatt_ud_870_tube.png", "smooth mips"),
     },

@@ -484,7 +484,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/acwatt_ur_deagle_barrel.png", "mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.deagle.defaultname2"),
         Bone = "Body",
-        Pos = Vector(3.07, -3.8, -27),
+        Pos = Vector(0, -5, 8.5),
         Ang = Angle(90, 0, -90),
     },
     {
@@ -493,7 +493,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/50ae.png", "mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.deagle.defaultname3"),
         Bone = "Body",
-        Pos = Vector(3.07, -3.8, -27),
+        Pos = Vector(0, -4.6, 3.2),
         Ang = Angle(90, 0, -90),
     },
     {
@@ -519,6 +519,8 @@ SWEP.Attachments = {
     {
         PrintName = "ur.deagle.printname6",
         Category = {"ur_deagle_mag"},
+        Bone = "Mag",
+        Pos = Vector(0, 1.21, -0.95),
         DefaultIcon = Material("entities/att/acwatt_ur_deagle_mag_7.png", "mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.deagle.defaultname5"),
     },
@@ -534,7 +536,9 @@ SWEP.Attachments = {
         PrintName = "ur.deagle.printname8",
         DefaultName = ARC9:GetPhrase("ur.deagle.defaultname6"),
         DefaultIcon = Material("entities/att/acwatt_ur_deagle_grip_plastic.png", "mips smooth"),
-        Category = "ur_deagle_grip"
+        Category = "ur_deagle_grip",
+        Bone = "Body",
+        Pos = Vector(0, -1.9, 0.4),
     },
     {
         PrintName = "ur.deagle.printname9",

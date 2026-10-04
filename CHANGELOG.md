@@ -28,6 +28,10 @@
 - The AW fixed stock no longer slows holstering.
 - The 40mm Dummy round no longer halves visual recoil a second time.
 - The Glock CS slide and Uzi .45 conversion show the correct default magazine name.
+- Every weapon part slot now has a marker in the 3D customization view, placed on its part.
+- The double-barrel choke marker moves with the barrel length.
+- The Glock stock adapter now sits higher with the compact frame and 10-round magazine, as the original intended.
+- The G3 ejects one shell per shot instead of two.
 - M16 rear sights stay at their fixed rail position.
 - Skins, covers, charms, and front sights are free only where the original pack made them free.
 - With true names on, the 329, double-barrel shotgun, Desert Eagle, and G3 now list their real manufacturers.

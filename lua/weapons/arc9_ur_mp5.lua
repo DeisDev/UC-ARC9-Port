@@ -1029,12 +1029,15 @@ SWEP.Attachments = {
         Bone = "body",
         Pos = Vector(2.6, -3.7, -17.3),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(22.3, 2.6, -2.8),
     },
     {
         PrintName = "ur.slot.lower_receiver",
         DefaultName = ARC9:GetPhrase("ur.default.mp5_lower"),
         DefaultIcon = Material("entities/att/ur_mp5/grip.png", "smooth mips"),
         Category = "ur_mp5_caliber",
+        Bone = "body",
+        Pos = Vector(0, 2.6, 0.8),
         UnInstalledElements = {"receiver_lower_0"}
     },
     {
@@ -1056,6 +1059,7 @@ SWEP.Attachments = {
         Bone = "body",
         Pos = Vector(0, .9, 10),
         Ang = Angle(90, 0, -90),
+        Icon_Offset = Vector(0, 0, 1.35),
     },
     {
         PrintName = "uc.slot.underbarrel",
@@ -1081,12 +1085,16 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.stock",
         Category = {"ur_mp5_stock"},
+        Bone = "body",
+        Pos = Vector(0, 1.2, -6),
         DefaultName = ARC9:GetPhrase("uc.default.full_stock"),
         DefaultIcon = Material("entities/att/ur_mp5/stock_std.png", "smooth mips"),
     },
     {
         PrintName = "uc.slot.magazine",
         Category = {"ur_mp5_mag"},
+        Bone = "mag",
+        Pos = Vector(0.01, 1.52, 1.17),
         DefaultName = ARC9:GetPhrase("uc.default.30_round_mag"),
         DefaultIcon = Material("entities/att/ur_mp5/mag30.png", "smooth mips"),
         ExcludeElements = {"ur_mp5_cal_40sw","ur_mp5_cal_10mm"}

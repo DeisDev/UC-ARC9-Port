@@ -754,6 +754,8 @@ SWEP.Attachments = {
         DefaultName = D("20in_standard_barrel"),
         DefaultIcon = Material("entities/att/acwatt_ud_mini14_barrel.png", "smooth mips"),
         Category = "ud_mini14_barrel",
+        Bone = "mini14_parent",
+        Pos = Vector(0, -2.3, 20.4),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -770,6 +772,8 @@ SWEP.Attachments = {
         DefaultName = D("mini_14_receiver"),
         DefaultIcon = Material("entities/att/acwatt_ud_mini14_receiver.png", "smooth mips"),
         Category = "ud_mini14_receiver",
+        Bone = "mini14_parent",
+        Pos = Vector(0, -1.6, 2.5),
     },
     {
         PrintName = "uc.slot.underbarrel",
@@ -791,12 +795,16 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.magazine",
         Category = {"ud_mini14_mag"},
+        Bone = "mini14_mag",
+        Pos = Vector(-0.03, 2.26, 0.34),
         DefaultName = D("20_round_mag"),
         DefaultIcon = Material("entities/att/acwatt_ud_mini14_mag_20.png", "smooth mips"),
     },
     {
         PrintName = "uc.slot.stock",
         Category = {"ud_mini14_stock"},
+        Bone = "mini14_parent",
+        Pos = Vector(0, 2.5, -9),
         DefaultName = D("wooden_stock"),
         DefaultIcon = Material("entities/att/acwatt_ud_mini14_stock.png", "smooth mips"),
     },

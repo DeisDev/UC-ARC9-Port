@@ -293,7 +293,7 @@ SWEP.AttachmentElements = {
     ["ud_glock_mag_10"] = {
         Bodygroups = {{1, 1}},
         AttPosMods = {
-            [8] = {
+            [9] = {
                 Pos = Vector(0.1, 1, -1.2),
                 Ang = Angle(90, 0, -90),
             }
@@ -950,18 +950,23 @@ SWEP.Attachments = {
         Bone = "glock_flash",
         Pos = Vector(2.4, -0.2, -29.2), -- Op. CS slide
         Ang = Angle(90, 3, -90),
+        Icon_Offset = Vector(26.68, 2.4, -1.18),
     },
     {
         PrintName = "uc.slot.frame",
         DefaultName = D("standard_frame"),
         DefaultIcon = Material("entities/att/acwatt_ud_glock_frame.png", "smooth mips"),
         Category = "ud_glock_frame",
+        Bone = "glock_parent",
+        Pos = Vector(0, -0.4, 2.6),
     },
     {
         PrintName = "uc.slot.caliber",
         DefaultName = D("9x19mm_parabellum"),
         DefaultIcon = Material("entities/att/uc_bullets/9x19.png", "smooth mips"),
         Category = "ud_glock_caliber",
+        Bone = "glock_parent",
+        Pos = Vector(0, -2.45, 2),
     },
     {
         PrintName = "uc.slot.muzzle",
@@ -993,6 +998,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.magazine",
         Category = {"ud_glock_mag"},
+        Bone = "glock_mag",
+        Pos = Vector(-0.01, -0.13, 0.34),
         DefaultIcon = Material("entities/att/acwatt_ud_glock_mag_17.png", "smooth mips"),
         DefaultName = D("17_round_mag"),
     },

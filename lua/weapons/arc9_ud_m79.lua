@@ -357,6 +357,7 @@ SWEP.Attachments = {
         Bone = "m79_front",
         Pos = Vector(3.45, -5.3, -22),
         Ang = Angle(90, 2, -90),
+        Icon_Offset = Vector(24.48, 3.45, -3.86),
     },
     {
         PrintName = "uc.slot.underbarrel",
@@ -379,6 +380,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.stock",
         Category = {"ud_m79_stock"},
+        Bone = "m79_body",
+        Pos = Vector(0.02, 1.16, -10.85),
         DefaultName = D("wooden_stock"),
         DefaultIcon = Material("entities/att/acwatt_ud_m79_stock.png", "smooth mips"),
     },

@@ -780,6 +780,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.slide",
         Category = {"ur_m1911_slide"},
+        Bone = "vm_pivot",
+        Pos = Vector(0, -1.9, 3.5),
         DefaultIcon = Material("entities/att/ur_1911/slide_std.png","mips smooth"),
         DefaultName = ARC9:GetPhrase("ur.m1911.default.slide"),
     },
@@ -789,7 +791,7 @@ SWEP.Attachments = {
         DefaultIcon = Material("entities/att/uc_bullets/45acp.png","mips smooth"),
         DefaultName = ARC9:GetPhrase("uc.calibre.45_acp"),
         Bone = "vm_pivot",
-        Pos = Vector(3.07, -3.8, -27),
+        Pos = Vector(0, -1.3, -0.3),
         Ang = Angle(90, 0, -90),
         UnInstalledElements = {"cal_subsonic"},
     },
@@ -814,6 +816,8 @@ SWEP.Attachments = {
     {
         PrintName = "uc.slot.magazine",
         Category = {"ur_m1911_mag"},
+        Bone = "tag_mag",
+        Pos = Vector(0, -1.2, -3.5),
         DefaultIcon = Material("entities/att/ur_1911/mag7.png","mips smooth"),
         DefaultName = ARC9:GetPhrase("uc.default.7_round_mag"),
     },
@@ -829,7 +833,9 @@ SWEP.Attachments = {
         PrintName = "uc.slot.grip",
         DefaultName = ARC9:GetPhrase("ur.m1911.default.grip"),
         DefaultIcon = Material("entities/att/ur_1911/grip.png","mips smooth"),
-        Category = "ur_m1911_grip"
+        Category = "ur_m1911_grip",
+        Bone = "vm_pivot",
+        Pos = Vector(0, 1.3, -1.4),
     },
     {
         PrintName = "uc.slot.ammo",
