@@ -23,6 +23,7 @@
 
 ### Fixed
 
+- The Glock and M1911 left hand now reaches the gun in third person when not aiming.
 - 329 barrels now change the gun's model and name.
 - Underbarrel launchers now animate the left hand with any M16 handguard.
 - The left hand now holds vertical foregrips on the M16, 870, Uzi, and G3 with any handguard, barrel, slide, or body.

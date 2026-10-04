@@ -224,7 +224,7 @@ SWEP.SprintAngHook = ARC9.UC.SprintAng
 
 SWEP.HoldTypeSprint = "normal"
 SWEP.HoldTypeHolstered = "normal"
-SWEP.HoldType = "pistol"
+SWEP.HoldType = "revolver"
 SWEP.HoldTypeSights = "revolver"
 
 -- Authored sight poses converted to ARC9's rotation order and unrotated position axes.

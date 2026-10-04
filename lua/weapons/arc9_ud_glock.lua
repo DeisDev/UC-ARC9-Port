@@ -180,7 +180,7 @@ SWEP.RestAng = Angle(2.075420, -15.490321, -7.554519)
 
 SWEP.HoldTypeSprint = "normal"
 SWEP.HoldTypeHolstered = "normal"
-SWEP.HoldType = "pistol"
+SWEP.HoldType = "revolver"
 SWEP.HoldTypeSights = "revolver"
 
 -- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
