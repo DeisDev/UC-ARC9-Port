@@ -558,6 +558,9 @@ SWEP.Animations = {
 
 -- Bodygroups --
 
+-- Hide the loose reload shell on worldmodels and in customization.
+SWEP.HideBones = {"1014_shell1"}
+
 SWEP.AttachmentElements = {
     ["ud_autoshotgun_barrel_short"] = {
         Bodygroups = {{1, 1}},
