@@ -25,6 +25,7 @@ ATT.TriggerDelayTimeMult = 0
 ATT.LHIK = true
 ATT.HoldType = "pistol"
 ATT.HoldTypeSights = "revolver"
+ATT.UC_TPIKFreeLeftHandHoldType = "revolver"
 ATT.HookP_ClassChange = function(wep, class) return "uc.class.machine_pistol" end
 ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.mechanism3", "ud_uzi_body_micro.trivia.mechanism")
 ATT.Model = "models/weapons/arccw/atts/mini_lhik.mdl"

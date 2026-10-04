@@ -14,6 +14,15 @@ hook.Add("Initialize", "ARC9_UC_HandlingStats", function()
     ARC9.AutoStatsMains.UC_MeleeWaitTime = {true, true}
 end)
 
+-- ARC9 reads these fields right after this hook, so the left hand is freed only in that hold type.
+hook.Add("ARC9_TPIK_PreSolve", "ARC9_UC_TPIKFreeLeftHand", function(wep, ply, wm, data)
+    local holdtype = wep:GetValue("UC_TPIKFreeLeftHandHoldType")
+    if !holdtype or wep:GetValue("UC_HideLeftHand") then return end
+    local free = data.holdtype == holdtype
+    wep.TPIKforcelefthand = !free
+    wep.TPIKnolefthand = free
+end)
+
 function ARC9.UC.CreateRailPanel(wep)
     wep:ClearTabPanel()
     wep:ClosePresetMenu()

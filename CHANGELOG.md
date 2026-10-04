@@ -47,6 +47,7 @@
 - Corrected the AK's displaced collision hull that made dropped weapons float and rotate off-center.
 - Hidden the M1911 spare worldmodel magazine and the AK's spare magazine rounds.
 - Removed the floating shotgun shell behind the M1014 worldmodel.
+- Fixed the Uzi Mini and Micro aiming pose in third person; the left hand now follows the two-handed pistol stance.
 - Shortened the forced-reset fire-mode label to prevent overlap with the ammo count.
 - Corrected the M1911 camera turning sideways and bringing the arms across the view.
 - Corrected attachment rotations, model offsets, charm placement, and optic alignment across all eight weapons.

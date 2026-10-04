@@ -558,6 +558,7 @@ function ARC9.UC.PostModify(wep, toggleonly)
     baseclass.Get("arc9_base").PostModify(wep, toggleonly)
     if baseclass.Get(wep:GetClass()).TPIKforcelefthand then
         wep.TPIKforcelefthand = !wep:GetValue("UC_HideLeftHand")
+        wep.TPIKnolefthand = nil
     end
 end
 

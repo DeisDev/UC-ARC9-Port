@@ -19,6 +19,7 @@ ATT.TriggerDelayTimeMult = 0.75
 ATT.LHIK = true
 ATT.HoldType = "pistol"
 ATT.HoldTypeSights = "revolver"
+ATT.UC_TPIKFreeLeftHandHoldType = "revolver"
 ATT.Model = "models/weapons/arccw/atts/tactical_lhik.mdl"
 ATT.ModelOffset = Vector(2, -4.1, -1.9)
 ATT.UC_ModelAngleOffset = Angle(10, 5, 0)
