@@ -101,6 +101,7 @@ SWEP.IronSights = {
     Pos = Vector(-1.367104, 0, 2.575078),
     Ang = Angle(0, 0, 3.000000),
     Magnification = 1.05,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 SWEP.SprintPos = Vector(5.280846, 4.499513, 0.931156)

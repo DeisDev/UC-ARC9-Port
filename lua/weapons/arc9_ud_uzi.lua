@@ -354,6 +354,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.869, 3, 1.95),
             Ang = Angle(-0, 0.035, 0),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
             CrosshairInSights = false
         },
         AttPosMods = {

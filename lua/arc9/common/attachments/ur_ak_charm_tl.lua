@@ -18,7 +18,8 @@ ATT.Sights = {
     {
         Pos = Vector(0, 20, -6),
         Ang = Angle(0, 0, -25),
-        Magnification = 1
+        Magnification = 1,
+        ViewModelFOV = ARC9.UC.SightViewModelFOV,
     }
 }
 

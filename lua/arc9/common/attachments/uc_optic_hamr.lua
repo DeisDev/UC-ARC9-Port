@@ -23,6 +23,7 @@ ATT.Sights = {
         Pos = Vector(0, 8, -2.94738),
         Ang = Angle(0, 0, 0),
         Magnification = 1.1,
+        ViewModelFOV = ARC9.UC.SightViewModelFOV,
         Reticle = Material("hud/reticles/uc_reddot.png", "mips smooth"),
         ExtraSightData = {
             RTScope = false,

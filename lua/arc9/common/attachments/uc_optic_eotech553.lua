@@ -15,6 +15,7 @@ ATT.Sights = {
         Pos = Vector(0, 8.5, -1.48),
         Ang = Angle(0, 0, 0),
         Magnification = 1.1,
+        ViewModelFOV = ARC9.UC.SightViewModelFOV,
     },
 }
 ATT.HoloSight = true

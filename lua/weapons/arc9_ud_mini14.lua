@@ -193,6 +193,7 @@ SWEP.IronSights = {
     Pos = Vector(-4.305, -7, 2.55),
     Ang = Angle(0, 0, 0),
     Magnification = 1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
     CrosshairInSights = false,
 }
 

@@ -232,6 +232,7 @@ SWEP.IronSights = {
     Pos = Vector(-2.175632, 9.993889, 1.751486),
     Ang = Angle(0.020000, 0.200000, 5.500070),
     Magnification = 1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 SWEP.ActivePos = Vector(0.288644, 3.000000, 1.302568)
@@ -382,6 +383,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.162780, 9.990348, 1.662929),
             Ang = Angle(0.070001, 0.275000, 5.500336),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },
     },
 
@@ -397,6 +399,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.162780, 9.990348, 1.662929),
             Ang = Angle(0.070001, 0.275000, 5.500336),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },
     },
 

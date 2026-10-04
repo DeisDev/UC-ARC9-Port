@@ -12,7 +12,8 @@ ATT.UC_IronSight = true
 ATT.IronSights = {
     Pos = Vector(-2.8, 0, 0.9),
     Ang = Angle(0.9, 0, 0),
-    Magnification = 1.1
+    Magnification = 1.1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 ATT.Model = "models/weapons/arccw/atts/kac_rs.mdl"
 ATT.ModelOffset = Vector(-1.5, -0.01, -0.09)

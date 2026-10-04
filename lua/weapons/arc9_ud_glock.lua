@@ -321,6 +321,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.283, -0.025368, 2.505872),
             Ang = Angle(0, 0.58, 0),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["ud_glock_slide_lb"] = {
@@ -381,6 +382,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-3.397, 0, -3.057),
             Ang = Angle(0, 0, -90),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
 }

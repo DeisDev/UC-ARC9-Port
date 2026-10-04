@@ -16,6 +16,7 @@ local function kobra(reticle)
         Pos = Vector(0, 11, -5.85),
         Ang = Angle(0, 0, 0),
         Magnification = 1.1,
+        ViewModelFOV = ARC9.UC.SightViewModelFOV,
         Reticle = reticle,
     }
 end

@@ -51,6 +51,9 @@ ARC9.UC.Meter = 1 / ARC9.HUToM
 -- ArcCW turns the view by 1.5 * Recoil degrees per shot; ARC9 by 2.5 * Recoil * RecoilUp.
 ARC9.UC.Recoil = 1.5 / 2.5
 
+-- ArcCW draws the viewmodel at 45 degrees in sights that set no ViewModelFOV; ARC9 uses 75 plus arc9_fov.
+ARC9.UC.SightViewModelFOV = 45
+
 local function PelletModifiers(wep)
     local add, mult = 0, 1
     for _, affector in ipairs(wep:GetAllAffectors()) do
@@ -467,7 +470,7 @@ end
 -- ArcCW HolosightSize is a 2D reticle of HolosightSize * 4% of the screen height.
 -- ARC9 draws a quad HoloSightSize units wide, 9000 units ahead, in the viewmodel camera.
 function ARC9.UC.HoloSize(size, vmfov)
-    return size * 0.04 * 9000 * 2 * 0.75 * math.tan(math.rad((vmfov or 75) / 2))
+    return size * 0.04 * 9000 * 2 * 0.75 * math.tan(math.rad((vmfov or ARC9.UC.SightViewModelFOV) / 2))
 end
 
 -- ArcCW renders magnified optics at the player FOV / magnification / 1.2. ARC9 divides by RTScopeMagnification alone.

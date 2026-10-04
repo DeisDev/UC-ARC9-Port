@@ -23,6 +23,7 @@
 
 ### Fixed
 
+- Aiming no longer shrinks the gun on screen on weapons and sights that never set their own aiming view, matching Urban Coalition.
 - The Glock and M1911 left hand now reaches the gun in third person when not aiming.
 - 329 barrels now change the gun's model and name.
 - Underbarrel launchers now animate the left hand with any M16 handguard.

@@ -239,6 +239,7 @@ SWEP.IronSights = {
     Pos = Vector(-3.835, -4, 1.55),
     Ang = Angle(0.2, 0, 1),
     Magnification = 1.05,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 -- ArcCW poses converted to ARC9's rotation order and unrotated position axes.

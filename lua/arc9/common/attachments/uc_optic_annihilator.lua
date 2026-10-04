@@ -19,6 +19,7 @@ ATT.Sights = {
         Pos = Vector(0, 14, -5.12),
         Ang = Angle(-.2, 0, 0),
         Magnification = 1,
+        ViewModelFOV = ARC9.UC.SightViewModelFOV,
     },
 }
 ATT.LaserStrength = 2

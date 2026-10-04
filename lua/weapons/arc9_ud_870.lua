@@ -190,6 +190,7 @@ SWEP.IronSights = {
     Pos = Vector(-3.66, -3, 2.2),
     Ang = Angle(-0.75, 0, 2.8),
     Magnification = 1.1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 -- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
@@ -414,6 +415,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-3.665, -2.75, 2.1),
             Ang = Angle(-0.6, 0, 1),
             Magnification = 1.1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },
     },
     ["optic_rail"] = {

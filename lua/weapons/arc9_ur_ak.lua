@@ -183,7 +183,8 @@ SWEP.CrouchAng = Angle(-0.000000, -0.000000, -14.000000)
 SWEP.IronSights = {
     Pos = Vector(-2.546937, -2.017061, 0.677626),
     Ang = Angle(0.274015, 0.599993, 5.532869),
-    Magnification = 1.1
+    Magnification = 1.1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 local path = ")weapons/arccw_ur/ak/"
@@ -228,6 +229,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.537373, -2.011341, 0.932348),
             Ang = Angle(0.274000, -0.099999, 5.529522),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["barrel_rpk74m"] = {
@@ -255,6 +257,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.531500, -1.989509, 1.184232),
             Ang = Angle(0.120018, -0.999998, 5.527905),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["barrel_vityaz"] = {
@@ -279,6 +282,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.527175, -2.003582, 1.012891),
             Ang = Angle(0.200005, -0.419997, 5.528534),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["barrel_t56"] = {
@@ -299,6 +303,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.537258, -2.004246, 1.019715),
             Ang = Angle(0.180002, -0.299999, 5.529058),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["ur_ak_hg_vepr"] = {
@@ -316,6 +321,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.534406, -2.016921, 0.706551),
             Ang = Angle(0.265015, 0.599994, 5.532775),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["barrel_dong"] = {

@@ -199,6 +199,7 @@ SWEP.IronSights = {
     Pos = Vector(-2.73, -2, 1.1),
     Ang = Angle(.25, 0.01, 0),
     Magnification = 1.1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
 -- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
@@ -588,7 +589,8 @@ SWEP.AttachmentElements = {
         IronSights = {
             Pos = Vector(-2.73, -2, 1.01),
             Ang = Angle(0.95, 0.01, 0),
-            Magnification = 1.1
+            Magnification = 1.1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },
     },
     ["ud_autoshotgun_tube_short"] = {

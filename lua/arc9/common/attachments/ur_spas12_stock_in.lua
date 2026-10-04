@@ -17,6 +17,7 @@ ATT.IronSights = {
     Pos = Vector(-1.1, -2, -1.1),
     Ang = Angle(3, 1.5, 0),
     Magnification = 1.075,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
     CrosshairInSights = true,
 }
 ATT.HoldType = "shotgun"

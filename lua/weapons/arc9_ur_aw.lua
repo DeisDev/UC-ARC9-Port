@@ -98,6 +98,7 @@ SWEP.IronSights = {
     Pos = Vector(-3.344215, -5.000000, 0.797197),
     Ang = Angle(0, 0, 2.000000),
     Magnification = 1.1,
+    ViewModelFOV = ARC9.UC.SightViewModelFOV,
     CrosshairInSights = false
 }
 
@@ -152,6 +153,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-3.345818, -5.000000, 1.467661),
             Ang = Angle(0, 0, 2.000000),
             Magnification = 1,
+            ViewModelFOV = ARC9.UC.SightViewModelFOV,
         }
     },
     ["sights_flipped"] = {
