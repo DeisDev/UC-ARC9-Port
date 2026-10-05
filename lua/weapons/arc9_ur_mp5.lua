@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -191,12 +192,19 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 24
+SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
 
--- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
-SWEP.RestPos = Vector(0.515385, -1.742824, 1.395329)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.RestPos = Vector(0.707385, -1.889195, 0.424910)
 SWEP.RestAng = Angle(8.087680, -8.416675, -11.191555)
+SWEP.NearWallPos = Vector(0.515385, -1.742824, 1.395329)
+SWEP.NearWallAng = Angle(8.087680, -8.416675, -11.191555)
+-- ArcCW drops procedural bob while a sprint animation plays.
+SWEP.BobSprintMult = 0
+SWEP.SprintVerticalOffset = false
 
 SWEP.HoldTypeSprint = "normal"
 SWEP.HoldTypeHolstered = "normal"
@@ -210,13 +218,15 @@ SWEP.IronSights = {
     ViewModelFOV = 60,
 }
 
-SWEP.ActivePos = Vector(-0.310426, 1.100000, 0.594673)
-SWEP.ActiveAng = Angle(0, 0, -1.000000)
+SWEP.ActivePos = Vector(-0.292973, 1.100000, -0.405175)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, -1.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(18, -3.17, -3)
 
-SWEP.CrouchPos = Vector(-1.940591, 0.500000, -0.483844)
-SWEP.CrouchAng = Angle(0, 0, -14.000000)
+SWEP.UC_CrouchPos = Vector(-1.698669, 0.500000, -1.454140)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -14.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.MirrorVMWM = true
 SWEP.NoTPIKVMPos = true
@@ -227,8 +237,8 @@ SWEP.WorldModelOffset = {
     Scale = 1
 }
 
-SWEP.SprintPos = Vector(0, -3, 0)
-SWEP.SprintAng = Angle(0, 0, 0)
+SWEP.SprintPos = Vector(0.000000, -3.000000, -1.000000)
+SWEP.SprintAng = Angle(0.000000, 0.000000, 0.000000)
 SWEP.SprintPosHook = ARC9.UC.SprintPos
 SWEP.SprintAngHook = ARC9.UC.SprintAng
 
@@ -998,7 +1008,6 @@ SWEP.Attachments = {
         Ang = Angle(90, 0, -90),
 
         InstalledElements = {"ur_mp5_rail_optic"},
-        ExtraSightDistance = 2,
     },
     {
         PrintName = "ur.slot.upper_receiver",

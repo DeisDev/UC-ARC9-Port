@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -185,12 +186,17 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 8
+SWEP.UC_ExtraSightDist = 10
 
 -- Ironsights / Customization / Poses --
 
--- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
-SWEP.RestPos = Vector(-1.370401, -1.159760, 3.282828)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.RestPos = Vector(-1.243707, -1.426835, 2.327517)
 SWEP.RestAng = Angle(2.075420, -15.490321, -7.554519)
+SWEP.NearWallPos = Vector(-1.370401, -1.159760, 3.282828)
+SWEP.NearWallAng = Angle(2.075420, -15.490321, -7.554519)
+SWEP.SprintVerticalOffset = false
 
 SWEP.HoldTypeSprint = "normal"
 SWEP.HoldTypeHolstered = "normal"
@@ -206,13 +212,15 @@ SWEP.IronSights = {
     ViewModelFOV = 55,
 }
 
-SWEP.ActivePos = Vector(-0.2, -2, 2)
-SWEP.ActiveAng = Angle(0, 0, -5)
+SWEP.ActivePos = Vector(-0.286395, -2.000000, 0.978764)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, -5.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -2.3, -3)
 
-SWEP.CrouchPos = Vector(-2, -6, 1)
-SWEP.CrouchAng = Angle(0, 0, -20)
+SWEP.UC_CrouchPos = Vector(-1.879386, -6.000000, -0.684040)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -20.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.MirrorVMWM = true
 SWEP.NoTPIKVMPos = true
@@ -957,7 +965,6 @@ SWEP.Attachments = {
         Pos = Vector(-0.025, -0.4, -0.2),
         Ang = Angle(90, 0, -90),
         Scale = 0.9,
-        ExtraSightDistance = 10,
     },
     {
         PrintName = "uc.slot.slide",

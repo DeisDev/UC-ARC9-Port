@@ -36,6 +36,6 @@ ATT.Firemodes = {
 }
 ATT.Firemodes_Priority = 1
 ATT.CycleTimeMult = 1.15
-ATT.ActivePos = Vector(0.75, 0.5, -0.2)
+ATT.ActivePos = Vector(0.750000, 0.500000, -1.200000)
 ATT.ActivePos_Priority = 10
 ATT.ActivateElements = {"freeman"}

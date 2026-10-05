@@ -25,7 +25,6 @@ ATT.ToggleStats = {
         TracerSize = 1.5,
     }
 }
-ATT.ToggleOnF = true
 ATT.TracerEffect = "arc9_uc_tracer"
 ATT.UC_Compatible = function(wep)
     if ARC9.UC.IsShotgun(wep) then

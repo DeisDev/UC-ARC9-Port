@@ -7,7 +7,7 @@ ATT.CustomPros = {
 
 ATT.Category = "uc_db_tp"
 ATT.SortOrder = 999
-ATT.ActivePos = Vector(-1.435084, 0.013090, 1.276856)
+ATT.ActivePos = Vector(-1.487420, 0.013090, 0.278227)
 ATT.ActivePos_Priority = 10
 ATT.ActiveAng = Angle(-0.500000, 0, 3.000000)
 ATT.ActiveAng_Priority = 10

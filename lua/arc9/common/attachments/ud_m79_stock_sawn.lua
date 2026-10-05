@@ -19,4 +19,4 @@ ATT.SpeedMult = 1.05
 ATT.SpeedMultSights = 1.1
 ATT.SpeedMultShooting = 1.1
 ATT.DeployTimeMult = 0.5
-ATT.ActivePos = Vector(0.5, 2, 1.5)
+ATT.ActivePos = Vector(0.500000, 2.000000, 0.500000)

@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -190,6 +191,7 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 32
+SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
 
@@ -206,23 +208,29 @@ SWEP.IronSights = {
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
--- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
-SWEP.RestPos = Vector(2.508544, 0.503909, -1.205522)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.RestPos = Vector(2.879794, 0.413844, -2.129676)
 SWEP.RestAng = Angle(20.085123, -5.167378, -21.886228)
+SWEP.NearWallPos = Vector(2.508544, 0.503909, -1.205522)
+SWEP.NearWallAng = Angle(20.085123, -5.167378, -21.886228)
+SWEP.SprintVerticalOffset = false
 
-SWEP.SprintPos = Vector(0.743182, -3.902527, -2.113756)
+SWEP.SprintPos = Vector(1.077572, -3.841934, -3.054240)
 SWEP.SprintAng = Angle(7.012951, 3.473879, -19.572934)
 SWEP.SprintPosHook = ARC9.UC.SprintPos
 SWEP.SprintAngHook = ARC9.UC.SprintAng
 SWEP.DynamicConditions = {Recoil = true, SprintPos = true, SprintAng = true}
 
-SWEP.ActivePos = Vector(-0.75, -2, 1)
-SWEP.ActiveAng = Angle(0, 0, -3)
+SWEP.ActivePos = Vector(-0.748972, -2.000000, -0.039252)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, -3.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -3.66, -3)
 
-SWEP.CrouchPos = Vector(-3.8, -2, 0)
-SWEP.CrouchAng = Angle(0, 0, -30)
+SWEP.UC_CrouchPos = Vector(-2.790896, -2.000000, -2.766025)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -30.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.Malfunction = true
 SWEP.MalfunctionMeanShotsToFail = 500
@@ -513,7 +521,6 @@ SWEP.Attachments = {
         Pos = Vector(0, -1.75, -2),
         Ang = Angle(90, 0, -90),
         InstalledElements = {"optic_rail"},
-        ExtraSightDistance = 2,
     },
     {
         PrintName = "uc.slot.barrel",

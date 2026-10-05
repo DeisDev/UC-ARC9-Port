@@ -12,7 +12,7 @@ ATT.Icon = Material("entities/att/arccw_uc_forcedresettrigger.png", "mips smooth
 ATT.Category = "uc_fg"
 ATT.SortOrder = 2
 ATT.UC_Compatible = function(wep)
-    if ARC9.UC.IsManualAction(wep) or wep:GetValue("TriggerDelay") then return false end
+    if ARC9.UC.IsManualAction(wep) or wep.TriggerDelay then return false end
 
     -- for i, v in pairs(wep.Firemodes) do
     --     if !v then continue end

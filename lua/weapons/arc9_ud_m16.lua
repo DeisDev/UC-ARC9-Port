@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -217,12 +218,17 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 48
+SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
 
--- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
-SWEP.RestPos = Vector(0.367099, -0.734159, 1.419947)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.RestPos = Vector(0.559098, -0.880530, 0.449528)
 SWEP.RestAng = Angle(8.087680, -8.416675, -11.191555)
+SWEP.NearWallPos = Vector(0.367099, -0.734159, 1.419947)
+SWEP.NearWallAng = Angle(8.087680, -8.416675, -11.191555)
+SWEP.SprintVerticalOffset = false
 
 SWEP.HoldTypeSprint = "passive"
 SWEP.HoldTypeHolstered = "passive"
@@ -236,13 +242,15 @@ SWEP.IronSights = {
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
-SWEP.ActivePos = Vector(0.33, -2, 1.33)
-SWEP.ActiveAng = Angle(0, 0, -3)
+SWEP.ActivePos = Vector(0.312277, -2.000000, 0.346819)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, -3.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -2.815, -3)
 
-SWEP.CrouchPos = Vector(-2.5, -2, -0.6)
-SWEP.CrouchAng = Angle(0, 0, -14)
+SWEP.UC_CrouchPos = Vector(-2.038664, -2.000000, -2.157278)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -14.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
@@ -1472,7 +1480,6 @@ SWEP.Attachments = {
         UC_RailMin = Vector(0, -1.6, 1),
         UC_RailMax = Vector(0, -1.6, 4),
         Ang = Angle(90, 0, -90),
-        ExtraSightDistance = 2,
     },
     {
         PrintName = "uc.slot.barrel",

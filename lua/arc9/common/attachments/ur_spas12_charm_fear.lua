@@ -4,4 +4,4 @@ ATT.Category = "ur_spas12_charm"
 ATT.SortOrder = 999
 ATT.Free = true
 ATT.CustomPros = {["uc.cosmetic"] = ""}
-ATT.ActivePos = Vector(-1, 1, -2)
+ATT.ActivePos = Vector(-1.000000, 1.000000, -3.000000)

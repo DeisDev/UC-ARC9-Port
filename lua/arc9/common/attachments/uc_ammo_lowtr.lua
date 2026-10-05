@@ -43,7 +43,6 @@ ATT.ToggleStats = {
         TracerSize = 1.5,
     }
 }
-ATT.ToggleOnF = true
 ATT.UC_Compatible = function(wep)
     if ARC9.UC.IsShotgun(wep) then
         return false

@@ -13,4 +13,4 @@ ATT.SwayMult = 1.85
 ATT.SpeedMultSights = 1.33
 ATT.SpeedMultShooting = 1.2
 ATT.BarrelLengthAdd = -4
-ATT.ActivePos = Vector(0.5, 2, 1.5)
+ATT.ActivePos = Vector(0.473147, 2.000000, 0.525483)

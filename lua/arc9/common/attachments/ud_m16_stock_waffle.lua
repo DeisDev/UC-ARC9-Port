@@ -24,4 +24,3 @@ ATT.ToggleStats = {
         SprintToFireTimeMult = 0.9,
     }
 }
-ATT.ToggleOnF = true

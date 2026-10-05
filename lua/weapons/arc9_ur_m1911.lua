@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -186,14 +187,19 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 8
+SWEP.UC_ExtraSightDist = 10
 
 -- Ironsights / Customization / Poses --
 
--- ArcCW poses converted to ARC9's rotation order and unrotated position axes.
-SWEP.RestPos = Vector(0.292774, 3.297962, 0.829294)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.RestPos = Vector(0.301242, 3.056040, -0.140965)
 SWEP.RestAng = Angle(0.000000, -14.000000, -0.500000)
+SWEP.NearWallPos = Vector(0.292774, 3.297962, 0.829294)
+SWEP.NearWallAng = Angle(0.000000, -14.000000, -0.500000)
+SWEP.SprintVerticalOffset = false
 
-SWEP.SprintPos = Vector(-0.727041, 3.048582, 0.517259)
+SWEP.SprintPos = Vector(-0.365126, 2.964396, -0.411142)
 SWEP.SprintAng = Angle(15.054701, -4.829217, -21.297169)
 SWEP.SprintPosHook = ARC9.UC.SprintPos
 SWEP.SprintAngHook = ARC9.UC.SprintAng
@@ -212,13 +218,15 @@ SWEP.IronSights = {
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
-SWEP.ActivePos = Vector(0.288644, 3.000000, 1.302568)
+SWEP.ActivePos = Vector(0.297371, 3.000000, 0.302607)
 SWEP.ActiveAng = Angle(0.000000, 0.000000, -0.500000)
 
 SWEP.CustomizeRotateAnchor = Vector(16, -2.33, -2)
 
-SWEP.CrouchPos = Vector(-2.269180, -3.000000, -1.580914)
-SWEP.CrouchAng = Angle(0, 0, -7.5)
+SWEP.UC_CrouchPos = Vector(-1.841363, 0.000000, -1.268614)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -8.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.MirrorVMWM = true
 SWEP.NoTPIKVMPos = true
@@ -755,7 +763,6 @@ SWEP.Attachments = {
         Pos = Vector(-0.01, -2.3, 1.6),
         Ang = Angle(90, 0, -90),
         InstalledElements = {"optic_rail"},
-        ExtraSightDistance = 10,
     },
     {
         PrintName = "uc.slot.slide",

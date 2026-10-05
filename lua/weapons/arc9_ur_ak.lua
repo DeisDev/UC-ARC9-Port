@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -150,6 +151,7 @@ SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.75
 SWEP.SpeedMultMelee = 1
 SWEP.BarrelLength = 24
+SWEP.UC_ExtraSightDist = 2
 SWEP.Bash = true
 SWEP.BashDamage = 25
 SWEP.BashRange = 48
@@ -185,15 +187,24 @@ SWEP.HoldTypeHolstered = "passive"
 SWEP.HoldTypeSprint = "passive"
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_AR2
 SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_AR2
-SWEP.ActivePos = Vector(0.5, 0, 0)
-SWEP.ActiveAng = Angle(0, 0, 0)
-SWEP.SprintPos = Vector(0, 0, 0)
-SWEP.SprintAng = Angle(0, 0, 0)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.ActivePos = Vector(0.500000, 0.000000, -1.000000)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, 0.000000)
+SWEP.SprintPos = Vector(0.000000, 0.000000, -1.000000)
+SWEP.SprintAng = Angle(0.000000, 0.000000, 0.000000)
 SWEP.CustomizeRotateAnchor = Vector(16, -2.61, -3)
-SWEP.RestPos = Vector(-1.131624, -0.788138, 1.240268)
+SWEP.RestPos = Vector(-0.928419, -1.044439, 0.295272)
 SWEP.RestAng = Angle(8.278363, -14.850644, -12.135646)
-SWEP.CrouchPos = Vector(-1.795438, -2.000000, -1.066021)
-SWEP.CrouchAng = Angle(-0.000000, -0.000000, -14.000000)
+SWEP.NearWallPos = Vector(-1.131624, -0.788138, 1.240268)
+SWEP.NearWallAng = Angle(8.278363, -14.850644, -12.135646)
+-- ArcCW drops procedural bob while a sprint animation plays.
+SWEP.BobSprintMult = 0
+SWEP.SprintVerticalOffset = false
+SWEP.UC_CrouchPos = Vector(-1.553516, -2.000000, -2.036317)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -14.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 SWEP.IronSights = {
     Pos = Vector(-2.546937, -2.017061, 0.677626),
     Ang = Angle(0.274015, 0.599993, 5.532869),
@@ -603,7 +614,6 @@ SWEP.Attachments = {
         Bone = "tag_weapon",
         Pos = Vector(0, 2, 4.92),
         Ang = Angle(0, -90, 0),
-        ExtraSightDistance = 2,
     },
     {
         PrintName = "uc.slot.barrel",

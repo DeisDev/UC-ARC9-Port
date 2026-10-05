@@ -7,7 +7,7 @@ ATT.SpeedMultSights = .95
 ATT.ToggleStats = {
     {
         PrintName = "uc.toggle.extended",
-        ActivateElements = {"barrel_t56_ext"},
+        ActivateElements = {"barrel_t56_ext", "ak_bayonet1"},
         BashRangeAdd = 16,
         BashDamageMult = 3,
         UC_MeleeWaitTimeMult = 2,
@@ -18,9 +18,9 @@ ATT.ToggleStats = {
     },
     {
         PrintName = "ur.toggle.folded",
-        ActivateElements = {"barrel_t56"},
+        ActivateElements = {"barrel_t56", "ak_bayonet1"},
     },
 }
 
+-- ARC9 replaces an attachment's own elements with its toggle's, so each toggle carries ak_bayonet1.
 ATT.ExcludeElements = {"ak_bayonet2"}
-ATT.ActivateElements = {"ak_bayonet1"}

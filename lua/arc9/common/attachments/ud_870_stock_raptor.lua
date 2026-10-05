@@ -15,6 +15,6 @@ ATT.RecoilRandomSideMult = 2
 ATT.VisualRecoilMult = 0.5
 ATT.BarrelLengthAdd = -4
 ATT.SwayMult = 3
-ATT.ActivePos = Vector(0, 2.5, -0.5)
+ATT.ActivePos = Vector(0.078504, 2.500000, -1.497944)
 ATT.HoldType = "shotgun"
 ATT.HoldTypeSights = "ar2"

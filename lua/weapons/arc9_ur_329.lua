@@ -4,6 +4,7 @@ SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -94,7 +95,7 @@ SWEP.AimDownSightsTime = 0.25
 SWEP.SpeedMultShooting = 0.8
 SWEP.SpeedMultMelee = 1
 SWEP.BarrelLength = 12
-SWEP.ExtraSightDistance = 10
+SWEP.UC_ExtraSightDist = 10
 SWEP.HoldTypeHolstered = "normal"
 SWEP.HoldType = "revolver"
 SWEP.HoldTypeNPC = "revolver"
@@ -106,13 +107,20 @@ SWEP.IronSights = {
     ViewModelFOV = 55,
 }
 
-SWEP.ActivePos = Vector(-0.015707, 2.000000, 0.899863)
-SWEP.ActiveAng = Angle(0, 0, -1.000000)
-SWEP.CrouchPos = Vector(-2.279804, 1.000000, 0.049949)
-SWEP.CrouchAng = Angle(0, 0, -14.000000)
-SWEP.RestPos = Vector(-1.103293, 2.158263, 0.353052)
+-- ArcCW poses converted to ARC9's rotation order and unrotated position axes, including
+-- the one-unit drop ArcCW applies outside sights.
+SWEP.ActivePos = Vector(0.001745, 2.000000, -0.099985)
+SWEP.ActiveAng = Angle(0.000000, 0.000000, -1.000000)
+SWEP.UC_CrouchPos = Vector(-2.037882, 1.000000, -0.920347)
+SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -14.000000)
+SWEP.CrouchPosHook = ARC9.UC.CrouchPos
+SWEP.CrouchAngHook = ARC9.UC.CrouchAng
+SWEP.RestPos = Vector(-1.026770, 1.891187, -0.607581)
 SWEP.RestAng = Angle(2.075420, -15.490321, -4.554519)
-SWEP.SprintPos = Vector(0.147906, 1.033265, -0.022067)
+SWEP.NearWallPos = Vector(-1.103293, 2.158263, 0.353052)
+SWEP.NearWallAng = Angle(2.075420, -15.490321, -4.554519)
+SWEP.SprintVerticalOffset = false
+SWEP.SprintPos = Vector(0.363541, 0.981573, -0.997172)
 SWEP.SprintAng = Angle(9.012149, -2.963032, -12.469722)
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {

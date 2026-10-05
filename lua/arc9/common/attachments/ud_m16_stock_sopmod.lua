@@ -27,7 +27,6 @@ ATT.ToggleStats = {
         UC_MoveDispersionMult = 1.15,
     }
 }
-ATT.ToggleOnF = true
 
 ATT.UC_ToggleSound = "arccw_uc/common/stockslide.ogg"
 ATT.ToggleAttSoundHook = ARC9.UC.ToggleSound

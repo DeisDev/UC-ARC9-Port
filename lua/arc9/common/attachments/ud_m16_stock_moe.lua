@@ -26,4 +26,3 @@ ATT.ToggleStats = {
         SpeedMultShooting = 1.05,
     }
 }
-ATT.ToggleOnF = true

@@ -233,18 +233,29 @@ function ARC9.UC.LoopSprintIdle(wep)
     wep:Idle()
 end
 
+-- The view turn, about the view's up, right, and forward axes in turn, that lines up a sight
+-- frame with the view. ARC9 negates the frame's angle and turns its pitch about the up axis and
+-- its yaw about the right axis, which tilts the view on mounts that are pitched or yawed.
+local function SightTurn(ang)
+    local forward, right, up = ang:Forward(), ang:Right(), ang:Up()
+    return Angle(math.deg(math.atan2(-forward.y, forward.x)), -math.deg(math.asin(math.Clamp(forward.z, -1, 1))),
+        math.deg(math.atan2(right.z, up.z)))
+end
+
 -- ArcCW turns an optic's view about the sight mount by the sight angle, applied around the
 -- view's right, up, and forward axes in turn; GlobalAng drops the mount's own angle.
 -- ARC9 turns the view about the eye and applies the angle's pitch as yaw.
 function ARC9.UC.GenerateAutoSight(wep, sight, slottbl)
-    local base = baseclass.Get("arc9_base")
-    if sight.Ang:IsZero() and !sight.UC_GlobalAng then
-        return base.GenerateAutoSight(wep, sight, slottbl)
-    end
-
     local flat = table.Copy(sight)
     flat.Ang = Angle()
-    local result = base.GenerateAutoSight(wep, flat, slottbl)
+    local result = baseclass.Get("arc9_base").GenerateAutoSight(wep, flat, slottbl)
+    local corrective = slottbl.CorrectiveAng or angle_zero
+    -- The base result is the negated mount angle plus the corrective angle.
+    result.Ang = SightTurn(-(result.Ang - corrective)) + corrective
+    -- ArcCW moves the eye back by the weapon's ExtraSightDist only for unmagnified holosights.
+    local atttbl = wep:GetFinalAttTable(slottbl)
+    result.ExtraSightDistance = atttbl.HoloSight and !atttbl.RTScope and wep.UC_ExtraSightDist or 0
+    if sight.Ang:IsZero() and !sight.UC_GlobalAng then return result end
 
     local rot = Angle()
     rot:RotateAroundAxis(Vector(0, -1, 0), sight.Ang.p)
@@ -354,6 +365,16 @@ end
 function ARC9.UC.DrawWorldModel(wep, flags)
     baseclass.Get("arc9_base").DrawWorldModel(wep, flags)
     if !IsValid(wep:GetOwner()) then wep:DoBodygroups(true) end
+end
+
+-- ArcCW crouches to an absolute pose, even with an attachment's active pose; ARC9 adds CrouchPos
+-- and CrouchAng to the active pose.
+function ARC9.UC.CrouchPos(wep)
+    return wep.UC_CrouchPos - wep:GetProcessedValue("ActivePos", true)
+end
+
+function ARC9.UC.CrouchAng(wep)
+    return wep.UC_CrouchAng - wep:GetProcessedValue("ActiveAng", true)
 end
 
 -- ARC9 drives safety and sprinting through the same pose blend.
@@ -1120,13 +1141,8 @@ function ARC9.UC.ThinkUBGL(wep)
         wep:ClearLongCache()
     end
 
+    -- ArcCW selects an underbarrel weapon even when it and its reserve are empty.
     local owner = wep:GetOwner()
-    local infinite = ucInfinite or GetConVar("arc9_infinite_ammo"):GetBool()
-    if wep:Clip2() == 0 and !infinite and owner:GetAmmoCount(wep.Secondary.Ammo) == 0 then
-        if wep:GetUBGL() then wep:ToggleUBGL(false) end
-        return
-    end
-
     if !(owner:KeyDown(IN_USE) and owner:KeyPressed(IN_ATTACK2)) and !owner:KeyPressed(ARC9.IN_UBGL) then return end
     if wep.NextUBGLSwitch and wep.NextUBGLSwitch > CurTime() then return end
 
@@ -1200,6 +1216,12 @@ function ARC9.UC.ApplyAPDamage(tr, dmg)
     local eff = EffectData()
     eff:SetOrigin(tr.HitPos)
     util.Effect("cball_bounce", eff)
+end
+
+-- ArcCW installs a part when its own restrictions pass, then detaches installed parts that
+-- exclude it. ARC9 refuses the part instead; allowing it lets PruneAttachments detach them.
+function ARC9.UC.WouldConflict()
+    return false
 end
 
 -- Lets an attachment reject a weapon with ATT.UC_Compatible(wep, data) returning false.
