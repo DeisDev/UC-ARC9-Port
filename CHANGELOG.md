@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 1.2.1 - 2026-10-05
+
+### Fixed
+
+- Guns now climb as much as in Urban Coalition when firing. They climbed far less before, most of all in full auto, where the AK climbed about half as much.
+- The M203, GP-25, and HK79 launchers now kick as hard as in Urban Coalition, and the Masterkey kicks less to the side.
+
 ## 1.2.0 - 2026-10-05
 
 ### Changed

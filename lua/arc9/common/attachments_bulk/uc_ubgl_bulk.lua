@@ -48,7 +48,8 @@ do
     ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
 
     ATT.RPMUBGL = 120
-    ATT.RecoilUBGL = 2 * ARC9.UC.Recoil
+    -- ArcCW kicks by UBGL_Recoil squared, and sideways by UBGL_RecoilSide squared times UBGL_Recoil.
+    ATT.RecoilUBGL = 2 ^ 2 * ARC9.UC.Recoil
     ATT.RecoilUpUBGL = 1
     ATT.RecoilSideUBGL = 0
     ATT.RecoilRandomUpUBGL = 0
@@ -186,7 +187,8 @@ do
     ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
 
     ATT.RPMUBGL = 120
-    ATT.RecoilUBGL = 2 * ARC9.UC.Recoil
+    -- ArcCW kicks by UBGL_Recoil squared, and sideways by UBGL_RecoilSide squared times UBGL_Recoil.
+    ATT.RecoilUBGL = 2 ^ 2 * ARC9.UC.Recoil
     ATT.RecoilUpUBGL = 1
     ATT.RecoilSideUBGL = 0
     ATT.RecoilRandomUpUBGL = 0
@@ -328,7 +330,8 @@ do
     ATT.InfiniteAmmoHookUBGL = ARC9.UC.InfiniteUBWAmmo
 
     ATT.RPMUBGL = 120
-    ATT.RecoilUBGL = 2 * ARC9.UC.Recoil
+    -- ArcCW kicks by UBGL_Recoil squared, and sideways by UBGL_RecoilSide squared times UBGL_Recoil.
+    ATT.RecoilUBGL = 2 ^ 2 * ARC9.UC.Recoil
     ATT.RecoilUpUBGL = 1
     ATT.RecoilSideUBGL = 0
     ATT.RecoilRandomUpUBGL = 0
@@ -485,11 +488,12 @@ do
     ATT.ManualActionUBGL = true
 
     ATT.RPMUBGL = 120
+    -- ArcCW kicks by UBGL_Recoil squared, and sideways by UBGL_RecoilSide squared times UBGL_Recoil.
     ATT.RecoilUBGL = 1 * ARC9.UC.Recoil
     ATT.RecoilUpUBGL = 1
     ATT.RecoilSideUBGL = 0
     ATT.RecoilRandomUpUBGL = 0
-    ATT.RecoilRandomSideUBGL = 0.5
+    ATT.RecoilRandomSideUBGL = 0.5 ^ 2 / 1
     ATT.MuzzleParticleUBGL = "uc_muzzleflash_shotgun"
 
     -- 6 pellets to kill up close, 8 at range

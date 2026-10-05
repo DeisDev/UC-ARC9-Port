@@ -132,15 +132,41 @@ function ARC9.UC.AnimationSpeed(wep, data)
     end
 end
 
--- Rotate both the main kick and its random side component for canted grips.
+-- ARC9 replaces the previous shot's kick and turns the view in steps that miss part of it, so
+-- automatic fire climbed about half as far as in ArcCW. The kick goes to ARC9.UC.AddViewKick instead.
 function ARC9.UC.ApplyRecoil(wep)
     baseclass.Get("arc9_base").ApplyRecoil(wep)
-    local roll = math.rad(wep:GetValue("UC_RecoilRoll", 0))
-    if roll == 0 then return end
     local up, side = wep:GetRecoilUp(), wep:GetRecoilSide()
-    local sine, cosine = math.sin(roll), math.cos(roll)
-    wep:SetRecoilUp(up * cosine - side * sine)
-    wep:SetRecoilSide(up * sine + side * cosine)
+    wep:SetRecoilUp(0)
+    wep:SetRecoilSide(0)
+
+    -- Rotate both the main kick and its random side component for canted grips.
+    local roll = math.rad(wep:GetValue("UC_RecoilRoll", 0))
+    if roll != 0 then
+        local sine, cosine = math.sin(roll), math.cos(roll)
+        up, side = up * cosine - side * sine, up * sine + side * cosine
+    end
+    wep.UC_RecoilSide = side
+
+    local owner = wep:GetOwner()
+    if !IsValid(owner) or !owner:IsPlayer() then return end
+    if game.SinglePlayer() then
+        if SERVER then
+            net.Start("ARC9_UC_ViewKick")
+            net.WriteEntity(wep)
+            net.WriteFloat(up)
+            net.WriteFloat(side)
+            net.Send(owner)
+        end
+    elseif CLIENT and IsFirstTimePredicted() then
+        ARC9.UC.AddViewKick(wep, up, side)
+    end
+end
+
+-- ARC9's visual side kick reads the recoil that ApplyRecoil now clears.
+function ARC9.UC.VisualRecoilDoing(up, _, roll, punch, _, wep)
+    local side = wep:GetProcessedValue("VisualRecoilSide") * wep:GetProcessedValue("VisualRecoil") * (wep.UC_RecoilSide or 0)
+    return up, side, roll, punch
 end
 
 function ARC9.UC.ShootPitchVariation(wep, variation)

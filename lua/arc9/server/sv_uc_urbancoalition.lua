@@ -1,6 +1,7 @@
--- Urban Coalition server features: custom colors and asset caching.
+-- Urban Coalition server features: custom colors, recoil messages, and asset caching.
 
 util.AddNetworkString("ARC9_UC_CustColor")
+util.AddNetworkString("ARC9_UC_ViewKick")
 
 local function UpdateCustomColors(ply)
     ply.UC_ColorUpdatePending = nil

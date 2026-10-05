@@ -1,4 +1,4 @@
--- Urban Coalition client features: custom colors, shell color, options menu and asset caching.
+-- Urban Coalition client features: custom colors, shell color, recoil, options menu and asset caching.
 
 local function P(phrase)
     return ARC9:GetPhrase(phrase) or phrase
@@ -21,6 +21,46 @@ hook.Add("ARC9_TPIK_PreSolve", "ARC9_UC_TPIKFreeLeftHand", function(wep, ply, wm
     local free = data.holdtype == holdtype
     wep.TPIKforcelefthand = !free
     wep.TPIKnolefthand = free
+end)
+
+-- Each shot adds ARC9's 2.5 degrees per unit of RecoilUp (see ARC9.UC.Recoil), turned at ArcCW's
+-- rate: the remaining kick decays by e^-20 per second, and the view turns by what it loses.
+local kick, kickweapon, kicktime = Angle(), nil, nil
+
+function ARC9.UC.AddViewKick(wep, up, side)
+    if wep != kickweapon then
+        kick = Angle()
+        kickweapon = wep
+    end
+    kick.p = kick.p + up * 2.5
+    kick.y = kick.y + side * 2.5
+end
+
+net.Receive("ARC9_UC_ViewKick", function()
+    local wep = net.ReadEntity()
+    local up, side = net.ReadFloat(), net.ReadFloat()
+    if !IsValid(wep) then return end
+    wep.UC_RecoilSide = side
+    ARC9.UC.AddViewKick(wep, up, side)
+end)
+
+hook.Add("StartCommand", "ARC9_UC_ViewKick", function(ply, cmd)
+    if ply != LocalPlayer() or cmd:CommandNumber() == 0 then return end
+    local now = CurTime()
+    local elapsed = math.max(now - (kicktime or now), 0)
+    kicktime = now
+    if kick:IsZero() then return end
+    if ply:GetActiveWeapon() != kickweapon then
+        kick = Angle()
+        return
+    end
+
+    local left = math.exp(-20 * elapsed)
+    local ang = cmd:GetViewAngles()
+    ang:Add(kick * (1 - left))
+    cmd:SetViewAngles(ang)
+    kick:Mul(left)
+    if math.abs(kick.p) + math.abs(kick.y) < 1e-4 then kick = Angle() end
 end)
 
 function ARC9.UC.CreateRailPanel(wep)
