@@ -2,6 +2,35 @@
 
 ## Unreleased
 
+## 1.1.0 - 2026-10-04
+
+### Changed
+
+- Installing a part now removes installed parts that conflict with it, as in Urban Coalition, instead of being refused. For example, the .50 Beowulf and HK33 receivers now install over a non-default magazine.
+- The flashlight key no longer collapses M16 stocks or changes tracer colors.
+- Underbarrel launchers can now be selected while empty, as in Urban Coalition.
+- The AK and MP5 sprint animations no longer get extra bob, and guns no longer shift up while sprinting.
+
+### Fixed
+
+- Pump and bolt actions now cycle right after the shot instead of waiting a full fire-rate delay.
+- Pump and bolt-action fire rates now show the original values, such as about 55 RPM for the AW.
+- M16 stocks no longer appear as a bare buffer tube.
+- Parts that change the same model piece or attachment position now combine in the original order.
+- The AK bayonet can no longer be fitted with the Type 56 barrel, and the Auto Trigger now fits the M16 FPW receiver.
+- The Glock no longer shows a second tactical slot or duplicate tactical attachments.
+- Hidden underbarrel launcher slots on the M16, M79, Mini-14, and AK no longer show as separate buttons.
+- Hip-fire, crouching, sprinting, and near-wall gun positions now match Urban Coalition; guns sat too high, and crouching moved them too far.
+- The gang-sign perk, short stocks, Doom perk, Freeman barrel, and Fear charm now move the gun to their original positions.
+- The SPAS-12 safety pose now uses its own position instead of the M1014's.
+- The MP5 and AK sprint animations now loop.
+- Optic reticles now line up with the point of aim on guns with slightly tilted rails, such as the Mini-14, M79, 870, and AK.
+- Optic eye distance now matches Urban Coalition for scopes, red dots, and iron-sight attachments.
+- Fixed misaligned aiming with M16 rear sights, the 870, M1014, and SPAS-12 irons, the Micro Uzi, and the folded SPAS-12 stock.
+- Fixed misaligned aiming with the PSG-1 and G3SG/1 scopes, ACOG and ELCAN backup irons, and other angled optic sights.
+
+## 1.0.0 - 2026-10-04
+
 ### Added
 
 - Urban Renewal 329, AW, double-barrel shotgun, Desert Eagle, and G3 with their assets and 68 active weapon-specific attachments.
@@ -25,16 +54,6 @@
 
 ### Fixed
 
-- Pump and bolt actions now cycle right after the shot instead of waiting a full fire-rate delay.
-- Pump and bolt-action fire rates now show the original values, such as about 55 RPM for the AW.
-- The Glock no longer shows a second tactical slot or duplicate tactical attachments.
-- Hidden underbarrel launcher slots on the M16, M79, Mini-14, and AK no longer show as separate buttons.
-- M16 stocks no longer appear as a bare buffer tube.
-- Parts that change the same model piece or attachment position now combine in the original order.
-- Fixed misaligned aiming with M16 rear sights, the 870, M1014, and SPAS-12 irons, the Micro Uzi, and the folded SPAS-12 stock.
-- Fixed misaligned aiming with the PSG-1 and G3SG/1 scopes.
-- Fixed misaligned ACOG and ELCAN backup irons and other angled optic sights.
-- The MP5 and AK sprint animations now loop.
 - NPCs now hold the Glock and M1911 as pistols.
 - The M79 can no longer aim while reloading.
 - Melee attacks no longer slow you down.

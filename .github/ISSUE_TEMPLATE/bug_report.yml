@@ -1,0 +1,73 @@
+name: Bug report
+description: Something is broken or doesn't match the original ArcCW addon.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: weapon
+    attributes:
+      label: Weapon
+      multiple: true
+      options:
+        - M16A2 (RAYCAR-0)
+        - Glock 17 (GEN3)
+        - Uzi (IAL-9)
+        - Remington 870 (Express-12)
+        - Benelli M4 (FC1040)
+        - Mini-14 (Patriot 809)
+        - M79 (AMSGL)
+        - AKM (KF-67)
+        - G3A3 (AG58)
+        - MP5A4 (PK5-4)
+        - SPAS-12 (Martello 12/70)
+        - M1911 (AMAS)
+        - Desert Eagle (Predator .50)
+        - Model 329PD (Enforcement .44)
+        - AWP (Apex Precision)
+        - IZh-58 (Volga Super)
+        - All or most weapons
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong?
+      description: What happened, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce
+      description: Include the attachments you had installed.
+      placeholder: |
+        1. Spawn the AKM
+        2. Install the GP-25
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Where
+      options:
+        - Singleplayer
+        - Multiplayer (as host)
+        - Multiplayer (dedicated server)
+    validations:
+      required: true
+  - type: textarea
+    id: errors
+    attributes:
+      label: Lua errors
+      description: Paste any errors from the console. Leave empty if there are none.
+      render: text
+  - type: textarea
+    id: addons
+    attributes:
+      label: Other weapon or attachment addons
+      description: Other ARC9 packs and anything that changes viewmodels or hands.
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshots or video
+      description: Drag files here or paste links.
