@@ -13,9 +13,10 @@ ATT.AimDownSightsTimeMult = 0.5
 ATT.SprintToFireTimeMult = 0.5
 ATT.SwayMult = 2
 ATT.BarrelLengthAdd = -12
+-- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
 ATT.IronSights = {
-    Pos = Vector(-1.1, -2, -1.1),
-    Ang = Angle(3, 1.5, 0),
+    Pos = Vector(-1.048848, -1.967819, -1.203164),
+    Ang = Angle(1.502058, 2.998971, 0.078603),
     Magnification = 1.075,
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
     CrosshairInSights = true,

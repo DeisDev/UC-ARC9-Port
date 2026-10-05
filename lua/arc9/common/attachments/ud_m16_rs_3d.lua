@@ -9,9 +9,10 @@ ATT.UC_RailPosition = 0.5
 ATT.SortOrder = 1000
 ATT.Free = true
 ATT.UC_IronSight = true
+-- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
 ATT.IronSights = {
-    Pos = Vector(-2.80, 0, 2.2),
-    Ang = Angle(1.05, 0, 0),
+    Pos = Vector(-2.8, -0.040315, 2.199631),
+    Ang = Angle(0, 1.05, 0),
     Magnification = 1.1,
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }

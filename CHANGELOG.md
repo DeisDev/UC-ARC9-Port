@@ -25,6 +25,16 @@
 
 ### Fixed
 
+- Pump and bolt actions now cycle right after the shot instead of waiting a full fire-rate delay.
+- Pump and bolt-action fire rates now show the original values, such as about 55 RPM for the AW.
+- The Glock no longer shows a second tactical slot or duplicate tactical attachments.
+- Hidden underbarrel launcher slots on the M16, M79, Mini-14, and AK no longer show as separate buttons.
+- M16 stocks no longer appear as a bare buffer tube.
+- Parts that change the same model piece or attachment position now combine in the original order.
+- Fixed misaligned aiming with M16 rear sights, the 870, M1014, and SPAS-12 irons, the Micro Uzi, and the folded SPAS-12 stock.
+- Fixed misaligned aiming with the PSG-1 and G3SG/1 scopes.
+- Fixed misaligned ACOG and ELCAN backup irons and other angled optic sights.
+- The MP5 and AK sprint animations now loop.
 - NPCs now hold the Glock and M1911 as pistols.
 - The M79 can no longer aim while reloading.
 - Melee attacks no longer slow you down.

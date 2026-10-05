@@ -3,12 +3,15 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
+SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
@@ -998,11 +1001,11 @@ SWEP.Attachments = {
         Bone = "glock_parent",
         Pos = Vector(0, -1.3, 5),
         Ang = Angle(90, 0, -90),
-        MergeSlots = {7},
         ExcludeElements = {"ud_glock_slide_subcompact"},
     },
     {
-        -- Merged into the slot above; kept so slot numbers match the other attachments.
+        -- Obsolete in the source; kept hidden so slot numbers match the other attachments.
+        Hidden = true,
         PrintName = "uc.slot.tactical",
         Category = {"tac_pistol"},
         Bone = "glock_parent",

@@ -3,17 +3,15 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
-SWEP.GenerateAutoSight = function(wep, sight, slot)
-    local result = baseclass.Get("arc9_base").GenerateAutoSight(wep, sight, slot)
-    if sight.UC_GlobalAng then result.Ang = sight.Ang end
-    return result
-end
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
+SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
@@ -1613,6 +1611,7 @@ SWEP.Attachments = {
     },
     {
         -- Merged into the underbarrel slot.
+        Hidden = true,
         PrintName = "uc.slot.ubgl",
         Category = "uc_ubgl",
         Bone = "m16_parent",

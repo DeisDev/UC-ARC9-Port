@@ -159,6 +159,111 @@ function ARC9.UC.GetFinalAttTable(wep, slot)
     return att
 end
 
+-- ARC9 applies element tables in hash order. ArcCW applied them slot by slot (slot elements,
+-- the attachment's elements, its toggle's elements, categories, name), then default elements;
+-- the last occurrence of each element counts, and later bodygroups and position mods win.
+-- Elements from other sources, such as firemodes and Hook_ModifyElements, go last.
+function ARC9.UC.GetAttachmentElements(wep)
+    if wep.ElementTablesCache then return wep.ElementTablesCache end
+
+    local order = {}
+    local function add(names)
+        if isstring(names) then names = {names} end
+        for _, name in ipairs(names or {}) do
+            order[#order + 1] = name
+        end
+    end
+
+    local slots = wep:GetSubSlotList()
+    for _, slot in ipairs(slots) do
+        if slot.Installed then
+            local atttbl = ARC9.GetAttTable(slot.Installed) or {}
+            local toggle = atttbl.ToggleStats and atttbl.ToggleStats[slot.ToggleNum or 1]
+            add(slot.InstalledElements)
+            add(atttbl.ActivateElements)
+            add(toggle and toggle.ActivateElements)
+            add(atttbl.Category)
+            add(slot.Installed)
+        else
+            add(slot.UnInstalledElements)
+        end
+    end
+    add(wep.DefaultElements)
+
+    local active = wep:GetElements()
+    local last = {}
+    for i, name in ipairs(order) do
+        last[name] = i
+    end
+
+    local others = {}
+    for name in pairs(active) do
+        if !last[name] then others[#others + 1] = name end
+    end
+    table.sort(others)
+
+    local tables = {}
+    local function insert(name)
+        local ele = wep.AttachmentElements[name]
+        if ele then tables[#tables + 1] = ele end
+    end
+    for i, name in ipairs(order) do
+        if last[name] == i and active[name] then insert(name) end
+    end
+    for _, name in ipairs(others) do
+        insert(name)
+    end
+
+    for _, slot in ipairs(slots) do
+        local element = wep:GetFinalAttTable(slot).Element
+        if element then tables[#tables + 1] = element end
+    end
+
+    wep.ElementTablesCache = tables
+    return tables
+end
+
+-- ArcCW replays idle animations once they end. ARC9 relies on the sequence's loop flag,
+-- which some sprint loops lack, so they would freeze on their last frame.
+function ARC9.UC.LoopSprintIdle(wep)
+    if wep:GetNextIdle() != 0 or !wep:GetIsSprinting() then return end
+    local vm = wep:GetVM()
+    if !IsValid(vm) or vm:GetCycle() < 1 then return end
+    if vm:GetSequence() != vm:LookupSequence(wep:GetAnimationEntry("idle_sprint").Source or "") then return end
+    wep:Idle()
+end
+
+-- ArcCW turns an optic's view about the sight mount by the sight angle, applied around the
+-- view's right, up, and forward axes in turn; GlobalAng drops the mount's own angle.
+-- ARC9 turns the view about the eye and applies the angle's pitch as yaw.
+function ARC9.UC.GenerateAutoSight(wep, sight, slottbl)
+    local base = baseclass.Get("arc9_base")
+    if sight.Ang:IsZero() and !sight.UC_GlobalAng then
+        return base.GenerateAutoSight(wep, sight, slottbl)
+    end
+
+    local flat = table.Copy(sight)
+    flat.Ang = Angle()
+    local result = base.GenerateAutoSight(wep, flat, slottbl)
+
+    local rot = Angle()
+    rot:RotateAroundAxis(Vector(0, -1, 0), sight.Ang.p)
+    rot:RotateAroundAxis(Vector(0, 0, 1), sight.Ang.y)
+    rot:RotateAroundAxis(Vector(1, 0, 0), sight.Ang.r)
+    local forward, right, up = rot:Forward(), rot:Right(), rot:Up()
+    local ang = Angle(math.deg(math.atan2(right.x, forward.x)), -math.deg(math.asin(math.Clamp(up.x, -1, 1))),
+        math.deg(math.atan2(-up.y, up.z)))
+    result.Ang = sight.UC_GlobalAng and ang or result.Ang + ang
+
+    -- Sight positions map to the idle viewmodel as right = -y, forward = x, up = z.
+    local pos = result.Pos
+    local eyetomount = Vector(pos.y, -pos.x, pos.z) + wep:GetAttachmentPos(slottbl, false, true, true)
+    local unrotated = Vector(eyetomount:Dot(forward), -eyetomount:Dot(right), eyetomount:Dot(up))
+    local delta = unrotated - eyetomount
+    result.Pos = pos + Vector(-delta.y, delta.x, delta.z)
+    return result
+end
+
 -- Keep muzzle climb proportional to the shot's recoil, including conversions and bursts.
 function ARC9.UC.VisualRecoilUp(wep, value)
     return value * wep:GetProcessedValue("Recoil") / wep.Recoil
@@ -681,12 +786,37 @@ function ARC9.UC.RollJam(wep)
     return true
 end
 
+local function ManualActionFireDelay(wep)
+    return wep:GetAnimationEntry(wep:TranslateAnimation("fire")).MinProgressTime or 0
+end
+
 -- Most ArcCW malfunctions are rolled before firing, so the jammed round never fires.
+-- ArcCW also starts a pump or bolt cycle once the fire animation's MinProgress has passed
+-- (at least 0.1 s); ARC9 would wait for the full RPM delay first.
 function ARC9.UC.DoPrimaryAttack(wep)
+    local cycled = !wep:GetNeedsCycle()
     wep.UC_CheckMalfunction = true
     local result = baseclass.Get("arc9_base").DoPrimaryAttack(wep)
     wep.UC_CheckMalfunction = nil
+    if cycled and wep:GetNeedsCycle() then
+        local delay = ManualActionFireDelay(wep) * wep:GetProcessedValue("CycleTime", true)
+        wep:SetNextPrimaryFire(CurTime() + math.max(0.1, delay))
+    end
     return result
+end
+
+-- ArcCW rates manual actions by the fire and cycle animations alone.
+function ARC9.UC.GetTrueRPM(wep, base)
+    local manual = wep.ManualAction
+    if !base then manual = wep:GetProcessedValue("ManualAction") end
+    if !manual or wep:GetCapacity() == 1 then
+        return baseclass.Get("arc9_base").GetTrueRPM(wep, base)
+    end
+
+    local cycle = wep:GetAnimationEntry("cycle")
+    local cycletime = cycle.MinProgressTime or wep:GetAnimationTime("cycle")
+    local mult = base and wep.CycleTime or wep:GetProcessedValue("CycleTime")
+    return math.Round(60 / ((ManualActionFireDelay(wep) + cycletime * (cycle.Mult or 1)) * mult))
 end
 
 function ARC9.UC.BlockFireJam(wep)

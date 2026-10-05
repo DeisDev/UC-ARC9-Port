@@ -3,6 +3,8 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -419,6 +421,7 @@ SWEP.Attachments = {
     },
     {
         -- Merged into the underbarrel slot.
+        Hidden = true,
         PrintName = "uc.slot.ubgl",
         Category = "uc_ubgl",
         Bone = "m79_front",

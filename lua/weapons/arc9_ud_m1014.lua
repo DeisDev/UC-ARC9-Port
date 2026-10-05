@@ -3,6 +3,8 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.PostModify = ARC9.UC.PostModify
@@ -203,9 +205,10 @@ SWEP.HoldTypeHolstered = "passive"
 SWEP.HoldType = "ar2"
 SWEP.HoldTypeSights = "rpg"
 
+-- Authored sight poses converted to ARC9's rotation order and unrotated position axes.
 SWEP.IronSights = {
-    Pos = Vector(-2.73, -2, 1.1),
-    Ang = Angle(.25, 0.01, 0),
+    Pos = Vector(-2.72965, -2.005257, 1.091263),
+    Ang = Angle(0.01, 0.25, 0.000044),
     Magnification = 1.1,
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
@@ -595,8 +598,8 @@ SWEP.AttachmentElements = {
             }
         },
         IronSights = {
-            Pos = Vector(-2.73, -2, 1.01),
-            Ang = Angle(0.95, 0.01, 0),
+            Pos = Vector(-2.729648, -2.016947, 0.976701),
+            Ang = Angle(0.010001, 0.95, 0.000166),
             Magnification = 1.1,
             ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },

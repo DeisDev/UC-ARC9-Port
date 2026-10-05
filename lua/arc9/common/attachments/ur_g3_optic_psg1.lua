@@ -21,7 +21,7 @@ ATT.SpeedMultSights = 0.84
 ATT.ActivateElements = {"ur_g3_optic_psg1"}
 ATT.Sights = {
     {
-        Pos = Vector(0.01, 9.25, -1.12),
+        Pos = Vector(0.01, 9.8, -2.82),
         Ang = Angle(0, 0, 0),
         Magnification = 1.1,
         ViewModelFOV = ARC9.UC.SightViewModelFOV,

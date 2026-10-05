@@ -3,6 +3,8 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -164,6 +166,7 @@ SWEP.HasAnimation = function(wep, anim, lq)
 end
 SWEP.UC_DrawTime = 1
 SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
+SWEP.Hook_Think = ARC9.UC.LoopSprintIdle
 SWEP.MuzzleParticle = "muzzleflash_6"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/762x39.mdl"
@@ -726,6 +729,7 @@ SWEP.Attachments = {
         Ang = Angle(90, -90, -90),
     },
     {
+        Hidden = true,
         PrintName = "uc.slot.ubgl",
         Category = "uc_ubgl",
         Bone = "tag_weapon",

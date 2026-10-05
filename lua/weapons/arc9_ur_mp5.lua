@@ -3,6 +3,8 @@ SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
 SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
+SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
+SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
@@ -289,11 +291,14 @@ SWEP.DistantShootSoundSilencedIndoor = {
 SWEP.UC_IndoorTailVolume = 0.6
 SWEP.HookP_TranslateSound = ARC9.UC.ShootSound
 
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.LoopSprintIdle(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
+end
 
+if CLIENT then
     function SWEP:CreateFlashlights()
         baseclass.Get("arc9_base").CreateFlashlights(self)
         for _, light in ipairs(self.Flashlights) do
