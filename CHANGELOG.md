@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## 1.2.0 - 2026-10-05
+
+### Changed
+
+- Attachments now load from 29 files instead of 433, so servers with many addons (such as the EFT or MW2019 packs) are less likely to hit Garry's Mod's Lua file limit, which made attachments refuse to equip.
+- A gun blocked by a wall or the floor now stays aimed, blocks firing, and pulls back by how far the barrel is blocked, as in Urban Coalition. Previously it dropped out of aim, which also lowered FPS when crouching and aiming an ACOG at the ground.
+- Third-person arms (TPIK) now hold every gun at their natural position instead of reaching for it.
+
+### Fixed
+
+- Other ARC9 weapon packs no longer show Urban Coalition muzzle flashes or a larger ARC9 muzzle glow.
+- Weapon selection icons now show the whole gun; long guns were cut off and pistols were tiny.
+- The Glock no longer sits too far from the hands in third person.
+- Muzzle devices on the Mini-14's standard 20" barrel now replace its built-in flash hider instead of showing both.
+
 ## 1.1.1 - 2026-10-05
 
 ### Added
