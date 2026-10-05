@@ -21,6 +21,7 @@ ARC9.UC.CustColorUpdateInterval = 5
 
 CreateConVar("arc9_uc_infiniteubwammo", 0, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Infinite underbarrel weapon ammo.")
 CreateConVar("arc9_uc_apobjmult", 3, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Damage multiplier against vehicles and objects.")
+CreateConVar("arc9_uc_multirail", 0, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Allow a second tactical device on each tactical device.")
 
 game.AddParticles("particles/uc_muzzleflashes.pcf")
 PrecacheParticleSystem("muzzleflash_1")
@@ -320,34 +321,56 @@ function ARC9.UC.ConvertAttachmentAngles(wep)
     end
 end
 
+-- ARC9 caches mount offsets by slot for the viewmodel and the scaled worldmodel alike, so whichever
+-- is drawn first would place the other's parts; keep a separate worldmodel cache.
+local function BaseAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    local base = baseclass.Get("arc9_base").GetAttachmentPos
+    if !wm then return base(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli) end
+    local shared = wep.AttPosCache
+    if wep.UC_WMAttPosCacheOf != shared then
+        wep.UC_WMAttPosCache = {}
+        wep.UC_WMAttPosCacheOf = shared
+    end
+    wep.AttPosCache = wep.UC_WMAttPosCache
+    local pos, ang, icon = base(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    wep.AttPosCache = shared
+    return pos, ang, icon
+end
+
 function ARC9.UC.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
     -- A dropped viewmodel must use its entity origin, not its animated right-hand bone.
     if wm and slottbl.WMBase and !idle and !custompos and !IsValid(wep:GetOwner()) then
         return wep:GetPos(), wep:GetAngles(), vector_origin
     end
 
-    local base = baseclass.Get("arc9_base")
-    if !slottbl.UC_Ang then
-        return base.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    local mount = slottbl
+    local pos, ang, icon
+    if slottbl.UC_TacticalStack and slottbl.ParentTable then
+        -- A stacked accessory mounts on the outer face of the device below it.
+        mount = slottbl.ParentTable
+        pos, ang, icon = wep:GetAttachmentPos(mount, wm, idle, true, custompos, customang, dupli)
+        pos = pos - ang:Up() * (wep:GetFinalAttTable(mount).UC_StackHeight or 0) * (mount.Scale or 1)
+    elseif !slottbl.UC_Ang then
+        return BaseAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, custompos, customang, dupli)
+    else
+        -- Cache the mount only, so model offsets never contaminate icon/sight queries.
+        pos, ang, icon = BaseAttachmentPos(wep, slottbl, wm, idle, true, custompos, customang, dupli)
     end
-
-    -- Cache the mount only, so model offsets never contaminate icon/sight queries.
-    local pos, ang, icon = base.GetAttachmentPos(wep, slottbl, wm, idle, true, custompos, customang, dupli)
     if nomodeloffset or !slottbl.Installed then return pos, ang, icon end
     local att = wep:GetFinalAttTable(slottbl)
 
     if att.ModelAngleOffset then
-        local source, native = slottbl.UC_Ang, slottbl.Ang
-        local duplicate = dupli and dupli > 0 and slottbl.DuplicateModels and slottbl.DuplicateModels[dupli]
+        local source, native = mount.UC_Ang, mount.Ang or angle_zero
+        local duplicate = dupli and dupli > 0 and mount.DuplicateModels and mount.DuplicateModels[dupli]
         if duplicate then
             source, native = duplicate.UC_Ang or source, duplicate.Ang or native
         end
         for _, element in ipairs(wep:GetAttachmentElements()) do
-            local mod = element.AttPosMods and element.AttPosMods[slottbl.OriginalAddress]
+            local mod = element.AttPosMods and element.AttPosMods[mount.OriginalAddress]
             if !mod then continue end
             source, native = mod.UC_Ang or source, mod.Ang or native
         end
-        local target = att.UC_ModelAngleOffset and ARC9.UC.AttachmentAngle(source + att.UC_ModelAngleOffset)
+        local target = source and att.UC_ModelAngleOffset and ARC9.UC.AttachmentAngle(source + att.UC_ModelAngleOffset)
             or native + att.ModelAngleOffset
         local _, delta = WorldToLocal(vector_origin, Angle(-target.p, target.y, target.r),
             vector_origin, Angle(-native.p, native.y, native.r))
@@ -700,8 +723,58 @@ function ARC9.UC.PostModify(wep, toggleonly)
     end
 end
 
+-- Returns the stacked accessory slot that tactical devices carry; see UpdateTacticalStacks.
+function ARC9.UC.TacticalStackSlot()
+    return {{
+        PrintName = "uc.slot.tactical_stack",
+        Category = "uc_tac_stack",
+        Pos = Vector(),
+        Ang = Angle(),
+        UC_TacticalStack = true,
+    }}
+end
+
+local multirail = GetConVar("arc9_uc_multirail")
+
+-- With arc9_uc_multirail on, a device in a tactical slot takes one more device of the kinds that
+-- both the slot and the device accept. Stacks are one level deep; otherwise the slot is hidden
+-- and emptied.
+local function UpdateTacticalStacks(wep, slot, nested)
+    local cleared = false
+    for _, sub in ipairs(slot.SubAttachments or {}) do
+        if sub.UC_TacticalStack then
+            local device = ARC9.GetAttTable(slot.Installed) or {}
+            local kinds = istable(device.Category) and device.Category or {device.Category}
+            local categories = {}
+            for _, category in ipairs(istable(slot.Category) and slot.Category or {slot.Category}) do
+                if table.HasValue(kinds, category) then categories[#categories + 1] = category end
+            end
+            local usable = !nested and multirail:GetBool() and #categories > 0
+            sub.Hidden = !usable
+            sub.Category = usable and categories or "uc_tac_stack"
+            if !usable and sub.Installed then
+                if SERVER then ARC9:PlayerGiveAtt(wep:GetOwner(), sub.Installed, 1) end
+                sub.Installed = nil
+                sub.SubAttachments = {}
+                cleared = true
+            end
+        end
+        cleared = UpdateTacticalStacks(wep, sub, nested or sub.UC_TacticalStack) or cleared
+    end
+    return cleared
+end
+
 function ARC9.UC.BuildSubAttachments(wep, tree)
     baseclass.Get("arc9_base").BuildSubAttachments(wep, tree)
+    local cleared = false
+    for _, slot in ipairs(wep.Attachments) do
+        cleared = UpdateTacticalStacks(wep, slot, false) or cleared
+    end
+    if cleared then
+        wep.GetSubSlotListCache = nil
+        wep:BuildAttachmentAddresses()
+        wep:BuildMergeSlots(wep.Attachments)
+    end
     for index, slot in ipairs(wep.Attachments) do
         if !slot.UC_RailMin then continue end
         local value = tree[index] and tree[index].UC_Rail
@@ -995,6 +1068,12 @@ function ARC9.UC.IsShotgun(wep)
     if shotgun != nil then return shotgun end
 
     return (wep.Num or 1) > 1
+end
+
+-- ArcCW holds the fire animation's last frame until a pending pump or bolt cycle plays.
+function ARC9.UC.HoldIdleWhileCycling(wep, anim)
+    if !wep:GetNeedsCycle() or string.find(anim, "inspect", 1, true) then return end
+    if anim == "idle" or string.StartsWith(anim, "idle_") then return true end
 end
 
 function ARC9.UC.IsManualAction(wep)

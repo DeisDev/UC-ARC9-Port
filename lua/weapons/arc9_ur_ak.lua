@@ -490,7 +490,7 @@ SWEP.Hook_ModifyBodygroups = function(wep, data)
         mdl:SetBodygroup(12, optic and not railedCover and not nativeOptic and 1 or 0)
     end
 
-    local underbarrel = atts[7].Installed or atts[17].Installed
+    local underbarrel = atts[7].Installed
     if underbarrel and not wep:HasElement("ak_noubs") and barrel ~= "ur_ak_barrel_vityaz" then
         if barrel == "ur_ak_barrel_krinkov" then
             mdl:SetBodygroup(13, 2)

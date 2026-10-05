@@ -14,9 +14,22 @@ SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.Hook_BlockAnimation = ARC9.UC.HoldIdleWhileCycling
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
 SWEP.UnJam = ARC9.UC.UnJam
+-- ARC9 puts element models ahead of the gun in the worldmodel and customization model lists, but
+-- reads the gun from the first entry; the heat shield's sight model would take its place.
+SWEP.SetupModel = function(wep, wm, lod, cm)
+    baseclass.Get("arc9_base").SetupModel(wep, wm, lod, cm)
+    local models = cm and wep.CModel or wm and wep.WModel
+    for i, model in ipairs(models or {}) do
+        if i > 1 and IsValid(model) and model.slottbl and model.slottbl.WMBase then
+            table.insert(models, 1, table.remove(models, i))
+            break
+        end
+    end
+end
 SWEP.SendAttachmentTree = ARC9.UC.SendRailTree
 SWEP.ReceiveAttachmentTree = ARC9.UC.ReceiveRailTree
 SWEP.UC_MalfunctionVariance = 0.25

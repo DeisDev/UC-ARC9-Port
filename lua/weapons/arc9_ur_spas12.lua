@@ -12,6 +12,7 @@ SWEP.PostModify = ARC9.UC.PostModify
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.Hook_BlockAnimation = ARC9.UC.HoldIdleWhileCycling
 SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.SendAttachmentTree = ARC9.UC.SendRailTree
 SWEP.ReceiveAttachmentTree = ARC9.UC.ReceiveRailTree

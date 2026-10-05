@@ -194,6 +194,9 @@ local function menu_uc(panel)
     panel:NumSlider(P("uc.menu.apobjmult"), "arc9_uc_apobjmult", 1, 10, 1)
     panel:ControlHelp(P("uc.menu.apobjmult.desc"))
 
+    panel:CheckBox(P("uc.menu.multirail"), "arc9_uc_multirail")
+    panel:ControlHelp(P("uc.menu.multirail.desc"))
+
     panel:AddControl("color", {
         label = P("uc.menu.color1"),
         red = "arc9_uc_custcolor_1_r",

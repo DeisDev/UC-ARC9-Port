@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### Added
+
+- Multi-rail accessories setting: when on, each tactical device can hold a second tactical device. It is off by default, as in Urban Coalition.
+
+### Fixed
+
+- 329 barrels no longer stay on the gun after being removed or swapped.
+- The AK no longer shows an underbarrel rail when only an underbarrel launcher is fitted.
+- The M16 with the heat shield handguard now shows the gun and its parts correctly in third person and in customization.
+- Optics and other parts on the Mini-14, 870, and M79 no longer shift after switching between first and third person, which could misalign sights.
+- Pump and bolt actions now stay in the fired pose while the trigger is held, instead of snapping back before cycling.
+
 ## 1.1.0 - 2026-10-04
 
 ### Changed
