@@ -5,6 +5,9 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
+SWEP.Hook_Think = ARC9.UC.NearWallThink
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -27,7 +30,7 @@ SWEP.UseHands = true
 
 -- Muzzle and shell effects --
 
-SWEP.MuzzleParticle = "muzzleflash_1"
+SWEP.MuzzleParticle = "uc_muzzleflash_1"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
 SWEP.ShellScale = 1
@@ -187,6 +190,7 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 8
+SWEP.UC_BarrelOffsetHip = Vector(3.5, 0, -3)
 SWEP.UC_ExtraSightDist = 10
 
 -- Ironsights / Customization / Poses --
@@ -217,6 +221,8 @@ SWEP.ActivePos = Vector(-0.286395, -2.000000, 0.978764)
 SWEP.ActiveAng = Angle(0.000000, 0.000000, -5.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -2.3, -3)
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-1.39, 25.8, 0.62)
 
 SWEP.UC_CrouchPos = Vector(-1.879386, -6.000000, -0.684040)
 SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -20.000000)
@@ -229,6 +235,7 @@ SWEP.TPIKforcelefthand = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-10.5, 3.5, -4.8),
     Ang = Angle(-6, 0, 180),
+    TPIKPos = Vector(-13.55, 2.83, -4.29),
 }
 
 -- Firing sounds --

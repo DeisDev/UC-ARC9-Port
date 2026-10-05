@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -192,6 +194,7 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 24
+SWEP.UC_BarrelOffsetHip = Vector(4, 0, -4)
 SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
@@ -222,6 +225,8 @@ SWEP.ActivePos = Vector(-0.292973, 1.100000, -0.405175)
 SWEP.ActiveAng = Angle(0.000000, 0.000000, -1.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(18, -3.17, -3)
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-9.1, 83.4, 0.77)
 
 SWEP.UC_CrouchPos = Vector(-1.698669, 0.500000, -1.454140)
 SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -14.000000)
@@ -234,6 +239,7 @@ SWEP.TPIKforcelefthand = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-8, 4, -5),
     Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-7.95, 4.88, -5.86),
     Scale = 1
 }
 
@@ -302,6 +308,7 @@ SWEP.UC_IndoorTailVolume = 0.6
 SWEP.HookP_TranslateSound = ARC9.UC.ShootSound
 
 SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
     ARC9.UC.LoopSprintIdle(wep)
     if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)

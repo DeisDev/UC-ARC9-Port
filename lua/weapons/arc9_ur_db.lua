@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -17,7 +19,7 @@ SWEP.Spawnable = true
 SWEP.Category = "ARC9 - Urban Coalition"
 SWEP.AdminOnly = false
 SWEP.UseHands = true
-SWEP.MuzzleParticle = "muzzleflash_shotgun"
+SWEP.MuzzleParticle = "uc_muzzleflash_shotgun"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/12g.mdl"
 SWEP.ShellPitch = 100
@@ -39,8 +41,11 @@ SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-3, 3, -5),
     Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-3.23, 2.63, -4.31),
     Scale = 1
 }
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-5.24, 139.4, 1.39)
 
 SWEP.DamageMax = 18
 SWEP.DamageMin = 10
@@ -102,6 +107,8 @@ SWEP.AimDownSightsTime = 0.25
 SWEP.SpeedMultShooting = 0.75
 SWEP.SpeedMultMelee = 1
 SWEP.BarrelLength = 49
+SWEP.UC_BarrelOffsetSighted = Vector(0, 0, -1)
+SWEP.UC_BarrelOffsetHip = Vector(3, 0, -4.5)
 SWEP.UC_ExtraSightDist = 2
 SWEP.HoldTypeHolstered = "passive"
 SWEP.HoldType = "ar2"
@@ -460,8 +467,9 @@ SWEP.HookP_TranslateSound = function(wep, data)
     return ARC9.UC.ShootSound(wep, data)
 end
 
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
 end

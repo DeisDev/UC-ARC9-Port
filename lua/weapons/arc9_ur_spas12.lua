@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -49,7 +51,7 @@ SWEP.UseHands = true
 
 -- Muzzle and shell effects --
 
-SWEP.MuzzleParticle = "muzzleflash_shotgun"
+SWEP.MuzzleParticle = "uc_muzzleflash_shotgun"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/12g.mdl"
 SWEP.ShellPitch = 100
@@ -99,6 +101,7 @@ SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-5.8, 5, -4.5),
     Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-5.23, 4.83, -6.18),
     Scale = 1
 }
 
@@ -239,6 +242,8 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 46
+SWEP.UC_BarrelOffsetSighted = Vector(0, 0, -1)
+SWEP.UC_BarrelOffsetHip = Vector(3, 0, -4.5)
 SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
@@ -274,6 +279,8 @@ SWEP.ActivePos = Vector(0.000000, 0.500000, 0.000000)
 SWEP.ActiveAng = Angle(0.000000, 0.000000, 0.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -3.835, -3)
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-4.94, 141.7, 0.77)
 
 SWEP.UC_CrouchPos = Vector(-2.964102, -2.000000, -2.866025)
 SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -30.000000)
@@ -657,8 +664,9 @@ SWEP.BulletBones = {[2] = "Shell_Extra"}
 -- The loose reload shells use 12shell; Shell_Extra is the round inside the gun.
 SWEP.HideBones = {"12shell"}
 
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
 end

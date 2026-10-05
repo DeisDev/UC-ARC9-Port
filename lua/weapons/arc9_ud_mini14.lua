@@ -5,6 +5,9 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
+SWEP.Hook_Think = ARC9.UC.NearWallThink
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -25,7 +28,7 @@ SWEP.UseHands = true
 
 -- Effects --
 
-SWEP.MuzzleParticle = "muzzleflash_1"
+SWEP.MuzzleParticle = "uc_muzzleflash_1"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/556x45.mdl"
 SWEP.ShellScale = 0.666
@@ -184,6 +187,7 @@ SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 -- Length --
 
 SWEP.BarrelLength = 36
+SWEP.UC_BarrelOffsetHip = Vector(3, 0, -3)
 SWEP.UC_ExtraSightDist = 2
 
 -- Ironsights / Customization / Poses --
@@ -219,6 +223,8 @@ SWEP.ActivePos = Vector(-0.998630, -1.000000, -0.052336)
 SWEP.ActiveAng = Angle(0.000000, 0.000000, -3.000000)
 
 SWEP.CustomizeRotateAnchor = Vector(21.5, -4.305, -3)
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-5.24, 110.8, 0.31)
 
 SWEP.UC_CrouchPos = Vector(-3.830127, -4.000000, -3.366025)
 SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -30.000000)
@@ -229,6 +235,7 @@ SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-10, 6.5, -6),
     Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-7.08, 5.24, -3.94),
     Scale = 1 - ( 0.35 * 0.75 )
 }
 
@@ -752,6 +759,66 @@ SWEP.Hook_ModifyBodygroups = function(wep, data)
 
     -- Tactical stocks use the pistol grip pose.
     mdl:SetPoseParameter("grip", gripstocks[atts[8].Installed or ""] and 1 or 0)
+end
+
+if CLIENT then
+    -- The default 20" barrel has its flash hider modeled into the barrel mesh, so no bodygroup hides
+    -- it under a muzzle device. Clip the gun at the muzzle mount while drawing it instead.
+    local function MuzzleClip(wep, wm, custompos, customang)
+        local atts = wep.Attachments
+        if atts[2].Installed or !atts[3].Installed then return end
+        local pos, ang = wep:GetAttachmentPos(atts[3], wm, false, true, custompos, customang)
+        local normal = -ang:Forward()
+        return normal, normal:Dot(pos)
+    end
+
+    local function PushClip(normal, distance)
+        local clipping = render.EnableClipping(true)
+        render.PushCustomClipPlane(normal, distance)
+        return clipping
+    end
+
+    local function PopClip(clipping)
+        render.PopCustomClipPlane()
+        render.EnableClipping(clipping)
+    end
+
+    function SWEP:PreDrawViewModel(vm, weapon, ply, flags)
+        baseclass.Get("arc9_base").PreDrawViewModel(self, vm, weapon, ply, flags)
+        local normal, distance = MuzzleClip(self, false)
+        if normal then self.UC_MuzzleClip = PushClip(normal, distance) end
+    end
+
+    function SWEP:ViewModelDrawn(ent, flags)
+        if self.UC_MuzzleClip != nil then
+            PopClip(self.UC_MuzzleClip)
+            self.UC_MuzzleClip = nil
+        end
+        baseclass.Get("arc9_base").ViewModelDrawn(self, ent, flags)
+    end
+
+    -- ARC9 places every model in DrawCustomModel; the gun itself is drawn afterwards, clipped.
+    function SWEP:DrawCustomModel(wm, custompos, customang, flags)
+        local base = baseclass.Get("arc9_base").DrawCustomModel
+        local normal, distance
+        if wm and self:ShouldLOD() < 2 then normal, distance = MuzzleClip(self, true, custompos, customang) end
+        local gun
+        for _, model in ipairs(normal and (custompos and self.CModel or self.WModel) or {}) do
+            if IsValid(model) and model.slottbl and model.slottbl.WMBase and !model.NoDraw then
+                gun = model
+                break
+            end
+        end
+        if !gun then return base(self, wm, custompos, customang, flags) end
+
+        gun.NoDraw = true
+        base(self, wm, custompos, customang, flags)
+        if !IsValid(gun) then return end
+        gun.NoDraw = nil
+        local clipping = PushClip(normal, distance)
+        gun:DrawModel()
+        PopClip(clipping)
+    end
 end
 
 local function D(key)

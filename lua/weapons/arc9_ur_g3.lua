@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -87,7 +89,7 @@ SWEP.DistantShootSoundIndoor = {tail .. "fire-dist-308-rif-int-01.ogg", tail .. 
 SWEP.DistantShootSoundSilenced = {common .. "sup-tail-01.ogg", common .. "sup-tail-02.ogg", common .. "sup-tail-03.ogg", common .. "sup-tail-04.ogg", common .. "sup-tail-05.ogg", common .. "sup-tail-06.ogg", common .. "sup-tail-07.ogg", common .. "sup-tail-08.ogg", common .. "sup-tail-09.ogg", common .. "sup-tail-10.ogg"}
 SWEP.DistantShootSoundSilencedIndoor = {common .. "sup_tail.ogg"}
 SWEP.UC_IndoorTailVolume = 1
-SWEP.MuzzleParticle = "muzzleflash_6"
+SWEP.MuzzleParticle = "uc_muzzleflash_6"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/556x45.mdl"
 SWEP.ShellPitch = 90
@@ -128,6 +130,8 @@ SWEP.NearWallPos = Vector(-1.131624, -0.788138, 1.240268)
 SWEP.NearWallAng = Angle(8.278363, -14.850644, -12.135646)
 SWEP.SprintVerticalOffset = false
 SWEP.BarrelLength = 24
+SWEP.UC_BarrelOffsetSighted = Vector(0, 0, 0)
+SWEP.UC_BarrelOffsetHip = Vector(0, 0, 0)
 SWEP.AttachmentElements = {
     ["ur_g3_skin_wood"] = {
         Skin = 1
@@ -274,8 +278,11 @@ local ubmountbg = {
 SWEP.UC_ExtraSightDist = 2
 SWEP.WorldModelOffset = {
     Pos = Vector(-5, 3, -5),
-    Ang = Angle(-12, 0, 180)
+    Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-5.6, 3.51, -5.67)
 }
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-6.32, 126.3, 0.15)
 
 SWEP.MirrorVMWM = true
 SWEP.Attachments = {
@@ -898,8 +905,9 @@ SWEP.SprintToFireTime = 0.35
 SWEP.FreeAimRadius = math.Clamp(900 / 80, 3, 10)
 SWEP.ARC9WeaponCategory = ARC9.WEAPON_AR
 SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_AR2
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
 end

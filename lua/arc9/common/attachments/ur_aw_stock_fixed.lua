@@ -1,9 +1,0 @@
-ATT.MenuCategory = "ARC9 - Urban Coalition"
-ATT.PrintName = ARC9:GetPhrase("ur_aw_stock_fixed.printname")
-ATT.Description = ARC9:GetPhrase("ur_aw_stock_fixed.description")
-ATT.Icon = Material("entities/att/ur_aw/stock_nonfold.png", "mips smooth")
-ATT.Category = {"ur_aw_stock"}
-ATT.SortOrder = 3
-ATT.SwayMult = .85
-ATT.ActivateElements = {"ur_aw_stock_fixed", "stock_fixed"}
-ATT.UC_DrawTimeMult = 1.2

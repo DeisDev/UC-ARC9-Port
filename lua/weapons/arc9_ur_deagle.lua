@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -115,7 +117,10 @@ SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-10.5, 4, -4),
     Ang = Angle(-6, 0, 180),
+    TPIKPos = Vector(-9.47, 2.67, -4.48),
 }
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-4.94, 28.1, -0.15)
 
 local path = ")weapons/arccw_ur/deagle/"
 local common = ")/arccw_uc/common/"
@@ -667,8 +672,9 @@ SWEP.SprintToFireTime = 0.25
 SWEP.FreeAimRadius = math.Clamp(600 / 80, 3, 10)
 SWEP.ARC9WeaponCategory = ARC9.WEAPON_PISTOL
 SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_PISTOL
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
 end

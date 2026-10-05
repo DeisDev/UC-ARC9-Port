@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -133,6 +135,8 @@ SWEP.NearWallPos = Vector(-1.131624, -0.788138, 1.240268)
 SWEP.NearWallAng = Angle(8.278363, -14.850644, -12.135646)
 SWEP.SprintVerticalOffset = false
 SWEP.BarrelLength = 54
+SWEP.UC_BarrelOffsetSighted = Vector(0, 0, 0)
+SWEP.UC_BarrelOffsetHip = Vector(0, 0, 0)
 SWEP.AttachmentElements = {
     ["barrel_long"] = {
         Bodygroups = {{2, 1}},
@@ -206,8 +210,11 @@ SWEP.AttachmentElements = {
 SWEP.UC_ExtraSightDist = 2
 SWEP.WorldModelOffset = {
     Pos = Vector(-7, 5, -4.8),
-    Ang = Angle(-12, 0, 180)
+    Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-6.54, 5.73, -5.5)
 }
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(0, 175.1, 0.62)
 
 SWEP.MirrorVMWM = true
 SWEP.Attachments = {
@@ -709,8 +716,9 @@ SWEP.SprintToFireTime = 0.35
 SWEP.FreeAimRadius = math.Clamp(1250 / 80, 3, 10)
 SWEP.ARC9WeaponCategory = ARC9.WEAPON_SNIPER
 SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_AR2
-if CLIENT then
-    SWEP.Hook_Think = function(wep)
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end
 end

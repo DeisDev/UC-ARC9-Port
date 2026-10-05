@@ -5,6 +5,8 @@ SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
 SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
 SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
 SWEP.WouldConflict = ARC9.UC.WouldConflict
+SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
+SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
@@ -68,7 +70,8 @@ SWEP.ViewModelFOVBase = 70
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-7, 4, -4),
-    Ang = Angle(-12, 0, 180)
+    Ang = Angle(-12, 0, 180),
+    TPIKPos = Vector(-6.9, 4.13, -6.42)
 }
 
 SWEP.DefaultBodygroups = "01000080012000"
@@ -151,6 +154,8 @@ SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.75
 SWEP.SpeedMultMelee = 1
 SWEP.BarrelLength = 24
+SWEP.UC_BarrelOffsetSighted = Vector(0, 0, 0)
+SWEP.UC_BarrelOffsetHip = Vector(0, 0, 0)
 SWEP.UC_ExtraSightDist = 2
 SWEP.Bash = true
 SWEP.BashDamage = 25
@@ -168,8 +173,11 @@ SWEP.HasAnimation = function(wep, anim, lq)
 end
 SWEP.UC_DrawTime = 1
 SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
-SWEP.Hook_Think = ARC9.UC.LoopSprintIdle
-SWEP.MuzzleParticle = "muzzleflash_6"
+SWEP.Hook_Think = function(wep)
+    ARC9.UC.NearWallThink(wep)
+    ARC9.UC.LoopSprintIdle(wep)
+end
+SWEP.MuzzleParticle = "uc_muzzleflash_6"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
 SWEP.ShellModel = "models/weapons/arccw/uc_shells/762x39.mdl"
 SWEP.ShellScale = 0.666
@@ -194,6 +202,8 @@ SWEP.ActiveAng = Angle(0.000000, 0.000000, 0.000000)
 SWEP.SprintPos = Vector(0.000000, 0.000000, -1.000000)
 SWEP.SprintAng = Angle(0.000000, 0.000000, 0.000000)
 SWEP.CustomizeRotateAnchor = Vector(16, -2.61, -3)
+SWEP.CustomizeSnapshotFOV = 30
+SWEP.CustomizeSnapshotPos = Vector(-4.47, 123.9, 0.77)
 SWEP.RestPos = Vector(-0.928419, -1.044439, 0.295272)
 SWEP.RestAng = Angle(8.278363, -14.850644, -12.135646)
 SWEP.NearWallPos = Vector(-1.131624, -0.788138, 1.240268)

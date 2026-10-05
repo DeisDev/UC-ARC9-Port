@@ -24,12 +24,12 @@ CreateConVar("arc9_uc_apobjmult", 3, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Damage m
 CreateConVar("arc9_uc_multirail", 0, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Allow a second tactical device on each tactical device.")
 
 game.AddParticles("particles/uc_muzzleflashes.pcf")
-PrecacheParticleSystem("muzzleflash_1")
-PrecacheParticleSystem("muzzleflash_pistol")
-PrecacheParticleSystem("muzzleflash_6")
-PrecacheParticleSystem("muzzleflash_shotgun")
-PrecacheParticleSystem("muzzleflash_m79")
-PrecacheParticleSystem("muzzleflash_suppressed")
+PrecacheParticleSystem("uc_muzzleflash_1")
+PrecacheParticleSystem("uc_muzzleflash_pistol")
+PrecacheParticleSystem("uc_muzzleflash_6")
+PrecacheParticleSystem("uc_muzzleflash_shotgun")
+PrecacheParticleSystem("uc_muzzleflash_m79")
+PrecacheParticleSystem("uc_muzzleflash_suppressed")
 game.AddParticles("particles/muzzleflash_dragonsbreath.pcf")
 PrecacheParticleSystem("muzzleflash_dragonbreath")
 game.AddParticles("particles/uo_explosions_fas2.pcf")
@@ -398,6 +398,60 @@ end
 
 function ARC9.UC.CrouchAng(wep)
     return wep.UC_CrouchAng - wep:GetProcessedValue("ActiveAng", true)
+end
+
+-- ArcCW keeps sights when the barrel meets a wall: it blocks firing and blends the gun toward its
+-- holster pose by how far the barrel reaches in. ARC9 leaves sights and swaps to its near-wall pose
+-- (also when aiming at the floor while crouched), so BarrelLengthHook turns ARC9's check off and
+-- SprintLock and NearWallThink take its place.
+ARC9.UC.BarrelOffsetSighted = Vector(0, 0, 0)
+ARC9.UC.BarrelOffsetHip = Vector(3, 0, -3)
+
+local nearwall = GetConVar("arc9_mod_nearwall")
+
+function ARC9.UC.BarrelLengthHook(wep)
+    if !wep.UC_TracingBarrel then return 0 end
+end
+
+-- Fraction of the barrel inside a wall, from the eye along the aim like ArcCW's BarrelHitWall.
+function ARC9.UC.BarrelHitWall(wep)
+    local now = CurTime()
+    if wep.UC_HitWallTime == now then return wep.UC_HitWall end
+    wep.UC_HitWallTime = now
+    wep.UC_HitWall = 0
+
+    local owner = wep:GetOwner()
+    if !nearwall:GetBool() or !IsValid(owner) or !owner:IsPlayer() or owner:InVehicle() then return 0 end
+
+    wep.UC_TracingBarrel = true
+    local length = wep:GetValue("BarrelLength", nil, nil, nil, true)
+    wep.UC_TracingBarrel = nil
+    if length <= 0 then return 0 end
+
+    local offset = LerpVector(wep:GetSightAmount(), wep.UC_BarrelOffsetHip or ARC9.UC.BarrelOffsetHip,
+        wep.UC_BarrelOffsetSighted or ARC9.UC.BarrelOffsetSighted)
+    local dir = owner:EyeAngles()
+    local forward = dir:Forward()
+    local src = owner:EyePos() + dir:Right() * offset.x + forward * offset.y + dir:Up() * offset.z
+    local tr = util.TraceLine({start = src, endpos = src + forward * length, filter = owner, mask = MASK_SOLID})
+    if tr.Hit and !(IsValid(tr.Entity) and tr.Entity.ARC9Projectile) then
+        wep.UC_HitWall = 1 - tr.Fraction
+    end
+    return wep.UC_HitWall
+end
+
+function ARC9.UC.SprintLock(wep)
+    return baseclass.Get("arc9_base").SprintLock(wep) or ARC9.UC.BarrelHitWall(wep) > 0
+end
+
+-- Hook_Think runs after ARC9's own near-wall think, so this value is the one that counts. ARC9 eases
+-- the amount with InOutQuad before blending; ArcCW blends linearly, so store the inverse.
+function ARC9.UC.NearWallThink(wep)
+    local time = wep:GetProcessedValue("SprintToFireTime", true) * 0.75
+    local blend = ARC9.UC.BarrelHitWall(wep)
+    local target = blend < 0.5 and math.sqrt(blend / 2) or 1 - math.sqrt((1 - blend) * 2) / 2
+    wep.UC_NearWallAmount = math.Approach(wep.UC_NearWallAmount or 0, target, FrameTime() / time)
+    wep:SetNearWallAmount(wep.UC_NearWallAmount)
 end
 
 -- ARC9 drives safety and sprinting through the same pose blend.
