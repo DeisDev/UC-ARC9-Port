@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.1.1 - 2026-10-05
+
 ### Added
 
 - Multi-rail accessories setting: when on, each tactical device can hold a second tactical device. It is off by default, as in Urban Coalition.
