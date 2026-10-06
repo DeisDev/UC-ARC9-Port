@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.0 - 2026-10-05
+
 ### Added
 
 - Urban Coalition HK USP with its original assets and 10 active weapon-specific attachments.
