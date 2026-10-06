@@ -235,6 +235,7 @@ do
     end
 
     ATT.UC_MalfunctionVarianceMult = 1.5
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_uzi_mag_100")
 end
@@ -262,6 +263,7 @@ do
             return anim .. "_16"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_uzi_mag_20")
 end
@@ -288,6 +290,7 @@ do
             return anim .. "_41"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_uzi_mag_40")
 end
@@ -316,6 +319,7 @@ do
             return anim .. "_16"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_uzi_mag_45_12")
 end
@@ -343,6 +347,7 @@ do
             return anim .. "_41"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_uzi_mag_45_22")
 end

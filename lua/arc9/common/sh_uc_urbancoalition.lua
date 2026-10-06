@@ -1383,6 +1383,41 @@ function ARC9.UC.WouldConflict()
     return false
 end
 
+-- ArcCW leaves parts out of the customization list when Hook_Compatible refuses the weapon, and
+-- blocked parts marked HideIfBlocked; ARC9 lists them greyed out.
+function ARC9.UC.HiddenAttachments(wep, slot)
+    local hidden = {}
+    for _, att in ipairs(ARC9.GetAttsForCats(slot.Category or "")) do
+        if att == slot.Installed then continue end
+        local atttbl = ARC9.GetAttTable(att)
+        if atttbl.UC_Compatible and atttbl.UC_Compatible(wep, {att = att, slottbl = slot}) == false
+                or atttbl.UC_HideIfBlocked and wep:GetAttBlocked(atttbl) then
+            hidden[att] = true
+        end
+    end
+    return hidden
+end
+
+if CLIENT then
+    -- ARC9's list skips a slot's RejectAttachments, which CanAttach also reads, so they only
+    -- hold the hidden parts while the list is built.
+    function ARC9.UC.CreateHUD_Bottom(wep)
+        if wep.WantToInvalidateCache then wep:DoInvalidateCache() end
+        local saved = {}
+        for _, slot in ipairs(wep:GetSubSlotList()) do
+            local reject = ARC9.UC.HiddenAttachments(wep, slot)
+            if !next(reject) then continue end
+            saved[slot] = slot.RejectAttachments or false
+            table.Merge(reject, slot.RejectAttachments or {})
+            slot.RejectAttachments = reject
+        end
+        baseclass.Get("arc9_base").CreateHUD_Bottom(wep)
+        for slot, reject in pairs(saved) do
+            slot.RejectAttachments = reject or nil
+        end
+    end
+end
+
 -- Lets an attachment reject a weapon with ATT.UC_Compatible(wep, data) returning false.
 hook.Add("ARC9_Hook_BlockAttachment", "ARC9_UC_Compatible", function(wep, data)
     if !istable(data) or !data.att then return end

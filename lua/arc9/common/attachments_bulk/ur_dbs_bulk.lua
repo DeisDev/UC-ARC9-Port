@@ -175,6 +175,7 @@ do
     ATT.Free = true
     ATT.RequireElements = {{"sawnoff", "ur_dbs_stock_sawedoff", "uc_tp_gong"}}
     ATT.ActivateElements = {"ur_dbs_tp_doom"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_dbs_tp_doom")
 end

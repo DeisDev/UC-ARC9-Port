@@ -218,6 +218,7 @@ do
     ATT.UC_HipDispersionMult = 1.25
     ATT.ExcludeElements = {"mag_338", "mag_300"}
     ATT.ActivateElements = {"ur_aw_mag_10", "mag_ext"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_aw_mag_10")
 end
@@ -244,6 +245,7 @@ do
     ATT.RequireElements = {"mag_300"}
     ATT.ExcludeElements = {"mag_308"}
     ATT.ActivateElements = {"ur_aw_mag_10m", "mag_ext_338"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_aw_mag_10m")
 end

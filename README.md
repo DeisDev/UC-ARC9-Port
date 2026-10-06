@@ -1,6 +1,6 @@
 # UC ARC9 Port
 
-A port of the ArcCW Urban Coalition addons (Urban Decay, Urban Renewal, and UC Commons) to the ARC9 weapon base. It includes all 16 weapons and their attachments.
+A port of the ArcCW Urban Coalition addons (Urban Decay, Urban Renewal, the HK USP, and UC Commons) to the ARC9 weapon base. It includes all 17 weapons and their attachments.
 
 ## Install
 

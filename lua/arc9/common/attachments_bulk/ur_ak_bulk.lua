@@ -607,6 +607,7 @@ do
     ATT.UC_HipDispersionMult = 1.25
     ATT.ActivateElements = {"mag_545_45"}
     ATT.RequireElements = {{"cal_545"}}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_545_45")
 end
@@ -621,6 +622,7 @@ do
     ATT.SortOrder = 99
     ATT.ActivateElements = {"mag_545_black"}
     ATT.RequireElements = {{"cal_545"}}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_545_black")
 end
@@ -645,6 +647,7 @@ do
     ATT.Hook_TranslateAnimation = function(wep, anim) if anim == "reload" or anim == "reload_empty" then return anim .. "_10rnd" end end
     ATT.ActivateElements = {"mag_366"}
     ATT.ExcludeElements = {"cal_545", "cal_9mm", "cal_12g", "cal_308", "cal_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_762_10")
 end
@@ -677,6 +680,7 @@ do
     ATT.Hook_TranslateAnimation = function(wep, anim) if anim == "reload" or anim == "reload_empty" then return anim .. "_75" end end
     ATT.ActivateElements = {"mag_762_75", "mag_drum"}
     ATT.ExcludeElements = {"cal_545", "cal_9mm", "cal_366", "cal_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_762_75")
 end
@@ -691,6 +695,7 @@ do
     ATT.SortOrder = 30
     ATT.ActivateElements = {"mag_762_bakelite"}
     ATT.ExcludeElements = {"cal_545", "cal_9mm", "cal_12g", "cal_308", "cal_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_762_bakelite")
 end
@@ -705,6 +710,7 @@ do
     ATT.SortOrder = 30
     ATT.ActivateElements = {"mag_762_pmag"}
     ATT.ExcludeElements = {"cal_545", "cal_9mm", "cal_12g", "cal_308", "cal_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_ak_mag_762_pmag")
 end

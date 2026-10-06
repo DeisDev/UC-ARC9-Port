@@ -96,6 +96,7 @@ do
             return anim .. "_10"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_10")
 end
@@ -122,6 +123,7 @@ do
             return anim .. "_10"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_10_762")
 end
@@ -148,6 +150,7 @@ do
             return anim .. "_30"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_30")
 end
@@ -175,6 +178,7 @@ do
             return anim .. "_762"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_30_762")
 end
@@ -201,6 +205,7 @@ do
             return anim .. "_30_tac"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_30_pmag")
 end
@@ -231,6 +236,7 @@ do
             return anim .. "_30_tac"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_42")
 end
@@ -264,6 +270,7 @@ do
             return anim .. "_60"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_mini14_mag_60")
 end

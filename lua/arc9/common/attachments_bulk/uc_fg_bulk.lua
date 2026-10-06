@@ -243,6 +243,7 @@ do
     ATT.SortOrder = 3
     ATT.MalfunctionMeanShotsToFailMult = 2
     ATT.InstallSound = "arccw_uc/common/gunsmith/internal_modification.ogg"
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "uc_fg_lubedparts")
 end

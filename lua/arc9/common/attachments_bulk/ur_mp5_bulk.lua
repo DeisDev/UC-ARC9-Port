@@ -804,6 +804,7 @@ do
     ATT.ExcludeElements = {"g3_not8"}
 
     ATT.ActivateElements = {"ur_mp5_ub_mlok", "ur_mp5_ub_kurzmlok"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_mp5_ub_mlok")
 end
@@ -878,6 +879,7 @@ do
 
     ATT.FlashlightAttachment = 1
     ATT.ToggleOnF = true
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_mp5_ub_surefire")
 end

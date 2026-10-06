@@ -13,6 +13,7 @@ SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
+SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
 -- The source muzzle slot is hidden and never filled; clear devices restored from older saves.
 SWEP.BuildSubAttachments = function(wep, tree)
     ARC9.UC.BuildSubAttachments(wep, tree)

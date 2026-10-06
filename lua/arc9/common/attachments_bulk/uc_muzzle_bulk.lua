@@ -418,6 +418,7 @@ do
         end
     end
     ATT.HookP_TranslateSound = ARC9.UC.NoDistantTail
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "uc_muzzle_supp_ssq")
 end

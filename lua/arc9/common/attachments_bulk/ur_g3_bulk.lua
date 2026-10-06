@@ -190,6 +190,7 @@ do
     ATT.ModelAngleOffset = ARC9.UC.AttachmentAngle(ATT.UC_ModelAngleOffset)
     ATT.FlashlightAttachment = 1
     ATT.NoDraw = true
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_hg_51_flash")
 end
@@ -218,6 +219,7 @@ do
     ATT.RequireElements = {"g3_hk51hg"}
     ATT.Ignore = true
     ATT.ActivateElements = {"ur_g3_hg_51_mlok", "g3_noub"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_hg_51_mlok")
 end
@@ -284,6 +286,7 @@ do
     ATT.UC_HipDispersionMult = 0.85
     ATT.ExcludeElements = {"cal_556"}
     ATT.ActivateElements = {"ur_g3_mag_10"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_mag_10")
 end
@@ -310,6 +313,7 @@ do
     ATT.SpeedMultShooting = 1.05
     ATT.RequireElements = {"cal_556"}
     ATT.ActivateElements = {"ur_g3_mag_20_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_mag_20_556")
 end
@@ -335,6 +339,7 @@ do
     ATT.SpeedMultShooting = 0.95
     ATT.RequireElements = {"cal_556"}
     ATT.ActivateElements = {"ur_g3_mag_40_556"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_mag_40_556")
 end
@@ -367,6 +372,7 @@ do
     ATT.UC_HipDispersionMult = 1.5
     ATT.ExcludeElements = {"cal_556"}
     ATT.ActivateElements = {"ur_g3_mag_50"}
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ur_g3_mag_50")
 end

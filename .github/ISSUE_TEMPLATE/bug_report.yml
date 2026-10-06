@@ -24,6 +24,7 @@ body:
         - Model 329PD (Enforcement .44)
         - AWP (Apex Precision)
         - IZh-58 (Volga Super)
+        - USP Tactical (P93)
         - All or most weapons
     validations:
       required: true

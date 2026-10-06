@@ -567,6 +567,7 @@ do
     end
 
     ATT.UC_MalfunctionVarianceMult = 1.5
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_100")
 end
@@ -597,6 +598,7 @@ do
             return anim .. "_20"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_20")
 end
@@ -625,6 +627,7 @@ do
             return anim .. "_40"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_40")
 end
@@ -647,6 +650,7 @@ do
     ATT.SwayMult = 1.5
     ATT.SpeedMult = 0.975
     ATT.UC_HipDispersionMult = 1.15
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_50beo_12")
 end
@@ -675,6 +679,7 @@ do
             return anim .. "_40"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_50beo_15")
 end
@@ -710,6 +715,7 @@ do
     end
 
     ATT.UC_MalfunctionVarianceMult = 1.25
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_60")
 end
@@ -735,6 +741,7 @@ do
             return anim .. "_9mm"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_9mm_32")
 end
@@ -750,6 +757,7 @@ do
     ATT.SortOrder = 40
     ATT.Icon = Material("entities/att/acwatt_ud_m16_mag_pmag.png", "smooth mips")
     ATT.Category = "ud_m16_mag"
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_pmag")
 end
@@ -780,6 +788,7 @@ do
             return anim .. "_usas"
         end
     end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_mag_usas_20")
 end
@@ -996,6 +1005,7 @@ do
         end
     end
     ATT.HookP_ClassChange = function(wep, class) return "uc.class.semi_automatic_rifle" end
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_receiver_50beo")
 end
@@ -1269,6 +1279,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/sig_rs.mdl"
     ATT.ModelOffset = Vector(-2, -0.002, 0)
     ATT.Scale = 0.86
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs")
 end
@@ -1297,6 +1308,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/3d_rs.mdl"
     ATT.ModelOffset = Vector(-2, -0.002, 0)
     ATT.Scale = 0.86
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs_3d")
 end
@@ -1325,6 +1337,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/colt_ch.mdl"
     ATT.ModelOffset = Vector(-2.2, -0.004, 0)
     ATT.Scale = 0.78
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs_ch")
 end
@@ -1353,6 +1366,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/kac_rs.mdl"
     ATT.ModelOffset = Vector(-1.5, -0.01, -0.09)
     ATT.Scale = 0.9
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs_kac")
 end
@@ -1381,6 +1395,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/magpul_rs.mdl"
     ATT.ModelOffset = Vector(-1.5, -0.005, 0)
     ATT.Scale = 0.87
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs_magpul")
 end
@@ -1409,6 +1424,7 @@ do
     ATT.Model = "models/weapons/arccw/atts/scalerworks_rs.mdl"
     ATT.ModelOffset = Vector(-3, 0, -0.1)
     ATT.Scale = 1.17
+    ATT.UC_HideIfBlocked = true
 
     ARC9.LoadAttachment(ATT, "ud_m16_rs_sclr")
 end
