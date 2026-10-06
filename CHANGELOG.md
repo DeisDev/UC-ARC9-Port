@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 1.3.1 - 2026-10-06
+
+### Fixed
+
+- Firing no longer makes you move faster with setups that ease the firing slowdown, such as the MP5K or the 329 in single action, and aiming with Strafe no longer does either. As in Urban Coalition, guns never move you faster than your normal speed.
+- The 870 now pumps a shell into the chamber after a reload from empty, and an empty reload fills only the tube, as in Urban Coalition.
+- Weapon selection and kill icons no longer show dark metal and wood as see-through, as on the 329, 870, and M1014.
+
 ## 1.3.0 - 2026-10-05
 
 ### Added
