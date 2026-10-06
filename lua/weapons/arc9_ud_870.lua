@@ -11,6 +11,7 @@ SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.Hook_Think = ARC9.UC.NearWallThink
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
+SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.PostModify = ARC9.UC.PostModify
 SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
@@ -144,6 +145,8 @@ SWEP.Firemodes = {
 SWEP.ManualActionNoLastCycle = true
 SWEP.ManualAction = true
 SWEP.ShotgunReload = true
+-- ArcCW fills only the tube on an empty reload; the closing pump chambers a shell from it.
+SWEP.ShotgunReloadIncludesChamber = false
 
 SWEP.ShootVolume = 160
 SWEP.ShootPitch = 100
@@ -178,6 +181,9 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.4
 SWEP.SprintToFireTime = 0.4
 SWEP.SpeedMultShooting = 0.75
+SWEP.SpeedHook = ARC9.UC.SpeedCap
+SWEP.SpeedHookSights = ARC9.UC.SightsSpeedCap
+SWEP.SpeedHookShooting = ARC9.UC.ShootSpeedCap
 SWEP.SpeedMultMelee = 1
 
 -- Melee --
@@ -420,6 +426,12 @@ SWEP.Animations = {
         },
     },
 }
+
+-- ARC9 adds "_empty" only while the reload is running, but picks the finish after it ends, so
+-- ArcCW's pump after an empty reload never played.
+SWEP.Hook_TranslateAnimation = function(wep, anim)
+    if anim == "reload_finish" and wep:GetEmptyReload() then return "reload_finish_empty" end
+end
 
 SWEP.Hook_ModifyBodygroups = function(wep, data)
     local mdl = data.model

@@ -132,6 +132,34 @@ function ARC9.UC.AnimationSpeed(wep, data)
     end
 end
 
+-- ArcCW caps the weapon's speed and its aiming and firing slowdowns at 1 each (sh_move.lua), so
+-- parts that ease them never speed the player up. ARC9 multiplies freely; firing the MP5K or the
+-- 329 in single action, or aiming with Strafe, was faster than walking.
+function ARC9.UC.SpeedCap(wep, speed)
+    return math.min(speed, 1)
+end
+
+local function CappedSlowdown(wep, speed, condition, override)
+    local busy = "UC_SpeedBusy" .. condition
+    if wep[busy] then return end
+    wep[busy] = true
+    local mult = wep:GetValue("Speed", 1, condition)
+    wep[busy] = nil
+    if mult <= 0 then return end
+
+    local capped = mult
+    if override then capped = mult / wep:GetTable()["SpeedMult" .. condition] * override end
+    return speed / mult * math.min(capped, 1)
+end
+
+function ARC9.UC.SightsSpeedCap(wep, speed)
+    return CappedSlowdown(wep, speed, "Sights")
+end
+
+function ARC9.UC.ShootSpeedCap(wep, speed)
+    return CappedSlowdown(wep, speed, "Shooting", wep:GetValue("UC_ShootSpeedOverride"))
+end
+
 -- ARC9 replaces the previous shot's kick and turns the view in steps that miss part of it, so
 -- automatic fire climbed about half as far as in ArcCW. The kick goes to ARC9.UC.AddViewKick instead.
 function ARC9.UC.ApplyRecoil(wep)
@@ -760,6 +788,23 @@ if CLIENT then
             render.MaterialOverride()
             cam.IgnoreZ(false)
         end
+    end
+
+    -- ARC9 captures selection icons and preset pictures with the models' own materials and keeps
+    -- their texture alpha, so guns whose textures store phong or envmap masks there came out
+    -- see-through. Each capture pass draws the gun again, writing only full alpha.
+    local alphamat = Material("models/shiny")
+
+    function ARC9.UC.DrawCustomModel(wep, wm, custompos, customang, flags, draw)
+        draw = draw or baseclass.Get("arc9_base").DrawCustomModel
+        draw(wep, wm, custompos, customang, flags)
+        if !ARC9.PresetCam or !custompos then return end
+
+        render.OverrideColorWriteEnable(true, false)
+        render.MaterialOverride(alphamat)
+        draw(wep, wm, custompos, customang, flags)
+        render.MaterialOverride()
+        render.OverrideColorWriteEnable(false, false)
     end
 end
 

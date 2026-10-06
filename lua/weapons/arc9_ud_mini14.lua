@@ -169,6 +169,9 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.35
 SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.9
+SWEP.SpeedHook = ARC9.UC.SpeedCap
+SWEP.SpeedHookSights = ARC9.UC.SightsSpeedCap
+SWEP.SpeedHookShooting = ARC9.UC.ShootSpeedCap
 SWEP.SpeedMultMelee = 1
 
 -- Melee --
@@ -800,7 +803,7 @@ if CLIENT then
     end
 
     -- ARC9 places every model in DrawCustomModel; the gun itself is drawn afterwards, clipped.
-    function SWEP:DrawCustomModel(wm, custompos, customang, flags)
+    local function DrawClipped(self, wm, custompos, customang, flags)
         local base = baseclass.Get("arc9_base").DrawCustomModel
         local normal, distance
         if wm and self:ShouldLOD() < 2 then normal, distance = MuzzleClip(self, true, custompos, customang) end
@@ -820,6 +823,10 @@ if CLIENT then
         local clipping = PushClip(normal, distance)
         gun:DrawModel()
         PopClip(clipping)
+    end
+
+    function SWEP:DrawCustomModel(wm, custompos, customang, flags)
+        ARC9.UC.DrawCustomModel(self, wm, custompos, customang, flags, DrawClipped)
     end
 end
 

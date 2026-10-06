@@ -11,6 +11,7 @@ SWEP.SprintLock = ARC9.UC.SprintLock
 SWEP.Hook_Think = ARC9.UC.NearWallThink
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
+SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
@@ -217,6 +218,9 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.35
 SWEP.SprintToFireTime = 0.35
 SWEP.SpeedMultShooting = 0.9
+SWEP.SpeedHook = ARC9.UC.SpeedCap
+SWEP.SpeedHookSights = ARC9.UC.SightsSpeedCap
+SWEP.SpeedHookShooting = ARC9.UC.ShootSpeedCap
 SWEP.SpeedMultMelee = 1
 
 -- Melee --
