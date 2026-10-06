@@ -17,6 +17,7 @@ SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
+SWEP.Hook_TranslateAnimation = ARC9.UC.InspectIdle
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
 SWEP.UnJam = ARC9.UC.UnJam

@@ -759,6 +759,8 @@ local jammedAnimations = {
 }
 
 SWEP.Hook_TranslateAnimation = function(wep, anim)
+    local inspect = ARC9.UC.InspectIdle(wep, anim)
+    if inspect then return inspect end
     if wep:GetJammed() then return jammedAnimations[anim] end
 end
 

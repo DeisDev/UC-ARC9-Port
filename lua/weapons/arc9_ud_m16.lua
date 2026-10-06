@@ -20,6 +20,7 @@ SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
 SWEP.Hook_BlockAnimation = ARC9.UC.HoldIdleWhileCycling
+SWEP.Hook_TranslateAnimation = ARC9.UC.InspectIdle
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
 SWEP.UnJam = ARC9.UC.UnJam

@@ -1156,6 +1156,15 @@ function ARC9.UC.HoldIdleWhileCycling(wep, anim)
     if anim == "idle" or string.StartsWith(anim, "idle_") then return true end
 end
 
+-- ArcCW idles on idle_inspect while inspecting. ARC9 queues the next inspect animation only in
+-- predicted code, but its idle reset also runs on the singleplayer client, which showed the plain
+-- idle between inspect animations.
+function ARC9.UC.InspectIdle(wep, anim)
+    if !wep:GetInspecting() or !string.StartsWith(anim, "idle") or string.find(anim, "inspect", 1, true) then return end
+    local inspect = wep:TranslateAnimation("idle_inspect")
+    if wep:HasAnimation(inspect) then return inspect end
+end
+
 function ARC9.UC.IsManualAction(wep)
     return wep:GetValue("ManualAction") == true
 end

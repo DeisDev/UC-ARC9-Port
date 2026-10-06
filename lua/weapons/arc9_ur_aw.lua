@@ -794,7 +794,7 @@ if CLIENT then
 end
 
 SWEP.Hook_TranslateAnimation = function(wep, anim)
-    if not string.StartsWith(anim, "reload") then return end
+    if not string.StartsWith(anim, "reload") then return ARC9.UC.InspectIdle(wep, anim) end
     local mag = wep.Attachments[5].Installed
     if mag == "ur_aw_mag_10m" then return anim .. "_10_338" end
     if mag == "ur_aw_mag_10" then return anim .. "_10" end

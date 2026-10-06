@@ -407,7 +407,7 @@ SWEP.Hook_ModifyBodygroups = function(wep, data)
 end
 
 SWEP.Hook_TranslateAnimation = function(wep, anim)
-    if wep:GetUBGL() or (anim != "reload" and anim != "reload_empty") then return end
+    if wep:GetUBGL() or (anim != "reload" and anim != "reload_empty") then return ARC9.UC.InspectIdle(wep, anim) end
 
     local magazine = wep.Attachments[9].Installed
     if magazine == "ur_mp5_mag_50" then return anim .. "_drum" end

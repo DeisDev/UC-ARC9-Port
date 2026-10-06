@@ -360,6 +360,8 @@ local rottle = {common .. "cloth_2.ogg", common .. "cloth_3.ogg", common .. "clo
 local shellin = {path .. "shell-insert-01.ogg", path .. "shell-insert-02.ogg", path .. "shell-insert-03.ogg", path .. "shell-insert-04.ogg", path .. "shell-insert-05.ogg", path .. "shell-insert-06.ogg", path .. "shell-insert-07.ogg", path .. "shell-insert-08.ogg", path .. "shell-insert-09.ogg", path .. "shell-insert-10.ogg", path .. "shell-insert-11.ogg", path .. "shell-insert-12.ogg"}
 
 SWEP.Hook_TranslateAnimation = function(wep, anim)
+    local inspect = ARC9.UC.InspectIdle(wep, anim)
+    if inspect then return inspect end
     local mode = wep:GetCurrentFiremodeTable()
     if string.StartsWith(anim, "fire") then
         if mode.AmmoPerShot == 2 then return "fire_2bst" end

@@ -719,6 +719,8 @@ SWEP.MalfunctionWait = 0.5
 SWEP.NumHook = ARC9.UC.PelletCount
 SWEP.Hook_GetDamageAtRange = ARC9.UC.PelletDamage
 SWEP.Hook_TranslateAnimation = function(wep, anim)
+    local inspect = ARC9.UC.InspectIdle(wep, anim)
+    if inspect then return inspect end
     if wep:GetJammed() and wep.Animations[anim .. "_jammed"] then return anim .. "_jammed" end
     if string.StartsWith(anim, "reload") and wep.Attachments[6].Installed == "ur_deagle_mag_10" then return anim .. "_10" end
 end

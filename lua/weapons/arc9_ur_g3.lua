@@ -965,7 +965,7 @@ SWEP.UC_MalfunctionVariance = 0.25
 SWEP.MalfunctionNeverLastShoot = false
 SWEP.MalfunctionWait = 0.5
 SWEP.Hook_TranslateAnimation = function(wep, anim)
-    if not string.StartsWith(anim, "reload") then return end
+    if not string.StartsWith(anim, "reload") then return ARC9.UC.InspectIdle(wep, anim) end
     local mag = wep.Attachments[9].Installed
     local suffix = ""
     if mag == "ur_g3_mag_50" then
