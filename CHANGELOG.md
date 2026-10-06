@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+### Added
+
+- Urban Coalition HK USP with its original assets and 10 active weapon-specific attachments.
+
+### Changed
+
+- The customization menu now hides parts that can't go on the gun, such as shotgun ammo on pistols, and parts the original hid while blocked, such as magazines for another caliber, as in Urban Coalition.
+- The TARS and NVIS scopes now update at full frame rate instead of 45 and 42 FPS.
+
+### Fixed
+
+- Inspecting a gun no longer flashes back to its idle pose partway through, and the G3 and SPAS-12 no longer flicker while held in inspect.
+- The G3SG/1 scope now zooms with the mouse wheel. Scrolling used to cause an error.
+- Scopes no longer blur or show rainbow edges when the gun moves or fires.
+
 ## 1.2.1 - 2026-10-05
 
 ### Fixed

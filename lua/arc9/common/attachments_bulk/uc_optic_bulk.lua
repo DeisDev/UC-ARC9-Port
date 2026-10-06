@@ -33,6 +33,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = 1
     ATT.RTScopeMagnification = ARC9.UC.ScopeMag(4)
     ATT.RTScopeReticle = Material("hud/scopes/uc_acog_reticle.png", "mips smooth")
@@ -159,6 +160,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = 2
     ATT.RTScopeMagnification = ARC9.UC.ScopeMag(2.5)
     ATT.RTScopeReticle = Material("hud/scopes/uc_elcan.png", "mips smooth")
@@ -269,6 +271,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = 1
     ATT.RTScopeMagnification = ARC9.UC.ScopeMag(3)
     ATT.RTScopeReticle = Material("hud/scopes/uc_hamr.png", "mips smooth")
@@ -534,6 +537,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then
         ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/uc_nvis_hsp.mdl")
@@ -546,7 +550,6 @@ do
     ATT.RTScopeReticle = Material("hud/scopes/uc_nvis_reticle1grid.png", "mips smooth")
     ATT.RTScopeReticleScale = ARC9.UC.ReticleScale(20, 6.5)
     ATT.RTScopeColorable = false
-    ATT.RTScopeNew_FPSLock = 42
     -- ArcCW rendered this scope at 60% of the screen height; 648 matches a 1080p screen.
     ATT.RTScopeNew_Pixelation = 648
     ATT.AimDownSightsTimeMult = 1.1
@@ -583,6 +586,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then
         ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/ur_pso1_hsp.mdl")
@@ -654,6 +658,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then
         ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/uc_trijicon_tars_hsp.mdl")
@@ -669,7 +674,6 @@ do
     ATT.RTScopeCustomPPFunc = function(wep)
         DrawBloom(0, 0.3, 5, 5, 3, 0.5, 1, 1, 1)
         DrawSharpen(1, 1.65)
-        DrawMotionBlur(0.45, 1, 1 / 45)
     end
     ATT.SpeedMultSights = .7
     ATT.AimDownSightsTimeMult = 1.1
@@ -703,6 +707,7 @@ do
         },
     }
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then
         ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/uc_vortex3x_hsp.mdl")

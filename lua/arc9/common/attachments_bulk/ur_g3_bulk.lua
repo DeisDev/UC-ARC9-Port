@@ -412,6 +412,7 @@ do
     }
 
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/g3_optic_psg_hsp.mdl") end
     ATT.RTScopeReticle = Material("hud/scopes/PSG1_reticle.png", "mips smooth")
@@ -453,6 +454,7 @@ do
     }
 
     ATT.RTScope = true
+    ATT.RTScopeNew_DisableShader = true
     ATT.RTScopeSubmatIndex = ARC9.UC.NoLensIndex
     if CLIENT then ATT.DrawFunc = ARC9.UC.ScopePiece("models/weapons/arccw/atts/g3_optic_sg1_hsp.mdl") end
     ATT.RTScopeReticle = Material("hud/scopes/SG1_reticle.png", "mips smooth")
@@ -460,6 +462,7 @@ do
     ATT.RTScopeMagnification = ARC9.UC.ScopeMag(4.5)
     ATT.RTScopeReticleScale = ARC9.UC.ReticleScale(16, 8.5)
     ATT.RTScopeAdjustable = true
+    ATT.RTScopeAdjustmentLevels = 5
     ATT.RTScopeMagnificationMin = ARC9.UC.ScopeMag(1.5)
     ATT.RTScopeMagnificationMax = ARC9.UC.ScopeMag(6)
 
