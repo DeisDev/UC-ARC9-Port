@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.3.2 - 2026-10-07
+
+### Fixed
+
+- Fixed Lua errors affecting all weapons on older ARC9 builds.
+
 ## 1.3.1 - 2026-10-06
 
 ### Fixed
