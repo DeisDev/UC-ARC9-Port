@@ -121,7 +121,7 @@ end
 
 function ARC9.UC.PostBashTime(wep, time)
     local duration = (wep.PreBashTime + time) * wep:GetValue("UC_MeleeTime") * wep:GetValue("UC_MeleeWaitTime")
-    return duration - wep:GetProcessedValue("PreBashTime", true)
+    return duration - wep:GetValue("PreBashTime")
 end
 
 function ARC9.UC.AnimationSpeed(wep, data)
