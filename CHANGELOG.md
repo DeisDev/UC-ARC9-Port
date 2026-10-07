@@ -7,6 +7,8 @@
 ### Fixed
 
 - Fixed Lua errors affecting all weapons on older ARC9 builds.
+- Tactical devices now attach to the M16 SD barrel's clamp instead of floating in front of the gun.
+- MP5 handguard labels now show when a foregrip or tactical device automatically fits the RIS handguard.
 
 ## 1.3.1 - 2026-10-06
 

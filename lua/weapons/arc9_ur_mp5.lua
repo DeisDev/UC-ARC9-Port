@@ -14,7 +14,6 @@ SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.PostModify = ARC9.UC.PostModify
-SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
 SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.UC_MalfunctionVariance = 0.25
@@ -321,7 +320,26 @@ SWEP.Hook_Think = function(wep)
     end
 end
 
+local function UsesAutoRail(wep)
+    local atts = wep.Attachments
+    local barrel = atts[2].Installed
+    local handguard = atts[5].Installed
+    return (atts[6].Installed or atts[7].Installed)
+        and barrel != "ur_mp5_barrel_sd" and barrel != "ur_mp5_barrel_eod"
+        and (!handguard or handguard == "ur_mp5_ub_classic")
+end
+
 if CLIENT then
+    function SWEP:CreateHUD_Bottom()
+        ARC9.UC.CreateHUD_Bottom(self)
+        local handguard = self.Attachments[5]
+        local button = handguard.lowerbutton
+        if self.BottomBarMode != 0 or !IsValid(button) or !UsesAutoRail(self) then return end
+
+        button:SetButtonText(ARC9:GetPhrase(handguard.Installed and "ur.mp5.slim_railed" or "ur.mp5.auto_rail"))
+        button:SetIcon(ARC9.GetAttTable("ur_mp5_ub_ris").Icon)
+    end
+
     function SWEP:CreateFlashlights()
         baseclass.Get("arc9_base").CreateFlashlights(self)
         for _, light in ipairs(self.Flashlights) do
@@ -392,7 +410,7 @@ SWEP.Hook_ModifyBodygroups = function(wep, data)
             model:SetBodygroup(8, 1)
         elseif barrel == "ur_mp5_barrel_eod" then
             model:SetBodygroup(8, 2)
-        elseif !handguard or handguard == "ur_mp5_ub_classic" then
+        elseif UsesAutoRail(wep) then
             model:SetBodygroup(4, 4)
         end
     end

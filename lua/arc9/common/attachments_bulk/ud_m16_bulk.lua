@@ -60,7 +60,7 @@ do
     ATT.CustomCons = {
         ["uc.overheat"] = "",
     }
-    ATT.ActivateElements = {"hg_sd", "sd", "ud_m16_rscompatible", "ud_m16_sd"}
+    ATT.ActivateElements = {"hg_sd", "mount_11", "sd", "ud_m16_rscompatible", "ud_m16_sd"}
 
     ATT.Icon = Material("entities/att/acwatt_ud_m16_barrel_sd.png", "smooth mips")
     ATT.Category = "ud_m16_blen"
