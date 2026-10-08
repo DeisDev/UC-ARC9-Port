@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- All 17 weapons now share a UC weapon base, preserving their existing balance and handling.
+
 ### Fixed
 
 - Attachments no longer disappear when peeking through scopes such as the NVIS and TARS.

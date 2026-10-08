@@ -1,22 +1,8 @@
-SWEP.Base = "arc9_base"
-SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
-SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil
-SWEP.VisualRecoilDoingFunc = ARC9.UC.VisualRecoilDoing
-SWEP.GetAttachmentPos = ARC9.UC.GetAttachmentPos
-SWEP.GetFinalAttTable = ARC9.UC.GetFinalAttTable
-SWEP.GetAttachmentElements = ARC9.UC.GetAttachmentElements
-SWEP.WouldConflict = ARC9.UC.WouldConflict
-SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
-SWEP.SprintLock = ARC9.UC.SprintLock
+SWEP.Base = "arc9_uc_base"
 SWEP.Hook_Think = ARC9.UC.NearWallThink
-SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
-SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
-SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL
-SWEP.PostModify = ARC9.UC.PostModify
 SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
 SWEP.BuildSubAttachments = ARC9.UC.BuildSubAttachments
-SWEP.SetupDataTables = ARC9.UC.SetupDataTables
 SWEP.GetTrueRPM = ARC9.UC.GetTrueRPM
 SWEP.DoPrimaryAttack = ARC9.UC.DoPrimaryAttack
 SWEP.Hook_BlockAnimation = ARC9.UC.HoldIdleWhileCycling
@@ -121,7 +107,6 @@ SWEP.RecoilAutoControl = 0
 SWEP.UseVisualRecoil = true
 SWEP.VisualRecoil = 1
 SWEP.VisualRecoilUp = 3.1
-SWEP.VisualRecoilUpHook = ARC9.UC.VisualRecoilUp
 SWEP.VisualRecoilPunch = 1
 SWEP.VisualRecoilMultSights = 0.5
 SWEP.VisualRecoilPunchMultSights = 1
@@ -150,8 +135,6 @@ SWEP.ShotgunReloadIncludesChamber = false
 
 SWEP.ShootVolume = 160
 SWEP.ShootPitch = 100
-SWEP.ShootPitchVariationHook = ARC9.UC.ShootPitchVariation
-SWEP.DistantShootPitchHook = ARC9.UC.DistantShootPitch
 
 SWEP.ReloadInSights = true
 
@@ -169,7 +152,6 @@ SWEP.UC_SightsDispersion = 0
 SWEP.UC_BipodDispersion = 1
 SWEP.UseDispersion = true
 SWEP.DispersionSpread = 0
-SWEP.DispersionSpreadHook = ARC9.UC.DispersionSpread
 SWEP.FreeAimRadius = math.Clamp(400 / 80, 3, 10)
 
 SWEP.Ammo = "buckshot"
@@ -181,9 +163,6 @@ SWEP.SpeedMultSights = 0.75
 SWEP.AimDownSightsTime = 0.4
 SWEP.SprintToFireTime = 0.4
 SWEP.SpeedMultShooting = 0.75
-SWEP.SpeedHook = ARC9.UC.SpeedCap
-SWEP.SpeedHookSights = ARC9.UC.SightsSpeedCap
-SWEP.SpeedHookShooting = ARC9.UC.ShootSpeedCap
 SWEP.SpeedMultMelee = 1
 
 -- Melee --
@@ -196,10 +175,7 @@ SWEP.PreBashTime = 0.2
 SWEP.PostBashTime = 0.3
 SWEP.UC_MeleeTime = 1
 SWEP.UC_MeleeWaitTime = 1
-SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
-SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
 SWEP.UC_DrawTime = 1
-SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
 
 -- Length --
 
@@ -246,8 +222,6 @@ SWEP.CustomizeSnapshotPos = Vector(-6.94, 123.9, 0.46)
 
 SWEP.UC_CrouchPos = Vector(-2.790896, -2.000000, -2.766025)
 SWEP.UC_CrouchAng = Angle(0.000000, 0.000000, -30.000000)
-SWEP.CrouchPosHook = ARC9.UC.CrouchPos
-SWEP.CrouchAngHook = ARC9.UC.CrouchAng
 
 SWEP.Malfunction = true
 SWEP.MalfunctionMeanShotsToFail = 500
