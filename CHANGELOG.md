@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Attachments no longer disappear when peeking through scopes such as the NVIS and TARS.
+
 ## 1.3.2 - 2026-10-07
 
 ### Fixed

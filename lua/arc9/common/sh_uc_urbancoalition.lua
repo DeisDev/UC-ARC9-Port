@@ -786,7 +786,8 @@ if CLIENT then
             render.MaterialOverride(rtmat)
             piece:DrawModel()
             render.MaterialOverride()
-            cam.IgnoreZ(false)
+            -- Restore ARC9's viewmodel depth range before the next attachment.
+            render.DepthRange(0, wep.CustomizeDelta > 0 and 0.01 or 0.1)
         end
     end
 
