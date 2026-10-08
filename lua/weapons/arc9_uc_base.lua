@@ -2,6 +2,7 @@ AddCSLuaFile()
 
 SWEP.Base = "arc9_base"
 SWEP.Spawnable = false
+SWEP.MalfunctionSound = "weapons/arccw/malfunction.wav"
 
 SWEP.GetFreeSwayAngles = ARC9.UC.GetFreeSwayAngles
 SWEP.ApplyRecoil = ARC9.UC.ApplyRecoil

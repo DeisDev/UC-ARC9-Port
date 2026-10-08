@@ -1052,6 +1052,28 @@ end
 function ARC9.UC.SkipPostFireJam()
 end
 
+function ARC9.UC.DoHeat(wep)
+    if wep:GetUBGL() or !GetConVar("arc9_mod_overheat"):GetBool() or !wep:GetProcessedValue("Overheat", true) then return end
+
+    local capacity = wep:GetProcessedValue("HeatCapacity")
+    local heat = wep:GetHeatAmount() + wep:GetProcessedValue("HeatPerShot", true)
+    wep:SetHeatAmount(math.min(heat, capacity))
+    if heat < capacity then return end
+
+    if wep:GetProcessedValue("HeatLockout", true) then wep:SetHeatLockout(true) end
+    wep:FixHeat()
+end
+
+function ARC9.UC.FixHeat(wep)
+    -- ARC9 also calls this for ordinary jams while a warm weapon cools.
+    if wep:GetJammed() or !wep:HasAnimation("fix") then return end
+
+    local time = wep:PlayAnimation("fix", wep:GetProcessedValue("OverheatTime", true), true)
+    if wep:GetProcessedValue("HeatFix", true) then
+        wep:SetTimer(time, function() wep:SetHeatAmount(0) end, "heatfix")
+    end
+end
+
 -- ArcCW discards the jammed round when clearing unless MalfunctionTakeRound is false.
 function ARC9.UC.UnJam(wep)
     if wep:StillWaiting() and !wep.NoFireDuringSighting then return end

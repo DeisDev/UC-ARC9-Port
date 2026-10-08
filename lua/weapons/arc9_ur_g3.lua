@@ -392,6 +392,7 @@ SWEP.Attachments = {
     {
         PrintName = "ur.g3.printname16",
         Category = "ur_g3_skin",
+        CosmeticOnly = true,
         DefaultName = ARC9:GetPhrase("ur.g3.defaultname10"),
         DefaultIcon = Material("entities/att/ur_g3/skin_gray.png", "smooth mips"),
     },

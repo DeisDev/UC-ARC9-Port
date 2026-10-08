@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 1.3.4 - 2026-10-08
+
+### Fixed
+
+- The G3 finish is now in Personalization, like the other weapons.
+- Jams now play the original malfunction sound.
+- Restored the M16 FPW and Patriot trigger delay to 0.1 seconds.
+- The M1014 now finishes clearing a jam at the end of its animation.
+- M16 heat recovery now starts immediately when overheated, and cooling no longer clears ordinary jams.
+
+## 1.3.3 - 2026-10-08
+
 ### Changed
 
 - All 17 weapons now share a UC weapon base, preserving their existing balance and handling.

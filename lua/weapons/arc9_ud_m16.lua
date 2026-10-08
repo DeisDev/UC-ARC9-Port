@@ -11,6 +11,8 @@ SWEP.Hook_TranslateAnimation = ARC9.UC.InspectIdle
 SWEP.HookP_BlockFire = ARC9.UC.BlockFireJam
 SWEP.RollJam = ARC9.UC.SkipPostFireJam
 SWEP.UnJam = ARC9.UC.UnJam
+SWEP.DoHeat = ARC9.UC.DoHeat
+SWEP.FixHeat = ARC9.UC.FixHeat
 -- ARC9 puts element models ahead of the gun in the worldmodel and customization model lists, but
 -- reads the gun from the first entry; the heat shield's sight model would take its place.
 SWEP.SetupModel = function(wep, wm, lod, cm)
@@ -146,6 +148,7 @@ SWEP.SwayMultMidAir = 2
 -- Firerate / Firemodes --
 
 SWEP.RPM = 900
+SWEP.TriggerDelayTime = 0.1
 SWEP.Num = 1
 SWEP.Firemodes_Priority = 0
 SWEP.Firemodes = {
