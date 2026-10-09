@@ -13,7 +13,7 @@ SWEP.UseHands = true
 
 SWEP.MuzzleParticle = "muzzleflash_mp5"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+SWEP.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
 SWEP.ShellScale = 1
 SWEP.ShellPitch = 100
 SWEP.ShellSounds = ARC9.PistolShellSoundsTable
@@ -47,8 +47,8 @@ SWEP.Slot = 2
 
 -- Viewmodel / Worldmodel / FOV --
 
-SWEP.ViewModel = "models/weapons/arccw/c_ur_mp5.mdl"
-SWEP.WorldModel = "models/weapons/arccw/c_ur_mp5.mdl"
+SWEP.ViewModel = "models/weapons/arc9/uc/c_ur_mp5.mdl"
+SWEP.WorldModel = "models/weapons/arc9/uc/c_ur_mp5.mdl"
 SWEP.DefaultBodygroups = "000000000"
 -- Spare magazine and rounds have separate vertex weights in the compiled model.
 SWEP.HideBones = {"magb", "bullet1", "bullet2", "bullet3"}

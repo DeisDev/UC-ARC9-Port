@@ -197,7 +197,7 @@ do
         },
     }
 
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/366tkm.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/366tkm.mdl"
     ATT.ShellScale = .666
     ATT.ActivateElements = {"cal_366"}
     ATT.TriviaHook = function(wep, trivia)
@@ -233,7 +233,7 @@ do
     ATT.PenetrationMult = .65
     ATT.DamageMinMult = .8
     ATT.DamageMaxMult = .8
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/545x39.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/545x39.mdl"
     ATT.ShellScale = 0.666
     ATT.ActivateElements = {"mag_545_30", "cal_545"}
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "ur.calibre.545")
@@ -271,7 +271,7 @@ do
     ATT.PenetrationMult = 12 / 16
     ATT.DamageMinMult = 20 / 25
     ATT.DamageMaxMult = 34 / 50
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/556x45.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/556x45.mdl"
     ATT.ShellScale = .666
     ATT.ActivateElements = {"mag_556_30", "cal_556"}
     ATT.TriviaHook = function(wep, trivia)
@@ -315,7 +315,7 @@ do
     ATT.DamageMinMult = 0.85
     ATT.DamageMaxMult = 0.64
     ATT.Ammo = "pistol"
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.PistolShellSoundsTable
     ATT.ActivateElements = {"mag_9mm", "cal_9mm"}

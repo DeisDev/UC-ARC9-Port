@@ -55,7 +55,7 @@ do
     ATT.TracerSize = 0.5
     ATT.PhysBulletMuzzleVelocityMult = 325 / 375
     ATT.ClipSizeMult = 1.2
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/22lr.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/22lr.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.TinyShellSoundsTable
     local path = "arccw_uc/common/"
@@ -88,7 +88,7 @@ do
     ATT.RecoilMult = 1.15
     ATT.PhysBulletMuzzleVelocity = 410 * ARC9.UC.Meter
     ATT.ClipSizeMult = 0.9
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/357sig.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/357sig.mdl"
     ATT.ShellScale = 1
     local path = ")weapons/arccw_ud/glock/"
     local common = ")/arccw_uc/common/"
@@ -120,7 +120,7 @@ do
     ATT.PenetrationMult = ARC9.UC.CalConv("9mm", "380acp", "pen")
     ATT.RecoilMult = 0.65
     ATT.PhysBulletMuzzleVelocity = 310 * ARC9.UC.Meter
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/357sig.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/357sig.mdl"
     ATT.ShellScale = 1
     local common = ")/arccw_uc/common/"
     local fire380 = "weapons/arccw_ud/glock/fire_380.ogg"
@@ -153,7 +153,7 @@ do
     ATT.RecoilMult = 1.15
     ATT.PhysBulletMuzzleVelocity = 300 * ARC9.UC.Meter
     ATT.ClipSizeMult = .9
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/40sw.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/40sw.mdl"
     ATT.ShellScale = 1
     local path = ")weapons/arccw_ud/glock/"
     local common = ")/arccw_uc/common/"

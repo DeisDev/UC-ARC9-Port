@@ -496,7 +496,7 @@ do
     ATT.PenetrationMult = 14 / 20
     ATT.DamageMinMult = 20 / 35
     ATT.DamageMaxMult = 34 / 65
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/556x45.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/556x45.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.ShellSoundsTable
     ATT.Firemodes_Priority = 0.5

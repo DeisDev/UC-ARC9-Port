@@ -66,7 +66,7 @@ do
     ATT.TracerNum = 1
     ATT.TracerNum_Priority = 0.5
     ATT.ClipSizeMult = 9 / 7
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     ATT.TriviaHook = function(wep, trivia)
         local result = table.Copy(trivia)

@@ -170,7 +170,7 @@ do
     ATT.SpeedMultShooting = 1.2
     ATT.RPMMult = 1 + (1 / 3)
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", ATT.CompactName)
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/357sig.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/357sig.mdl"
     ATT.ShellScale = 1
     ATT.ActivateElements = {"ur_deagle_caliber_357"}
     ATT.ShootSoundHook = function(wep, sound)
@@ -223,7 +223,7 @@ do
     ATT.Penetration = 1
     ATT.UC_IsShotgun = true
     ATT.Ammo = "buckshot"
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/410bore.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/410bore.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.ShotgunShellSoundsTable
     ATT.Class = "ur_deagle_caliber_410.class"
@@ -277,7 +277,7 @@ do
     ATT.SpeedMultShooting = 1.1
     ATT.RPMMult = 1 + (1 / 6)
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", ATT.CompactName)
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     local path = ")^weapons/arccw_ur/sw329/"
     local fire44 = {path .. "fire-01.ogg", path .. "fire-02.ogg", path .. "fire-03.ogg", path .. "fire-04.ogg", path .. "fire-05.ogg", path .. "fire-06.ogg"}

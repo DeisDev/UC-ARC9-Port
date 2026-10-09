@@ -168,7 +168,7 @@ local function GetARC9Weapon(ent)
 end
 
 matproxy.Add({
-    name = "UC_ShellColor",
+    name = "ARC9_UC_ShellColor",
     init = function(self, mat, values)
         self.col = Vector()
     end,
@@ -193,7 +193,7 @@ matproxy.Add({
 
 local function proxystuff(digit)
     return {
-        name = "UC_Weapon_Color" .. digit,
+        name = "ARC9_UC_Weapon_Color" .. digit,
         init = function(self, mat, values)
             self.ResultTo = values.resultvar
         end,

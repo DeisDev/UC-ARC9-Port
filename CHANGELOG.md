@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fixed attachment swaps using the previous part's restrictions and stats.
+- Disabled aiming blur on the USP's standard and alternate iron sights.
+- Fixed custom colors, shell colors, and corrected weapon assets conflicting with the original ArcCW addons.
+
 ## 1.3.4 - 2026-10-08
 
 ### Fixed

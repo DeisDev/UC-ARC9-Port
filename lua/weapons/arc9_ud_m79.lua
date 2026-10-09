@@ -45,8 +45,8 @@ SWEP.Slot = 4
 
 -- Viewmodel / Worldmodel / FOV --
 
-SWEP.ViewModel = "models/weapons/arccw/c_ud_m79.mdl"
-SWEP.WorldModel = "models/weapons/arccw/c_ud_m79.mdl"
+SWEP.ViewModel = "models/weapons/arc9/uc/c_ud_m79.mdl"
+SWEP.WorldModel = "models/weapons/arc9/uc/c_ud_m79.mdl"
 SWEP.DefaultBodygroups = "00000000"
 SWEP.ViewModelFOVBase = 60
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_SHOTGUN

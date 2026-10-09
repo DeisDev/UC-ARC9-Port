@@ -15,7 +15,7 @@ SWEP.UseHands = true
 
 SWEP.MuzzleParticle = "uc_muzzleflash_pistol"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+SWEP.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
 SWEP.ShellScale = 1
 SWEP.ShellPitch = 90
 SWEP.ShellSounds = ARC9.PistolShellSoundsTable
@@ -200,6 +200,7 @@ SWEP.IronSights = {
     Pos = Vector(-2.145334, 9.993234, 1.739806),
     Ang = Angle(0.070000, 0.150000, 5.500183),
     Magnification = 1,
+    Blur = false,
     ViewModelFOV = ARC9.UC.SightViewModelFOV,
 }
 
@@ -326,6 +327,7 @@ SWEP.AttachmentElements = {
             Pos = Vector(-2.150610, 9.993050, 1.648615),
             Ang = Angle(0.050000, 0.200000, 5.500175),
             Magnification = 1,
+            Blur = false,
             ViewModelFOV = ARC9.UC.SightViewModelFOV,
         },
     },

@@ -21,7 +21,7 @@ SWEP.UseHands = true
 
 SWEP.MuzzleParticle = "uc_muzzleflash_1"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+SWEP.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
 SWEP.ShellScale = 1
 SWEP.ShellPitch = 100
 SWEP.ShellSounds = ARC9.PistolShellSoundsTable
@@ -57,8 +57,8 @@ SWEP.Slot = 1
 
 -- Viewmodel / Worldmodel / FOV --
 
-SWEP.ViewModel = "models/weapons/arccw/c_ud_glock.mdl"
-SWEP.WorldModel = "models/weapons/arccw/c_ud_glock.mdl"
+SWEP.ViewModel = "models/weapons/arc9/uc/c_ud_glock.mdl"
+SWEP.WorldModel = "models/weapons/arc9/uc/c_ud_glock.mdl"
 SWEP.DefaultBodygroups = "00000000"
 SWEP.ViewModelFOVBase = 60
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_AR2

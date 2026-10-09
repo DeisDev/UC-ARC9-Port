@@ -9,7 +9,7 @@ hook.Add("Initialize", "ARC9_UC_Plinking", function()
 end)
 
 sound.Add({
-    name = "DB_ADD",
+    name = "ARC9_UC_DB_ADD",
     channel = CHAN_AUTO,
     volume = 1.0,
     level = 100,
@@ -839,9 +839,20 @@ function ARC9.UC.UpdateSlotInfo(wep)
     end
 end
 
+local function InvalidateAttachmentCache(wep)
+    wep:InvalidateCache()
+    if wep.WantToInvalidateCache then wep:DoInvalidateCache() end
+end
+
+function ARC9.UC.PruneAttachments(wep)
+    InvalidateAttachmentCache(wep)
+    return baseclass.Get("arc9_base").PruneAttachments(wep)
+end
+
 function ARC9.UC.PostModify(wep, toggleonly)
     ARC9.UC.UpdateSlotInfo(wep)
     ARC9.UC.UpdateRailPositions(wep)
+    InvalidateAttachmentCache(wep)
     baseclass.Get("arc9_base").PostModify(wep, toggleonly)
     if baseclass.Get(wep:GetClass()).TPIKforcelefthand then
         wep.TPIKforcelefthand = !wep:GetValue("UC_HideLeftHand")
@@ -1404,6 +1415,7 @@ local cachepaths = {
     "sound/weapons/arccw_uc_usp/",
     "sound/arccw_uc/",
     "models/weapons/arccw/",
+    "models/weapons/arc9/uc/",
     "models/items/arccw/",
     "models/uc/",
     "sound/uc/",

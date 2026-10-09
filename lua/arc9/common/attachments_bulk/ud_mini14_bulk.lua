@@ -304,7 +304,7 @@ do
     ATT.ClipSize = 15
     ATT.Ammo = "plinking"
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.22_long_rifle")
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/22lr.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/22lr.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.TinyShellSoundsTable
     ATT.TracerColor = Color(255, 255, 255, 200)
@@ -355,7 +355,7 @@ do
     ATT.Malfunction = true
     ATT.Ammo = "ar2"
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.7_62x39mm_soviet")
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/762x39.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/762x39.mdl"
     ATT.ShellScale = 0.666
     ATT.ShootSoundSilenced = "weapons/arccw_ud/mini14/fire_762_supp.ogg"
     ATT.ShootSound = "weapons/arccw_ud/mini14/fire_762.ogg"

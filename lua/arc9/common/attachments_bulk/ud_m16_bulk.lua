@@ -899,7 +899,7 @@ do
     ATT.PhysBulletMuzzleVelocity = (375 / 0.8333) * ARC9.UC.Meter
     ATT.Ammo = "plinking"
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.22_long_rifle")
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/22lr.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/22lr.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.TinyShellSoundsTable
     local path = "arccw_uc/common/"
@@ -933,7 +933,7 @@ do
     ATT.RangeMinMult = 0.9
     ATT.HeatDissipationMult = 1.5
     ATT.PhysBulletMuzzleVelocity = 310 * ARC9.UC.Meter
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/300blk.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/300blk.mdl"
     ATT.ShellScale = 1
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.300_aac_blackout")
     ATT.HookP_NameChange = function(wep, name)
@@ -987,7 +987,7 @@ do
     ATT.HookP_NameChange = function(wep, name)
         return ARC9:GetPhrase("ud.m16.name_50beo", {name = name})
     end
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/50beo.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/50beo.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.PistolShellSoundsTable
     ATT.Firemodes_Priority = 0.5
@@ -1042,7 +1042,7 @@ do
     ATT.Ammo = "pistol"
     ATT.TriviaHook = ARC9.UC.TriviaHook("uc.trivia.calibre2", "uc.calibre.9x19mm_parabellum")
     ATT.HookP_ClassChange = function(wep, class) return "uc.class.submachine_gun" end
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.PistolShellSoundsTable
     local path = ")^weapons/arccw_ud/glock/"

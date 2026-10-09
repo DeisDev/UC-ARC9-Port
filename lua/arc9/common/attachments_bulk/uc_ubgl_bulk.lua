@@ -450,7 +450,7 @@ do
     ATT.LHIK = true
     ATT.LHIK_Priority = 1
     ATT.ModelOffset = Vector(1.0, 0, -1.7)
-    ATT.Model = "models/weapons/arccw/atts/uc_ubgl_masterkey.mdl"
+    ATT.Model = "models/weapons/arc9/uc/atts/uc_ubgl_masterkey.mdl"
     local fire = {
         ")arccw_uc/common/ub12ga/fire-01.ogg",
         ")arccw_uc/common/ub12ga/fire-02.ogg",

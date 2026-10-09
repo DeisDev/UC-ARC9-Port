@@ -152,7 +152,7 @@ do
     ATT.RPMMult = 1.5
     ATT.SpeedMultShooting = 1.2
     ATT.ClipSizeMult = 1.2
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/22lr.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/22lr.mdl"
     ATT.ShellScale = 1
     ATT.ShellSounds = ARC9.TinyShellSoundsTable
     local path = "arccw_uc/common/"

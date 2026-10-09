@@ -54,8 +54,8 @@ SWEP.Trivia = {
 
 SWEP.Slot = 2
 SWEP.UseHands = true
-SWEP.ViewModel = "models/weapons/arccw/c_ur_ak.mdl"
-SWEP.WorldModel = "models/weapons/arccw/c_ur_ak.mdl"
+SWEP.ViewModel = "models/weapons/arc9/uc/c_ur_ak.mdl"
+SWEP.WorldModel = "models/weapons/arc9/uc/c_ur_ak.mdl"
 SWEP.ViewModelFOVBase = 70
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
@@ -162,7 +162,7 @@ SWEP.Hook_Think = function(wep)
 end
 SWEP.MuzzleParticle = "uc_muzzleflash_6"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/uc_shells/762x39.mdl"
+SWEP.ShellModel = "models/weapons/arc9/uc/uc_shells/762x39.mdl"
 SWEP.ShellScale = 0.666
 SWEP.ShellPitch = 90
 SWEP.UC_ShellColor = Color(0.7 * 255, 0.2 * 255, 0.2 * 255)

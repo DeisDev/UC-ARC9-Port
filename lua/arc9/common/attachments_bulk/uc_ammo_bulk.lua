@@ -460,7 +460,7 @@ do
     ATT.MuzzleParticle = "muzzleflash_dragonbreath"
     ATT.Hook_PrimaryAttack = function(wep)
         if !IsFirstTimePredicted() or wep:GetUBGL() then return end
-        wep:EmitSound("DB_ADD", wep:GetProcessedValue("ShootVolume", true), wep:GetProcessedValue("ShootPitch", true), 1, CHAN_WEAPON - 1)
+        wep:EmitSound("ARC9_UC_DB_ADD", wep:GetProcessedValue("ShootVolume", true), wep:GetProcessedValue("ShootPitch", true), 1, CHAN_WEAPON - 1)
     end
     ATT.UC_ShellColor = Color(0.9 * 255, 0.3 * 255, 0.1 * 255)
     ATT.UC_Compatible = function(wep)

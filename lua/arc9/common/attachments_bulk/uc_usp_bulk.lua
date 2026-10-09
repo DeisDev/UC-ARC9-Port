@@ -15,7 +15,7 @@ do
     ATT.RecoilRandomSideMult = 0.75
     ATT.PhysBulletMuzzleVelocityMult = 340 / 315
     ATT.ClipSizeAdd = 1
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     ATT.TracerNum = 1
     ATT.TracerNum_Priority = 0.5
@@ -68,7 +68,7 @@ do
     ATT.RecoilRandomSideMult = 0.75
     ATT.PhysBulletMuzzleVelocityMult = 355 / 315
     ATT.ClipSizeAdd = 3
-    ATT.ShellModel = "models/weapons/arccw/uc_shells/9x19.mdl"
+    ATT.ShellModel = "models/weapons/arc9/uc/uc_shells/9x19.mdl"
     ATT.ShellScale = 1
     ATT.TracerNum = 1
     ATT.TracerNum_Priority = 0.5

@@ -713,7 +713,6 @@ L["arc9_ud_m16.printname"] = "RAYCAR-0"
 L["arc9_ud_m16.truename"] = "M16A2"
 L["arc9_ud_m16.description"] = "Third generation of America's iconic military rifle. Army tests showed that soldiers were more likely to hit a target if they fired multiple shots, but were likely to spray in full-auto and fail to hit anything. As a result, they implemented a ratcheted three-round burst system which limited the maximum burst a soldier could fire to three shots.\n\nWell-rounded gun with no major downsides."
 L["arc9_ud_m16.trivia.manufacturer"] = "Rayter Arms Industries"
-L["arc9_ud_m16.trivia.manufacturer.true"] = "Stoner's Legacy Ltd."
 L["arc9_ud_m16.trivia.manufacturer.true"] = "Colt's Manufacturing Company"
 
 L["arc9_ud_m79.printname"] = "AMSGL"

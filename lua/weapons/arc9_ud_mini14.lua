@@ -18,7 +18,7 @@ SWEP.UseHands = true
 
 SWEP.MuzzleParticle = "uc_muzzleflash_1"
 SWEP.ShellEffect = "arc9_uc_shelleffect"
-SWEP.ShellModel = "models/weapons/arccw/uc_shells/556x45.mdl"
+SWEP.ShellModel = "models/weapons/arc9/uc/uc_shells/556x45.mdl"
 SWEP.ShellScale = 0.666
 SWEP.ShellPitch = 100
 
