@@ -1,5 +1,5 @@
 SWEP.Base = "arc9_uc_base"
-SWEP.Hook_Think = ARC9.UC.NearWallThink
+SWEP.Hook_Think = ARC9.UC.Think
 SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom
@@ -989,6 +989,7 @@ SWEP.Attachments = {
         Ang = Angle(90, 0, -90),
         ExcludeElements = {"sd"},
         Scale = 0.8,
+        UC_ScaleModelOffset = true,
     },
     {
         PrintName = "uc.slot.tactical",

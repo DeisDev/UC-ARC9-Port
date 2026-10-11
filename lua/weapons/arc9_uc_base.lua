@@ -14,6 +14,7 @@ SWEP.WouldConflict = ARC9.UC.WouldConflict
 SWEP.PruneAttachments = ARC9.UC.PruneAttachments
 SWEP.BarrelLengthHook = ARC9.UC.BarrelLengthHook
 SWEP.SprintLock = ARC9.UC.SprintLock
+SWEP.MeleeAttack = ARC9.UC.MeleeAttack
 SWEP.GenerateAutoSight = ARC9.UC.GenerateAutoSight
 SWEP.DrawWorldModel = ARC9.UC.DrawWorldModel
 SWEP.ThinkUBGL = ARC9.UC.ThinkUBGL

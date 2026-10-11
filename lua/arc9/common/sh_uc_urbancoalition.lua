@@ -431,9 +431,10 @@ function ARC9.UC.GetAttachmentPos(wep, slottbl, wm, idle, nomodeloffset, customp
         _, ang = LocalToWorld(vector_origin, delta, vector_origin, ang)
     end
 
-    -- ArcCW scales the mount position and model, but not ModelOffset.
+    -- ArcCW scales the mount position and model, but not ModelOffset. UC_ScaleModelOffset slots scale
+    -- it like ARC9, so a shrunken device still meets the mount instead of floating ahead of it.
     if att.ModelOffset then
-        local offset = att.ModelOffset
+        local offset = mount.UC_ScaleModelOffset and att.ModelOffset * (mount.Scale or 1) or att.ModelOffset
         pos = pos + ang:Forward() * offset.x + ang:Right() * offset.y + ang:Up() * offset.z
     end
     return pos, ang, icon
@@ -494,18 +495,49 @@ function ARC9.UC.BarrelHitWall(wep)
     return wep.UC_HitWall
 end
 
+-- ArcCW blocks only firing at a wall; ARC9 melee also checks SprintLock.
 function ARC9.UC.SprintLock(wep)
-    return baseclass.Get("arc9_base").SprintLock(wep) or ARC9.UC.BarrelHitWall(wep) > 0
+    return baseclass.Get("arc9_base").SprintLock(wep) or !wep.UC_Meleeing and ARC9.UC.BarrelHitWall(wep) > 0
+end
+
+function ARC9.UC.MeleeAttack(wep, bypass, bash2)
+    wep.UC_Meleeing = true
+    baseclass.Get("arc9_base").MeleeAttack(wep, bypass, bash2)
+    wep.UC_Meleeing = nil
 end
 
 -- Hook_Think runs after ARC9's own near-wall think, so this value is the one that counts. ARC9 eases
 -- the amount with InOutQuad before blending; ArcCW blends linearly, so store the inverse.
-function ARC9.UC.NearWallThink(wep)
+local function NearWallThink(wep)
     local time = wep:GetProcessedValue("SprintToFireTime", true) * 0.75
     local blend = ARC9.UC.BarrelHitWall(wep)
     local target = blend < 0.5 and math.sqrt(blend / 2) or 1 - math.sqrt((1 - blend) * 2) / 2
     wep.UC_NearWallAmount = math.Approach(wep.UC_NearWallAmount or 0, target, FrameTime() / time)
     wep:SetNearWallAmount(wep.UC_NearWallAmount)
+end
+
+local freeaim = GetConVar("arc9_mod_freeaim")
+
+-- ArcCW shrinks the free-aim cone to nothing while aiming, sprinting, or customizing, so shots go
+-- where the sight points. ARC9 keeps it, and RT scopes still show the eye's center.
+local function FreeAimThink(wep)
+    if !freeaim:GetBool() then return end
+    local delta = math.min(1 - wep:GetSightAmount(),
+        wep:GetProcessedValue("ShootWhileSprint", true) and 1 or 1 - wep:GetSprintAmount(),
+        wep:GetCustomize() and 0 or 1)
+    local max = wep:GetProcessedValue("FreeAimRadius") * delta
+    local ang = wep:GetFreeAimAngle()
+    local mag = math.sqrt(ang.p * ang.p + ang.y * ang.y)
+    if mag <= max then return end
+    local scale = max / mag
+    ang = Angle(ang.p * scale, ang.y * scale, 0)
+    wep:SetFreeAimAngle(ang)
+    if CLIENT then wep.ClientFreeAimAng = ang end
+end
+
+function ARC9.UC.Think(wep)
+    NearWallThink(wep)
+    FreeAimThink(wep)
 end
 
 -- ARC9 drives safety and sprinting through the same pose blend.

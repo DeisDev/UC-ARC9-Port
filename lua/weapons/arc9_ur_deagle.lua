@@ -653,7 +653,7 @@ SWEP.FreeAimRadius = math.Clamp(600 / 80, 3, 10)
 SWEP.ARC9WeaponCategory = ARC9.WEAPON_PISTOL
 SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_PISTOL
 SWEP.Hook_Think = function(wep)
-    ARC9.UC.NearWallThink(wep)
+    ARC9.UC.Think(wep)
     if CLIENT then
         wep.UC_ADSBipod = math.Approach(wep.UC_ADSBipod or 0, wep:GetBipod() and 1 or 0, FrameTime() / 0.5)
     end

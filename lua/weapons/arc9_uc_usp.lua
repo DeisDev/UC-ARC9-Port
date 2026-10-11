@@ -1,5 +1,5 @@
 SWEP.Base = "arc9_uc_base"
-SWEP.Hook_Think = ARC9.UC.NearWallThink
+SWEP.Hook_Think = ARC9.UC.Think
 SWEP.DrawCustomModel = ARC9.UC.DrawCustomModel
 SWEP.AfterShotFunction = ARC9.UC.AfterShotFunction
 SWEP.CreateHUD_Bottom = ARC9.UC.CreateHUD_Bottom

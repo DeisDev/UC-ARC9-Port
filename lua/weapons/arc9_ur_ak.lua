@@ -157,7 +157,7 @@ SWEP.HasAnimation = function(wep, anim, lq)
 end
 SWEP.UC_DrawTime = 1
 SWEP.Hook_Think = function(wep)
-    ARC9.UC.NearWallThink(wep)
+    ARC9.UC.Think(wep)
     ARC9.UC.LoopSprintIdle(wep)
 end
 SWEP.MuzzleParticle = "uc_muzzleflash_6"
