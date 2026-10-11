@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 1.3.6 - 2026-10-11
+
+### Fixed
+
+- Glock muzzle devices now sit on the barrel instead of floating in front of it.
+- Melee now works when the barrel is against a wall, as in the originals.
+- With free aim on, aiming down sights now centers the aim like the originals, so magnified scopes show where shots land.
+
 ## 1.3.5 - 2026-10-09
 
 ### Fixed
