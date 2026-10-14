@@ -19,4 +19,4 @@ This project was made with LLM assistance, namely Claude Opus 5.5 and GPT 6 Astr
 
 ## Credits
 
-All weapons, models, animations, sounds, and original code are by the Urban Coalition team. This is only a port.
+All weapons, models, animations, sounds, and original code are by the Urban Coalition team. This is only a port, and I am not affiliated with them. Do not ask them for support with this port, and do not spam their addons, harass them, or be rude to them.
