@@ -190,8 +190,8 @@ SWEP.NearWallAng = Angle(8.087680, -8.416675, -11.191555)
 SWEP.BobSprintMult = 0
 SWEP.SprintVerticalOffset = false
 
-SWEP.HoldTypeSprint = "normal"
-SWEP.HoldTypeHolstered = "normal"
+SWEP.HoldTypeSprint = "passive"
+SWEP.HoldTypeHolstered = "passive"
 SWEP.HoldType = "ar2"
 SWEP.HoldTypeSights = "rpg"
 

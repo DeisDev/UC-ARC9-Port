@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- The MP5 now holds the gun in front of the chest in third person while on safe or sprinting, instead of dropping both arms.
+
 ## 1.3.6 - 2026-10-11
 
 ### Fixed
