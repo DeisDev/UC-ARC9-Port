@@ -324,7 +324,7 @@ SWEP.Attachments = {
         Pos = Vector(0, 1.17, 8.6),
         Ang = Angle(90, 0, -90),
         InstalledElements = {"mount_underbarrel"},
-        ExcludeElements = {"g3_noub"},
+        ExcludeElements = {"g3_noub", "mp5_badhg"},
         MergeSlots = {15},
     },
     {
@@ -388,6 +388,7 @@ SWEP.Attachments = {
         Ang = Angle(90, 0, -90),
         Hidden = true,
         InstalledElements = {"mount_underbarrel"},
+        ExcludeElements = {"mp5_badhg"},
     },
     {
         PrintName = "ur.g3.printname16",

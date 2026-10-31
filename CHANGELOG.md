@@ -2,9 +2,14 @@
 
 ## Unreleased
 
+## 1.3.7 - 2026-10-31
+
 ### Fixed
 
 - The MP5 now holds the gun in front of the chest in third person while on safe or sprinting, instead of dropping both arms.
+- The MP5 Surefire handguard on the HK51 now blocks underbarrel attachments, as its description says.
+- With current ARC9, reloads can no longer be restarted near the end, and the magazine fills at the same point as in the originals.
+- With current ARC9 and true names on, parts without a short name (such as the shotgun chokes) no longer break the attachment slot list.
 
 ## 1.3.6 - 2026-10-11
 

@@ -132,6 +132,15 @@ function ARC9.UC.AnimationSpeed(wep, data)
     end
 end
 
+-- ArcCW and ARC9 1.0 fill the magazine when the reload's MinProgressTime passes. Later ARC9 fills it
+-- at the end of the animation while the lock still lifts early, so reload could restart the animation.
+function ARC9.UC.PostReload(wep)
+    local unlock = wep:GetAnimLockTime()
+    if unlock > CurTime() and wep:GetRefillTime() > unlock then
+        wep:SetRefillTime(unlock)
+    end
+end
+
 -- ArcCW caps the weapon's speed and its aiming and firing slowdowns at 1 each (sh_move.lua), so
 -- parts that ease them never speed the player up. ARC9 multiplies freely; firing the MP5K or the
 -- 329 in single action, or aiming with Strafe, was faster than walking.
@@ -850,6 +859,15 @@ function ARC9.UC.AttName(att)
 
     return ARC9:GetPhrase(att .. ".printname") or att
 end
+
+-- With true names on, ARC9 after 1.0 labels installed parts by compact name alone, and a part
+-- without one breaks the slot list. ArcCW and ARC9 1.0 show the print name instead.
+hook.Add("ARC9_LoadAttachment", "ARC9_UC_CompactName", function(atttbl, shortname)
+    if atttbl.MenuCategory != "ARC9 - Urban Coalition" or atttbl.CompactName then return end
+    if ARC9:GetPhrase(shortname .. ".compactname") then return end
+    atttbl.CompactName = ARC9:GetPhrase(shortname .. ".printname") or atttbl.PrintName
+    atttbl.CompactName_TrueName = ARC9:GetPhrase(shortname .. ".printname.true")
+end)
 
 -- ARC9's slot buttons use DefaultCompactName for uninstalled parts.
 function ARC9.UC.UpdateSlotInfo(wep)

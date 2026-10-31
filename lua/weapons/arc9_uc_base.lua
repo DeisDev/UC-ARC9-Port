@@ -30,5 +30,6 @@ SWEP.SpeedHookShooting = ARC9.UC.ShootSpeedCap
 SWEP.PreBashTimeHook = ARC9.UC.PreBashTime
 SWEP.PostBashTimeHook = ARC9.UC.PostBashTime
 SWEP.Hook_TranslateAnimSpeed = ARC9.UC.AnimationSpeed
+SWEP.Hook_PostReload = ARC9.UC.PostReload
 SWEP.CrouchPosHook = ARC9.UC.CrouchPos
 SWEP.CrouchAngHook = ARC9.UC.CrouchAng
